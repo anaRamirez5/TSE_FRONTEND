@@ -3,7 +3,7 @@ backend:
   phases:
     build:
       commands:
-        - '# Execute Amplify CLI with the helper script'
+        - "# Execute Amplify CLI with the helper script"
         - amplifyPush --simple
 frontend:
   phases:
@@ -20,7 +20,7 @@ frontend:
         - echo "La rama actual es:" $BUILD_ENV
         - echo "${BUILD_ENV}"
         - pwd
-        - npm run build:$BUILD_ENV
+        - npm run build:$AWS_BRANCH
         - ls -ltr
         - pwd
         - cd dist/tse-front
@@ -29,7 +29,7 @@ frontend:
   artifacts:
     baseDirectory: dist/tse-front/browser
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths:
       - node_modules/**/*
