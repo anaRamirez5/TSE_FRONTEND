@@ -1,0 +1,27 @@
+@import '../constants/colors.css';
+
+
+button{
+    --mdc-filled-button-container-color: var(--COLOR-BLUE)!important;
+    --mdc-filled-button-label-text-color:var(--COLOR-BLUE-DARK )!important;
+    --mdc-filled-button-disabled-container-color:var(--COLOR-BLUE-DISABLED)!important;
+    --mdc-filled-button-label-text-size:18px
+}
+
+a{
+    --bs-link-hover-color-rgb:var(--$COLOR-BLUE-DISABLED)!important
+}
+
+button:hover {
+    background: var(--COLOR-BLUE-DISABLED);
+}
+
+
+.mat-mdc-button-base {
+    text-decoration: underline !important;
+}
+
+.redirect{
+    color:#ffff !important;
+
+}

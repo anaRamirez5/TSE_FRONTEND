@@ -1,0 +1,40 @@
+<div
+  class="container-fluid h-100 bg-layout d-flex flex-column"
+  style="--bs-gutter-x: 0 !important"
+>
+  <div
+    class="px-4 bg-white header d-flex flex-row align-items-center justify-content-between"
+  >
+    <img
+      class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 logo"
+      style="background-color: transparent"
+      src="./../../../../assets/images/logo.png"
+      alt="logo_tse"
+    />
+    <div class="d-flex flew-row">
+      <div class="d-flex flex-row me-4">
+        <div class="d-flex flex-column me-2">
+          <p class="m-0 text-table">Manuel Suarez</p>
+          <p class="m-0 text-sub">Coordinador</p>
+        </div>
+        <img
+          class="perfil"
+          src="../../../../assets/images/perfil.svg"
+          alt="perfil"
+        />
+      </div>
+      <div class="row" (click)="logout()" style="cursor: pointer">
+        <div class="col my-auto px-2">
+          <p class="m-0 text-table">Cerrar Sesion</p>
+        </div>
+
+        <img
+          src="../../../../assets/images/logout.svg"
+          class="p-0"
+          alt="logout"
+          style="width: 29px !important"
+        />
+      </div>
+    </div>
+  </div>
+</div>

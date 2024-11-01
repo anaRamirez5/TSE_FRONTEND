@@ -1,0 +1,30 @@
+@import "../constants/colors.css";
+
+.text-table {
+  text-align: right;
+  font: normal normal normal 20px/26px Roboto;
+  letter-spacing: 0px;
+  color: var(--COLOR-TEXT);
+}
+.text-sub {
+  text-align: right;
+  font: normal normal normal 15px/20px Roboto;
+  letter-spacing: 0px;
+  color: var(--COLOR-LABEL);
+  opacity: 1;
+}
+
+.text-perfil {
+  color: var(--COLOR-WHITE);
+  font-size: 31px;
+}
+.text-perfil-sub {
+  color: var(--COLOR-LABEL);
+  font-size: 23px;
+  text-align: center;
+}
+.logout {
+  color: var(--COLOR-WHITE);
+  font-size: 20px;
+  cursor: pointer;
+}

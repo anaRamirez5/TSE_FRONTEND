@@ -1,0 +1,32 @@
+<div
+  class="bg-image container-fluid h-100 d-flex flex-column justify-content-around align-items-center pt-4"
+>
+  <img
+    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo"
+    style="background-color: transparent"
+    src="./../../../../assets/images/logo.png"
+    alt="logo_tse"
+  />
+  <form
+    [formGroup]="loginForm"
+    class="mx-auto d-flex flex-column justify-content-center col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4"
+  >
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input matInput type="text" /> </mat-form-field
+    ><mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+  </form>
+  <button
+    mat-flat-button
+    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2"
+    [disabled]="loginForm.invalid"
+  >
+    Ingresar
+  </button>
+  <a target="_blank" href="https://www.tsetransporte.com/TSE2022/inicio.php">
+    <button class="redirect" mat-button>Gestión de transporte</button>
+  </a>
+</div>

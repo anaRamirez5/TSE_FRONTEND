@@ -1,0 +1,6 @@
+@import "../constants/colors.css";
+
+.header {
+  height: 100px;
+  box-shadow: 0px 3px 6px var(--COLOR-SHADOW);
+}

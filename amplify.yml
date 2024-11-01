@@ -1,0 +1,35 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - '# Execute Amplify CLI with the helper script'
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 20.12
+        - nvm use 20.12
+        - npm install
+    build:
+      commands:
+        - nvm use 20.12
+        - node -v
+        - echo "La rama actual es:" $AWS_BRANCH
+        - echo "La rama actual es:" $BUILD_ENV
+        - echo "${BUILD_ENV}"
+        - pwd
+        - npm run build:$BUILD_ENV
+        - ls -ltr
+        - pwd
+        - cd dist/tse-front
+        - ls -ltr
+        - pwd
+  artifacts:
+    baseDirectory: dist/tse-front/browser
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

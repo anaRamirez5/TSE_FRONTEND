@@ -1,0 +1,6 @@
+@import '../constants/colors.css';
+
+mat-form-field{
+    --mdc-filled-text-field-container-color:var(--COLOR-INPUT) !important;
+    --mdc-filled-text-field-label-text-color:var(--COLOR-LABEL) !important
+}

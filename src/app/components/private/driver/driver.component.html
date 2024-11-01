@@ -1,0 +1,51 @@
+<div
+  class="container-fluid h-100 bg-white d-flex flex-column"
+  style="--bs-gutter-x: 0 !important"
+>
+  <div
+    class="px-4 bg-white header d-flex flex-row align-items-center justify-content-between"
+  >
+    <img
+      class="col-3 col-sm-3 col-md-3 logo"
+      style="background-color: transparent"
+      src="./../../../../assets/images/logo.png"
+      alt="logo_tse"
+    />
+    <img
+      class="perfil"
+      style="cursor: pointer"
+      src="../../../../assets/images/perfil.svg"
+      alt="perfil"
+      (click)="openPerfil()"
+    />
+  </div>
+</div>
+
+@if(handlePerfil){
+
+<div
+  *ngIf="isOverlayVisible"
+  class="perfil-driver-overlay"
+  (click)="closePerfil()"
+></div>
+<div
+  class="h-100 container-fluid perfil-driver d-flex flex-column align-items-center justify-content-around"
+  [ngClass]="{ 'slide-in': handlePerfil, 'slide-out': !handlePerfil }"
+>
+  <img
+    src="../../../../assets/images/exit.svg"
+    alt="exit"
+    class="exit"
+    (click)="closePerfil()"
+  />
+  <img src="../../../../assets/images/perfil-white.svg" alt="perfil" />
+  <div>
+    <p class="text-perfil">Alejandro Martinez</p>
+    <p class="text-perfil-sub">Conductor</p>
+  </div>
+  <div class="logout" (click)="logout()">
+    Cerrar Sesion
+    <img src="../../../../assets/images/logout-white.svg" alt="logout" />
+  </div>
+</div>
+}

@@ -1,0 +1,15 @@
+@import "../constants/colors.css";
+
+.bg-image {
+  background-image: url(../../images/Fondo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-layout {
+  background: transparent
+    linear-gradient(138deg, var(--COLOR-WHITE) 0%, var(--COLOR-BLUE) 200%) 0% 0%
+    no-repeat padding-box;
+  opacity: 1;
+  mix-blend-mode: normal;
+}

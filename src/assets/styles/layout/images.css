@@ -1,0 +1,42 @@
+@import "../constants/colors.css";
+
+.logo {
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+
+.perfil {
+  width: 45px;
+}
+
+.exit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.perfil-driver {
+  margin-left: 9rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: var(--COLOR-BLUE-DARK);
+  z-index: 1050;
+  padding-top: 20px;
+  transform: translateX(100%);
+  transition: transform 1s ease, opacity 1s ease;
+  opacity: 0;
+}
+.perfil-driver-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1000;
+}
