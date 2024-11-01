@@ -41,7 +41,7 @@
             ]
           },
           "configurations": {
-            "production": {
+            "prod": {
               "budgets": [
                 {
                   "type": "initial",
@@ -68,13 +68,13 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "prod"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "TSE_front:build:production"
+            "prod": {
+              "buildTarget": "TSE_front:build:prod"
             },
             "develop": {
               "buildTarget": "TSE_front:build:develop"
