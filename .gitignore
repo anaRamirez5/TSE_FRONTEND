@@ -41,9 +41,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#Environments
-/src/environments/*
-.env*
+# #Environments
+# /src/environments/*
+# .env*
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
