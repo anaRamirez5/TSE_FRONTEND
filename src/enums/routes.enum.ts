@@ -5,3 +5,6 @@ export enum RoutesApp {
   COORDINATOR = 'coordinator',
   DRIVER = 'driver',
 }
+export enum EndPointRoute {
+  LOGIN = 'login',
+}

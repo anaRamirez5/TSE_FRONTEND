@@ -2,7 +2,7 @@
   class="bg-image container-fluid h-100 d-flex flex-column justify-content-around align-items-center pt-4"
 >
   <img
-    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo"
+    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-1 logo"
     style="background-color: transparent"
     src="./../../../../assets/images/logo.png"
     alt="logo_tse"
@@ -13,16 +13,21 @@
   >
     <mat-form-field>
       <mat-label>Usuario</mat-label>
-      <input matInput type="text" /> </mat-form-field
+      <input
+        matInput
+        type="text"
+        formControlName="user_name"
+      /> </mat-form-field
     ><mat-form-field>
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" />
+      <input matInput type="password" formControlName="user_password" />
     </mat-form-field>
   </form>
   <button
     mat-flat-button
     class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2"
     [disabled]="loginForm.invalid"
+    (click)="login()"
   >
     Ingresar
   </button>

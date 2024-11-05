@@ -5,6 +5,7 @@
   font: normal normal normal 20px/26px Roboto;
   letter-spacing: 0px;
   color: var(--COLOR-TEXT);
+  text-transform: capitalize;
 }
 .text-sub {
   text-align: right;
@@ -17,6 +18,7 @@
 .text-perfil {
   color: var(--COLOR-WHITE);
   font-size: 31px;
+  text-align: center;
 }
 .text-perfil-sub {
   color: var(--COLOR-LABEL);

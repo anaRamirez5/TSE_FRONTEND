@@ -40,8 +40,8 @@
   />
   <img src="../../../../assets/images/perfil-white.svg" alt="perfil" />
   <div>
-    <p class="text-perfil">Alejandro Martinez</p>
-    <p class="text-perfil-sub">Conductor</p>
+    <p class="text-perfil">{{ user_name }}</p>
+    <p class="text-perfil-sub">{{ role_name == "3" ? "Conductor" : "" }}</p>
   </div>
   <div class="logout" (click)="logout()">
     Cerrar Sesion
