@@ -1,6 +1,6 @@
 const packageJson = require('../../package.json');
 
-const HOST = 'https://zbfra3ts88.execute-api.us-east-1.amazonaws.com/develop/';
+const HOST = 'https://pjfdke07sh.execute-api.us-east-1.amazonaws.com/prod';
 export const environment = {
   API_PUBLIC: HOST + '/',
   production: true,
