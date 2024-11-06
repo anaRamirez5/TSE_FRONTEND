@@ -14,16 +14,21 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { TSEInterceptor } from './services/interceptors/http-request-interceptor';
-
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { SharedModule } from './components/shared/shared.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    HttpClientModule,
+    NoopAnimationsModule,
     LayoutModule,
     DriverModule,
+    SharedModule,
   ],
   providers: [provideHttpClient(withInterceptors([TSEInterceptor]))],
   bootstrap: [AppComponent],
