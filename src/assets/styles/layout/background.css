@@ -13,3 +13,11 @@
   opacity: 1;
   mix-blend-mode: normal;
 }
+.bg-blue {
+  &[data-enable="false"] {
+    background-color: var(--COLOR-BLUE);
+  }
+  &[data-enable="true"] {
+    background-color: #f441509e;
+  }
+}

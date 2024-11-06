@@ -10,3 +10,8 @@ export interface ISession {
   doc_id: string;
   car_id: string;
 }
+export interface roleRoute {
+  1: string;
+  2: string;
+  3: string;
+}
