@@ -1,0 +1,26 @@
+<mat-dialog-content
+  class="modal-content"
+  style="overflow-x: hidden; height: 300px; position: relative"
+>
+  <div
+    class="d-flex flex-column w-100"
+    style="position: relative; height: 100%"
+  >
+    <div
+      class="bg-white h-50 d-flex header-modals"
+      [attr.data-enable]="data.response !== 200"
+    >
+      <p class="m-auto">{{ data.response == 200 ? "Correcto" : "Error" }}</p>
+    </div>
+    <div class="container-logo" [attr.data-enable]="data.response !== 200">
+      <img class="logo-modal" [src]="url" />
+    </div>
+
+    <div
+      class="bg-blue h-50 mh-100 d-flex content-modal"
+      [attr.data-enable]="data.response !== 200"
+    >
+      <p class="m-auto">{{ data.content }}</p>
+    </div>
+  </div>
+</mat-dialog-content>
