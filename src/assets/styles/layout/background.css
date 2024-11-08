@@ -18,6 +18,6 @@
     background-color: var(--COLOR-BLUE);
   }
   &[data-enable="true"] {
-    background-color: #f441509e;
+    background-color: #f44150f8;
   }
 }

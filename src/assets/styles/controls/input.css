@@ -1,6 +1,8 @@
-@import '../constants/colors.css';
+@import "../constants/colors.css";
 
-mat-form-field{
-    --mdc-filled-text-field-container-color:var(--COLOR-INPUT) !important;
-    --mdc-filled-text-field-label-text-color:var(--COLOR-LABEL) !important
+:root {
+  --bs-body-bg: var(--COLOR-INPUT) !important;
+}
+.form-floating > label {
+  color: var(--COLOR-LABEL) !important;
 }

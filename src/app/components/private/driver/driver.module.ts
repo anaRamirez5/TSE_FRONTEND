@@ -8,6 +8,6 @@ import {
 } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [DriverComponent],
-  imports: [CommonModule, BrowserModule, BrowserAnimationsModule],
+  imports: [CommonModule],
 })
 export class DriverModule {}
