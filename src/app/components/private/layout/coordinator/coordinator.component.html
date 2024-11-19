@@ -1,1 +1,27 @@
-<p>coordinator works!</p>
+<div class="d-flex flex-column mb-2">
+  <div class="d-flex flex-row justify-content-end mt-3">
+    <div
+      style="background-color: #0a0057; color: white"
+      class="p-2 rounded-2 mx-2 d-flex flex-row justify-content-center align-items-center"
+    >
+      Total de servicios aceptados
+      <h2 class="mx-2">50</h2>
+    </div>
+    <div
+      style="background-color: #78cffd; color: #0a0057"
+      class="p-2 rounded-2 mx-2 d-flex flex-row d-flex flex-row justify-content-center align-items-center"
+    >
+      Total de servicios Rechazados
+      <h2 class="mx-2">50</h2>
+    </div>
+    <div
+      style="background-color: #0a0057; color: white"
+      class="p-2 rounded-2 mx-2 d-flex flex-row d-flex flex-row justify-content-center align-items-center"
+    >
+      Total de servicios finalizados
+      <h2 class="mx-2">50</h2>
+    </div>
+  </div>
+  <app-navbar component="coordinator"></app-navbar>
+  <router-outlet></router-outlet>
+</div>

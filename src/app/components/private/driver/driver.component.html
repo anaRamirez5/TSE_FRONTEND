@@ -19,6 +19,8 @@
       (click)="openPerfil()"
     />
   </div>
+  <app-navbar component="driver"></app-navbar>
+  <router-outlet></router-outlet>
 </div>
 
 @if(handlePerfil){
@@ -40,8 +42,8 @@
   />
   <img src="../../../../assets/images/perfil-white.svg" alt="perfil" />
   <div>
-    <p class="text-perfil">{{ user_name }}</p>
-    <p class="text-perfil-sub">{{ role_name == "3" ? "Conductor" : "" }}</p>
+    <p class="text-perfil">Alejandro Martinez</p>
+    <p class="text-perfil-sub">Conductor</p>
   </div>
   <div class="logout" (click)="logout()">
     Cerrar Sesion

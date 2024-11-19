@@ -3,6 +3,8 @@ export enum RoutesApp {
   LAYOUT = 'layout',
   ADMIN = 'admin',
   COORDINATOR = 'coordinator',
+  ASSIGMENTS = 'assignments',
+  HISTORY = 'history',
   DRIVER = 'driver',
 }
 export enum EndPointRoute {

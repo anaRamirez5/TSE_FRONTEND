@@ -6,3 +6,40 @@
 .form-floating > label {
   color: var(--COLOR-LABEL) !important;
 }
+/* Cambiar el fondo del calendario */
+.datepicker {
+  background-color: #f9f9f9; /* Cambia el color de fondo */
+  border-radius: 8px; /* Ajusta el radio de las esquinas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+}
+
+/* Cambiar el color de los días */
+.datepicker .day {
+  color: #333; /* Cambia el color del texto de los días */
+}
+
+/* Estilizar los días seleccionados */
+.datepicker .day.active {
+  background-color: #007bff; /* Color de fondo para el día activo */
+  color: #fff; /* Color del texto para el día activo */
+}
+
+/* Cambiar el color de los días del fin de semana */
+.datepicker .day.sat,
+.datepicker .day.sun {
+  color: #d9534f; /* Color personalizado para los fines de semana */
+}
+
+/* Estilizar los botones de navegación (meses/años) */
+.datepicker .prev,
+.datepicker .next {
+  color: #007bff; /* Cambia el color de los íconos de navegación */
+}
+
+/* Cambiar el estilo del botón "Limpiar" */
+.datepicker .datepicker-clear {
+  background-color: #e9ecef; /* Fondo del botón */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 4px 8px; /* Espaciado interno */
+  color: #333; /* Color del texto */
+}

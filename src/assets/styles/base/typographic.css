@@ -30,3 +30,12 @@
   font-size: 20px;
   cursor: pointer;
 }
+span {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--COLOR-BLUE-DARK);
+}
+p {
+  font-size: 15px;
+  font-weight: normal;
+}

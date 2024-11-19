@@ -8,7 +8,8 @@ import { DriverModule } from './components/private/driver/driver.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TSEInterceptor } from './services/interceptors/http-request-interceptor';
 import { SharedModule } from './components/shared/shared.module';
-import { StoreModule } from '@ngrx/store';
+import { CommonModule } from '@angular/common';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,7 +19,7 @@ import { StoreModule } from '@ngrx/store';
     LayoutModule,
     DriverModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
+    CommonModule,
   ],
   providers: [provideHttpClient(withInterceptors([TSEInterceptor]))],
   bootstrap: [AppComponent],

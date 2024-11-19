@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { RoutesApp } from '../../../../enums/routes.enum';
 import { SessionStorageItems } from '../../../../enums/session-storage';
 
@@ -12,6 +12,7 @@ export class DriverComponent implements OnInit {
   user_name: string = '';
   role_name: string = '';
   handlePerfil: boolean = false;
+
   isOverlayVisible = false;
   constructor(private router: Router) {}
   ngOnInit() {
@@ -23,14 +24,14 @@ export class DriverComponent implements OnInit {
     this.isOverlayVisible = true;
     setTimeout(() => {
       this.handlePerfil = true;
-    }, 10); // Pequeña demora para asegurar que la clase se aplica después de que el DOM esté listo
+    }, 10);
   }
 
   closePerfil() {
     this.handlePerfil = false;
     setTimeout(() => {
       this.isOverlayVisible = false;
-    }, 400); // Espera a que la animación de salida termine (0.4s)
+    }, 400);
   }
 
   logout() {

@@ -1,0 +1,122 @@
+<form
+  class="d-flex flex-row justify-content-evenly align-items-center bg-white my-2 w-100 rounded-3"
+  style="box-shadow: 0px 3px 6px #00000029"
+  [formGroup]="filterGroup"
+>
+  <div
+    class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
+    [ngClass]="{
+      'd-none ': role() === 'programmer_assign',
+      'col-6 col-sm-6 col-md-6': role() === 'driver'
+    }"
+  >
+    <input
+      type="date"
+      formControlName="date"
+      class="form-control"
+      style="border: 1px #0a0057 solid"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Fecha</label>
+  </div>
+  <div
+    class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
+    [ngClass]="{ 'd-none': role() === 'driver' }"
+  >
+    <input
+      type="text"
+      formControlName="license_plate_number"
+      style="border: 1px #0a0057 solid"
+      class="form-control"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Numero de placa</label>
+  </div>
+  <div
+    class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
+    [ngClass]="{ 'd-none': role() === 'driver' }"
+  >
+    <select
+      class="form-select"
+      formControlName="departament"
+      style="border: 1px #0a0057 solid"
+      id="floatingSelectDepartament"
+    >
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <label for="floatingSelectDepartament">Departamento</label>
+  </div>
+  <div
+    class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
+    [ngClass]="{ 'd-none': role() === 'driver' }"
+  >
+    <select
+      class="form-select"
+      style="border: 1px #0a0057 solid"
+      id="floatingSelectCity"
+      formControlName="city"
+    >
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <label for="floatingSelectCity">Ciudad</label>
+  </div>
+
+  <div
+    class="my-3 col-md-2 col-lg-2 col-xl-2 d-flex flew-row justify-content-evenly"
+  >
+    <button
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
+      class="btn btn-info rounded-3 mx-2 col-md-3 col-lg-2"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      data-bs-custom-class="custom-tooltip"
+      (click)="submitFilter()"
+      data-bs-title="Buscar"
+    >
+      <img
+        src="../../../../../assets/images/search.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+    <button
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
+      class="btn btn-danger rounded-3 mx-2 col-md-3 col-lg-2"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      data-bs-custom-class="custom-tooltip"
+      (click)="cleanFilter()"
+      data-bs-title="Limpiar Filtro"
+    >
+      <img
+        src="../../../../../assets/images/trash.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+    <button
+      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3"
+      [ngClass]="{ 'd-none': role() === 'driver' }"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      data-bs-title="Descargar Historial"
+      data-bs-custom-class="custom-tooltip"
+      style="
+        background-color: #0a0057 !important;
+        border-color: #0a0057 !important;
+      "
+    >
+      <img
+        src="../../../../../assets/images/download.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+  </div>
+</form>

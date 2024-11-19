@@ -9,3 +9,6 @@
 @import "./layout/header.css";
 @import "./layout/images.css";
 @import "./layout/modal.css";
+@import "./layout/navbar.css";
+@import "./layout/table.css";
+@import "./layout/tooltip.css";
