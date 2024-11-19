@@ -1,0 +1,6 @@
+@import "../constants/colors.css";
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--COLOR-BLUE-DARK);
+  --bs-tooltip-color: var(--bs-white);
+}

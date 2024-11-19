@@ -1,9 +1,9 @@
 <div
   class="container-fluid h-100 bg-layout d-flex flex-column"
-  style="--bs-gutter-x: 0 !important"
+  style="--bs-gutter-x: 0 !important; max-height: 100vh; overflow-y: scroll"
 >
   <div
-    class="px-4 bg-white header d-flex flex-row align-items-center justify-content-between"
+    class="p-4 bg-white header d-flex flex-row align-items-center justify-content-between"
   >
     <img
       class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-1 logo"
@@ -20,7 +20,7 @@
               role_name == "1"
                 ? "Administrador"
                 : role_name == "2"
-                ? "Coordinador"
+                ? "Programador"
                 : ""
             }}
           </p>
@@ -45,4 +45,5 @@
       </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
