@@ -1,10 +1,89 @@
 import { Component } from '@angular/core';
+import { HistoryTable } from '../../../../models/admin/admin.interface';
 
 @Component({
   selector: 'app-history-per-driver',
   templateUrl: './history-per-driver.component.html',
-  styleUrl: './history-per-driver.component.css'
+  styleUrl: './history-per-driver.component.css',
 })
 export class HistoryPerDriverComponent {
-
+  data: HistoryTable[] = [
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+    {
+      date: '23/12/2024',
+      license_plate_number: 'asdasd',
+      hour_end: '07:30',
+      hour_start: '06:30',
+      adress_end: 'asdasd',
+      adress_start: 'adasdasd',
+      departament: 'asdsad',
+      city: 'asdasd',
+      municipality: 'asdasdasd',
+    },
+  ];
 }

@@ -1,51 +1,6 @@
 <div class="d-flex flex-column container-fluid">
-  <!-- <form
-    class="d-flex flex-row justify-content-evenly align-items-center bg-white my-2 w-100 rounded-3"
-    style="box-shadow: 0px 3px 6px #00000029"
-  >
-    <div class="form-floating my-3 col-6 col-sm-6 col-md-6">
-      <input
-        type="date"
-        formControlName="date"
-        class="form-control"
-        style="border: 1px #0a0057 solid"
-        id="floatingInput"
-        placeholder="name@example.com"
-      />
-      <label for="floatingInput">Fecha</label>
-    </div>
-
-    <div
-      class="my-3 col-md-2 col-lg-2 col-xl-2 d-flex flew-row justify-content-evenly"
-    >
-      <button
-        class="btn btn-info rounded-3 mx-2 col-6 col-sm-6 col-md-6"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
-        data-bs-title="Buscar"
-      >
-        <img
-          src="../../../../../assets/images/search.svg"
-          style="width: 25px; height: 25px"
-          alt=""
-        />
-      </button>
-      <button
-        class="btn btn-danger rounded-3 mx-2 col-6 col-sm-6 col-md-6"
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
-        data-bs-title="Limpiar Filtro"
-      >
-        <img
-          src="../../../../../assets/images/trash.svg"
-          style="width: 25px; height: 25px"
-          alt=""
-        />
-      </button>
-    </div>
-  </form> -->
   <app-filters role="driver"></app-filters>
-  <app-accordion-driver></app-accordion-driver>
+  @for (row of data; track row ) {
+  <app-accordion-driver [data]="row"></app-accordion-driver>
+  }
 </div>

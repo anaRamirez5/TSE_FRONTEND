@@ -3,6 +3,8 @@ export interface filter {
   license_plate_number: string;
   departament: string;
   city: string;
+  page: number;
+  page_size: number;
 }
 
 export interface HistoryTable {

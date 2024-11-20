@@ -9,7 +9,7 @@
         (click)="toggleCollapse()"
         aria-controls="collapseOne"
       >
-        Fecha de servicio: 23/10/2024
+        Fecha de servicio: {{ data().date }}
         <span class="ms-2">
           <i *ngIf="isCollapsed" class="bi bi-chevron-up"></i>
           <i *ngIf="!isCollapsed" class="bi bi-chevron-down"></i>
