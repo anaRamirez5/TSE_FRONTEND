@@ -2,6 +2,7 @@
   <app-filters
     role="admin"
     (filterForm)="extractFilterData($event)"
+    (clean)="handleClean($event)"
   ></app-filters>
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
@@ -20,13 +21,19 @@
       </tr>
     </thead>
     <tbody>
-      @for (row of data; track row ) {
+      @for (row of historyTable; track row ) {
       <tr>
         <td>{{ row.date }}</td>
         <td>{{ row.hour_start }}</td>
         <td>{{ row.hour_end }}</td>
         <td>{{ row.license_plate_number }}</td>
-        <td>{{ row.adress_start }}</td>
+        <td
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{{ row.adress_start }}"
+        >
+          {{ row.adress_start }}
+        </td>
         <td>{{ row.adress_end }}</td>
         <td>{{ row.departament }}</td>
         <td>{{ row.city }}</td>
@@ -35,11 +42,12 @@
       }
     </tbody>
   </table>
-  <div class="bg-white rounded-bottom-3">
+  <!-- <div class="bg-white rounded-bottom-3">
     <app-paginator
       [itemsPerPage]="10"
       [totalItems]="90"
       [currentPage]="1"
     ></app-paginator>
-  </div>
+
+  </div> -->
 </div>

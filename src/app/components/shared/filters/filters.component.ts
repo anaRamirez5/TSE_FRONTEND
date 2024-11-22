@@ -10,6 +10,7 @@ import * as bootstrap from 'bootstrap';
 export class FiltersComponent implements OnInit {
   role = input.required<string>();
   filterForm = output<FormGroup>();
+  clean = output<boolean>();
   filterGroup!: FormGroup;
   ngOnInit() {
     const tooltipTriggerList = [].slice.call(
@@ -21,16 +22,17 @@ export class FiltersComponent implements OnInit {
   }
   constructor(private fb: FormBuilder) {
     this.filterGroup = this.fb.group({
-      date: [null],
-      license_plate_number: [null],
-      departament: [null],
-      city: [null],
+      date: [''],
+      license_plate_number: [''],
+      department: [''],
+      city: [''],
     });
   }
   submitFilter() {
-    this.filterForm.emit(this.filterGroup.value);
+    this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {
     this.filterGroup.reset();
+    this.clean.emit(true);
   }
 }
