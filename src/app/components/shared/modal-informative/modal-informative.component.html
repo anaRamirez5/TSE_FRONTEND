@@ -1,26 +1,35 @@
-<mat-dialog-content
-  class="modal-content"
-  style="overflow-x: hidden; height: 300px; position: relative"
->
+<div class="modal" tabindex="-1" style="display: inline">
   <div
-    class="d-flex flex-column w-100"
-    style="position: relative; height: 100%"
+    class="modal-content"
+    style="
+      overflow-x: hidden;
+      height: 300px;
+      position: relative;
+      top: 27%;
+      left: 42%;
+      width: 300px;
+    "
   >
     <div
-      class="bg-white h-50 d-flex header-modals"
-      [attr.data-enable]="data.response !== 200"
+      class="d-flex flex-column w-100"
+      style="position: relative; height: 100%"
     >
-      <p class="m-auto">{{ data.response == 200 ? "Correcto" : "Error" }}</p>
-    </div>
-    <div class="container-logo" [attr.data-enable]="data.response !== 200">
-      <img class="logo-modal" [src]="url" />
-    </div>
+      <div
+        class="bg-white h-50 d-flex header-modals"
+        [attr.data-enable]="response() !== 200"
+      >
+        <p class="m-auto">"Correcto"</p>
+      </div>
+      <div class="container-logo" [attr.data-enable]="response() !== 200">
+        <img class="logo-modal" [src]="url" />
+      </div>
 
-    <div
-      class="bg-blue h-50 mh-100 d-flex content-modal"
-      [attr.data-enable]="data.response !== 200"
-    >
-      <p class="m-auto">{{ data.content }}</p>
+      <div
+        class="bg-blue h-50 mh-100 d-flex content-modal"
+        [attr.data-enable]="response() !== 200"
+      >
+        <p class="m-auto">{{ content() }}</p>
+      </div>
     </div>
   </div>
-</mat-dialog-content>
+</div>

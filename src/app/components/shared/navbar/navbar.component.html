@@ -1,0 +1,33 @@
+<ul class="nav nav-underline m-3">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      (click)="isActive('assignments')"
+      [ngClass]="{ active: assignmentsActive }"
+      style="color: #0a0057; cursor: pointer"
+    >
+      <img
+        src="../../../../assets/images/assign.svg"
+        style="width: 20px"
+        class="mx-2"
+        alt=""
+      />
+      Asignaciones</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      (click)="isActive('history')"
+      [ngClass]="{ active: historyActive }"
+      style="color: #0a0057; cursor: pointer"
+    >
+      <img
+        src="../../../../assets/images/history.svg"
+        style="width: 20px"
+        class="mx-2"
+        alt=""
+      />Historial</a
+    >
+  </li>
+</ul>

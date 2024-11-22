@@ -1,1 +1,53 @@
-<p>admin works!</p>
+<div class="d-flex flex-column container-fluid">
+  <app-filters
+    role="admin"
+    (filterForm)="extractFilterData($event)"
+    (clean)="handleClean($event)"
+  ></app-filters>
+  <table
+    class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
+  >
+    <thead class="rounded-3">
+      <tr>
+        <th scope="col">Fecha del servicio</th>
+        <th scope="col">Hora inicio</th>
+        <th scope="col">Hora fin</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Dirreción de origen</th>
+        <th scope="col">Dirreción de destino</th>
+        <th scope="col">Departamento</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Municipio</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of historyTable; track row ) {
+      <tr>
+        <td>{{ row.date }}</td>
+        <td>{{ row.hour_start }}</td>
+        <td>{{ row.hour_end }}</td>
+        <td>{{ row.license_plate_number }}</td>
+        <td
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="{{ row.adress_start }}"
+        >
+          {{ row.adress_start }}
+        </td>
+        <td>{{ row.adress_end }}</td>
+        <td>{{ row.departament }}</td>
+        <td>{{ row.city }}</td>
+        <td>{{ row.municipality }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <!-- <div class="bg-white rounded-bottom-3">
+    <app-paginator
+      [itemsPerPage]="10"
+      [totalItems]="90"
+      [currentPage]="1"
+    ></app-paginator>
+
+  </div> -->
+</div>

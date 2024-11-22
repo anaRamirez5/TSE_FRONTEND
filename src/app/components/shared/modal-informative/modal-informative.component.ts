@@ -1,13 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import { Component, input, Input, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-modal-informative',
   templateUrl: './modal-informative.component.html',
@@ -15,19 +7,17 @@ import {
 })
 export class ModalInformativeComponent implements OnInit {
   url: string = '';
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { response: number; content: string },
-    public readonly dialogRef: MatDialogRef<ModalInformativeComponent>
-  ) {
-    if (data.response === 200) {
+  response = input.required<number>();
+  content = input.required<string>();
+  visible = input.required<boolean>();
+
+  constructor() {}
+  ngOnInit() {
+    if (this.response() === 200) {
+      console.log('es correcto');
       this.url = '../../../../assets/images/check.svg';
     } else {
       this.url = '../../../../assets/images/error.svg';
     }
-  }
-  ngOnInit() {
-    setTimeout(() => {
-      this.dialogRef.close();
-    }, 4000);
   }
 }

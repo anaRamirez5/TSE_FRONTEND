@@ -1,0 +1,6 @@
+<div class="d-flex flex-column container-fluid">
+  <app-filters role="driver"></app-filters>
+  @for (row of historyTable; track row ) {
+  <app-accordion-driver [data]="row"></app-accordion-driver>
+  }
+</div>

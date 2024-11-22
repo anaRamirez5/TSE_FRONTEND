@@ -1,0 +1,37 @@
+@import "../constants/colors.css";
+
+table {
+  --bs-table-color: var(--COLOR-BLUE-DARK) !important;
+}
+.pagination {
+  --bs-pagination-active-bg: var(--COLOR-BLUE) !important;
+  --bs-pagination-active-border-color: var(--COLOR-BLUE) !important;
+  --bs-pagination-color: var(--COLOR-BLUE-DARK) !important;
+}
+.table > thead {
+  vertical-align: middle !important;
+}
+thead {
+  color: var(--COLOR-BLUE-DARK) !important;
+  font-weight: 500;
+  height: 68px;
+  text-align: center;
+  letter-spacing: 0px;
+  box-shadow: 0px 3px 6px #00000029;
+}
+tbody > tr {
+  border-bottom: 1px solid #d4d1d1ea;
+  height: 40px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+th,
+td {
+  font-size: 16px !important;
+  width: 200px;
+  max-width: 180px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
