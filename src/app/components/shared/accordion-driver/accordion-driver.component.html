@@ -1,4 +1,4 @@
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionExample" style="margin: 10px auto">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button
@@ -9,7 +9,7 @@
         (click)="toggleCollapse()"
         aria-controls="collapseOne"
       >
-        Fecha de servicio: 23/10/2024
+        Fecha de servicio: {{ data().date }}
         <span class="ms-2">
           <i *ngIf="isCollapsed" class="bi bi-chevron-up"></i>
           <i *ngIf="!isCollapsed" class="bi bi-chevron-down"></i>
@@ -22,35 +22,35 @@
       [ngClass]="{ show: isCollapsed }"
       data-bs-parent="#accordionExample"
     >
-      <div class="accordion-body">
+      <div class="accordion-body" style="max-height: 300px; overflow: auto">
         <ul class="row" style="list-style-type: none">
           <li class="col-12 col-md-6">
             <span>Fecha del Servicio</span>
-            <p>23/10/2024</p>
+            <p>{{ data().date }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Hora de inicio</span>
-            <p>23/10/2024</p>
+            <p>{{ data().hour_start }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Hora fin</span>
-            <p>23/10/2024</p>
+            <p>{{ data().hour_end }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Dirección de Origen</span>
-            <p>23/10/2024</p>
+            <p>{{ data().adress_start }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Departamento</span>
-            <p>23/10/2024</p>
+            <p>{{ data().adress_end }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Ciudad</span>
-            <p>23/10/2024</p>
+            <p>{{ data().city }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Municipio</span>
-            <p>23/10/2024</p>
+            <p>{{ data().municipality }}</p>
           </li>
         </ul>
       </div>

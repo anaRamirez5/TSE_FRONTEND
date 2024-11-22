@@ -1,8 +1,10 @@
-export interface filter {
+export interface Filter {
   date: string;
   license_plate_number: string;
-  departament: string;
+  department: string;
   city: string;
+  page: number;
+  page_size: number;
 }
 
 export interface HistoryTable {

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { HistoryTable } from '../../../models/admin/admin.interface';
 
 @Component({
   selector: 'app-accordion-driver',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AccordionDriverComponent {
   isCollapsed = false; // Estado inicial
+  data = input.required<HistoryTable>();
 
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
