@@ -41,7 +41,7 @@ export class LoginComponent {
   login(payload: ILogin) {
     this.authService.login(payload).subscribe({
       next: (response: BodyResponse<string>) => {
-        if (response.data) {
+        if (response.code === 200) {
           this.openDialog = true;
           this.response = response.code;
           this.content = response.code
@@ -56,17 +56,20 @@ export class LoginComponent {
               this.roleRoutes[Number(this.rol) as 1 | 2 | 3];
             if (targetRoute) {
               this.router.navigate([targetRoute]);
-            } else {
-              this.openDialog = true;
-              this.response = response.code;
-              this.content = response.data;
             }
+          }, 2000);
+        } else {
+          this.openDialog = true;
+          this.response = response.code;
+          this.content = response.data;
+          setTimeout(() => {
+            this.openDialog = false;
           }, 2000);
         }
       },
     });
   }
-  abrirModal() {}
+
   decodedToken(data: string) {
     const decodedToken: ISession = jwtDecode(data);
     this.rol = decodedToken.role_id;
