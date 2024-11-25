@@ -1,6 +1,12 @@
 <div class="d-flex flex-column container-fluid">
-  <app-filters role="driver"></app-filters>
-  @for (row of historyTable; track row ) {
+  <app-filters
+    role="driver"
+    (filterForm)="extractFilterData($event)"
+    (clean)="handleClean($event)"
+  ></app-filters>
+  @if(historyTable.length===0){
+  <div>No hay datos</div>
+  }@else{ @for (row of historyTable; track row ) {
   <app-accordion-driver [data]="row"></app-accordion-driver>
-  }
+  } }
 </div>

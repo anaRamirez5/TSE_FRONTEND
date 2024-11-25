@@ -1,19 +1,20 @@
-<div class="accordion" id="accordionExample" style="margin: 10px auto">
+<div
+  class="accordion"
+  id="accordionExample"
+  style="margin: 10px auto; border-radius: 10px"
+>
   <div class="accordion-item">
-    <h2 class="accordion-header">
+    <h2 class="accordion-header" style="border-radius: 10px">
       <button
         class="accordion-button"
         type="button"
+        [ngClass]="{ collapsed: !isCollapsed }"
         data-bs-target="#collapseOne"
         [attr.aria-expanded]="isCollapsed"
         (click)="toggleCollapse()"
         aria-controls="collapseOne"
       >
         Fecha de servicio: {{ data().date }}
-        <span class="ms-2">
-          <i *ngIf="isCollapsed" class="bi bi-chevron-up"></i>
-          <i *ngIf="!isCollapsed" class="bi bi-chevron-down"></i>
-        </span>
       </button>
     </h2>
     <div
@@ -26,31 +27,31 @@
         <ul class="row" style="list-style-type: none">
           <li class="col-12 col-md-6">
             <span>Fecha del Servicio</span>
-            <p>{{ data().date }}</p>
+            <p>{{ data().date || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Hora de inicio</span>
-            <p>{{ data().hour_start }}</p>
+            <p>{{ data().hour_start || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Hora fin</span>
-            <p>{{ data().hour_end }}</p>
+            <p>{{ data().hour_end || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Dirección de Origen</span>
-            <p>{{ data().adress_start }}</p>
+            <p>{{ data().adress_start || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Departamento</span>
-            <p>{{ data().adress_end }}</p>
+            <p>{{ data().adress_end || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Ciudad</span>
-            <p>{{ data().city }}</p>
+            <p>{{ data().city || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <span>Municipio</span>
-            <p>{{ data().municipality }}</p>
+            <p>{{ data().municipality || "--" }}</p>
           </li>
         </ul>
       </div>

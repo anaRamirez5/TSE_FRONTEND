@@ -12,6 +12,7 @@ import * as bootstrap from 'bootstrap';
 export class AdminComponent implements OnInit {
   historyTable: HistoryTable[] = [];
   filter!: Filter;
+
   constructor(private adminService: AdminService) {}
   ngOnInit(): void {
     const tooltipTriggerList = [].slice.call(
@@ -20,7 +21,6 @@ export class AdminComponent implements OnInit {
     tooltipTriggerList.forEach((tooltipTriggerEl) => {
       new bootstrap.Tooltip(tooltipTriggerEl);
     });
-
     const payload: Filter = {
       date: '',
       license_plate_number: '',
@@ -32,12 +32,12 @@ export class AdminComponent implements OnInit {
     this.getHistoryTable(payload);
   }
   getHistoryTable(payload: Filter) {
-    console.log(payload);
     this.adminService.getHistoryTable(payload).subscribe({
       next: (response: BodyResponse<HistoryTable[]>) => {
         if (response.code === 200) {
           this.historyTable = response.data;
         } else {
+          this.historyTable = [];
         }
       },
     });
