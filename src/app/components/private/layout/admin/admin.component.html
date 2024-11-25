@@ -23,21 +23,21 @@
     <tbody>
       @for (row of historyTable; track row ) {
       <tr>
-        <td>{{ row.date }}</td>
-        <td>{{ row.hour_start }}</td>
-        <td>{{ row.hour_end }}</td>
-        <td>{{ row.license_plate_number }}</td>
+        <td>{{ row.date || "--" }}</td>
+        <td>{{ row.hour_start || "--" }}</td>
+        <td>{{ row.hour_end || "--" }}</td>
+        <td>{{ row.license_plate_number || "--" }}</td>
         <td
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           title="{{ row.adress_start }}"
         >
-          {{ row.adress_start }}
+          {{ row.adress_start || "--" }}
         </td>
-        <td>{{ row.adress_end }}</td>
-        <td>{{ row.departament }}</td>
-        <td>{{ row.city }}</td>
-        <td>{{ row.municipality }}</td>
+        <td>{{ row.adress_end || "--" }}</td>
+        <td>{{ row.departament || "--" }}</td>
+        <td>{{ row.city || "--" }}</td>
+        <td>{{ row.municipality || "--" }}</td>
       </tr>
       }
     </tbody>
