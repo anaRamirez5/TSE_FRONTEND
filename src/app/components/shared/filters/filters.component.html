@@ -11,12 +11,15 @@
     }"
   >
     <input
-      type="date"
+      type="text"
+      placeholder="Datepicker"
       formControlName="date"
-      class="form-control"
       style="border: 1px #0a0057 solid"
-      id="floatingInput"
-      placeholder="name@example.com"
+      class="form-control"
+      placement="bottom"
+      [bsConfig]="bsConfig"
+      bsDatepicker
+      #dp="bsDatepicker"
     />
     <label for="floatingInput">Fecha</label>
   </div>
@@ -40,7 +43,7 @@
   >
     <select
       class="form-select"
-      formControlName="departament"
+      formControlName="department"
       style="border: 1px #0a0057 solid"
       id="floatingSelectDepartament"
     ></select>
@@ -65,11 +68,10 @@
     <button
       [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
       class="btn btn-info rounded-3 mx-2 col-md-3 col-lg-2"
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      data-bs-custom-class="custom-tooltip"
+      tooltip="Buscar"
+      placement="top"
+      containerClass="custom-tooltip"
       (click)="submitFilter()"
-      data-bs-title="Buscar"
     >
       <img
         src="../../../../../assets/images/search.svg"
@@ -80,11 +82,10 @@
     <button
       [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
       class="btn btn-danger rounded-3 mx-2 col-md-3 col-lg-2"
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      data-bs-custom-class="custom-tooltip"
+      tooltip="Limpiar Filtro"
+      placement="top"
+      containerClass="custom-tooltip"
       (click)="cleanFilter()"
-      data-bs-title="Limpiar Filtro"
     >
       <img
         src="../../../../../assets/images/trash.svg"
@@ -95,10 +96,9 @@
     <button
       class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3"
       [ngClass]="{ 'd-none': role() === 'driver' }"
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      data-bs-title="Descargar Historial"
-      data-bs-custom-class="custom-tooltip"
+      tooltip="Descargar Historico"
+      placement="top"
+      containerClass="custom-tooltip"
       style="
         background-color: #0a0057 !important;
         border-color: #0a0057 !important;
