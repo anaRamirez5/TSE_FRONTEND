@@ -9,6 +9,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TSEInterceptor } from './services/interceptors/http-request-interceptor';
 import { SharedModule } from './components/shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     DriverModule,
     SharedModule,
     CommonModule,
+    TooltipModule.forRoot(),
   ],
   providers: [provideHttpClient(withInterceptors([TSEInterceptor]))],
   bootstrap: [AppComponent],

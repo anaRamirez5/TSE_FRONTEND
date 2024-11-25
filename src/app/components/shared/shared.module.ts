@@ -6,6 +6,14 @@ import { AccordionDriverComponent } from './accordion-driver/accordion-driver.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { FiltersComponent } from './filters/filters.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { esLocale } from 'ngx-bootstrap/locale';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
+// Configura el locale a español
+defineLocale('es', esLocale);
 @NgModule({
   declarations: [
     ModalInformativeComponent,
@@ -14,7 +22,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     FiltersComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    TooltipModule,
+  ],
   exports: [
     ModalInformativeComponent,
     PaginatorComponent,

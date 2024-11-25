@@ -45,9 +45,15 @@ export class HistoryPerDriverComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    console.log(this.filter);
+    const date = new Date(this.filter.date);
+    const day = String(date.getDate()).padStart(2, '0'); // Asegura que tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0
+    const year = date.getFullYear();
+
+    // Formatear la fecha
+    const formattedDate = `${day}-${month}-${year}`;
     const payload: Filter = {
-      date: this.filter.date,
+      date: formattedDate,
       license_plate_number: '',
       department: '',
       city: '',

@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
 import { AdminService } from '../../../../services/admin/admin.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
-import * as bootstrap from 'bootstrap';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -15,12 +14,6 @@ export class AdminComponent implements OnInit {
 
   constructor(private adminService: AdminService) {}
   ngOnInit(): void {
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    tooltipTriggerList.forEach((tooltipTriggerEl) => {
-      new bootstrap.Tooltip(tooltipTriggerEl);
-    });
     const payload: Filter = {
       date: '',
       license_plate_number: '',
@@ -31,6 +24,7 @@ export class AdminComponent implements OnInit {
     };
     this.getHistoryTable(payload);
   }
+
   getHistoryTable(payload: Filter) {
     this.adminService.getHistoryTable(payload).subscribe({
       next: (response: BodyResponse<HistoryTable[]>) => {
@@ -51,14 +45,22 @@ export class AdminComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
+    const date = new Date(this.filter.date);
+    const day = String(date.getDate()).padStart(2, '0'); // Asegura que tenga dos dígitos
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0
+    const year = date.getFullYear();
+
+    // Formatear la fecha
+    const formattedDate = `${day}-${month}-${year}`;
     const payload: Filter = {
-      date: this.filter.date,
+      date: formattedDate,
       license_plate_number: this.filter.license_plate_number,
       department: this.filter.department,
       city: this.filter.city,
       page: 0,
       page_size: 0,
     };
+    console.log(payload);
 
     this.getHistoryTable(payload);
   }

@@ -6,40 +6,31 @@
 .form-floating > label {
   color: var(--COLOR-LABEL) !important;
 }
-/* Cambiar el fondo del calendario */
-.datepicker {
-  background-color: #f9f9f9; /* Cambia el color de fondo */
-  border-radius: 8px; /* Ajusta el radio de las esquinas */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+bs-datepicker-container {
+  width: 300px;
+  left: 68px !important;
+  background-color: var(--COLOR-WHITE) !important ;
+  border-radius: 10px;
+  border: 1px solid var(--COLOR-BLUE-DARK);
 }
 
-/* Cambiar el color de los días */
-.datepicker .day {
-  color: #333; /* Cambia el color del texto de los días */
+.bs-datepicker-body > table > thead {
+  background-color: var(--COLOR-WHITE);
+  box-shadow: none;
 }
-
-/* Estilizar los días seleccionados */
-.datepicker .day.active {
-  background-color: #007bff; /* Color de fondo para el día activo */
-  color: #fff; /* Color del texto para el día activo */
+.bs-datepicker-body > table > thead > tr > th {
+  color: var(--COLOR-BLUE);
 }
-
-/* Cambiar el color de los días del fin de semana */
-.datepicker .day.sat,
-.datepicker .day.sun {
-  color: #d9534f; /* Color personalizado para los fines de semana */
+.bs-datepicker-head {
+  background-color: var(--COLOR-WHITE);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
-
-/* Estilizar los botones de navegación (meses/años) */
-.datepicker .prev,
-.datepicker .next {
-  color: #007bff; /* Cambia el color de los íconos de navegación */
-}
-
-/* Cambiar el estilo del botón "Limpiar" */
-.datepicker .datepicker-clear {
-  background-color: #e9ecef; /* Fondo del botón */
-  border-radius: 4px; /* Bordes redondeados */
-  padding: 4px 8px; /* Espaciado interno */
-  color: #333; /* Color del texto */
+bs-datepicker-navigation-view > button {
+  background-color: var(--COLOR-WHITE);
+  color: var(--COLOR-BLUE-DARK);
+  border: none;
 }

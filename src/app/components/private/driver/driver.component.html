@@ -10,6 +10,7 @@
       style="background-color: transparent"
       src="./../../../../assets/images/logo.png"
       alt="logo_tse"
+      appTooltip="Este es un tooltip personalizado"
     />
     <img
       class="perfil"
@@ -42,7 +43,7 @@
   />
   <img src="../../../../assets/images/perfil-white.svg" alt="perfil" />
   <div>
-    <p class="text-perfil">Alejandro Martinez</p>
+    <p class="text-perfil">{{ user_name }}</p>
     <p class="text-perfil-sub">Conductor</p>
   </div>
   <div class="logout" (click)="logout()">

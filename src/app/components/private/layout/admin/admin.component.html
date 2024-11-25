@@ -4,6 +4,9 @@
     (filterForm)="extractFilterData($event)"
     (clean)="handleClean($event)"
   ></app-filters>
+  @if(historyTable.length===0){
+  <div>No hay datos</div>
+  }@else {
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
   >
@@ -21,25 +24,29 @@
       </tr>
     </thead>
     <tbody>
-      @for (row of historyTable; track row ) {
-      <tr>
+      <tr *ngFor="let row of historyTable">
         <td>{{ row.date || "--" }}</td>
         <td>{{ row.hour_start || "--" }}</td>
         <td>{{ row.hour_end || "--" }}</td>
         <td>{{ row.license_plate_number || "--" }}</td>
         <td
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          title="{{ row.adress_start }}"
+          [tooltip]="row.adress_start || '--'"
+          placement="top"
+          containerClass="custom-tooltip"
         >
           {{ row.adress_start || "--" }}
         </td>
-        <td>{{ row.adress_end || "--" }}</td>
+        <td
+          [tooltip]="row.adress_end || '--'"
+          placement="top"
+          containerClass="custom-tooltip"
+        >
+          {{ row.adress_end || "--" }}
+        </td>
         <td>{{ row.departament || "--" }}</td>
         <td>{{ row.city || "--" }}</td>
         <td>{{ row.municipality || "--" }}</td>
       </tr>
-      }
     </tbody>
   </table>
   <!-- <div class="bg-white rounded-bottom-3">
@@ -50,4 +57,6 @@
     ></app-paginator>
 
   </div> -->
+
+  }
 </div>

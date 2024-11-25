@@ -1,6 +1,12 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import * as bootstrap from 'bootstrap';
+import { esDoLocale } from 'ngx-bootstrap/chronos';
+import {
+  BsDatepickerConfig,
+  BsDatepickerDirective,
+  BsDaterangepickerDirective,
+  BsLocaleService,
+} from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-filters',
@@ -12,14 +18,12 @@ export class FiltersComponent implements OnInit {
   filterForm = output<FormGroup>();
   clean = output<boolean>();
   filterGroup!: FormGroup;
-  ngOnInit() {
-    const tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    tooltipTriggerList.forEach((tooltipTriggerEl) => {
-      new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  }
+  bsConfig = {
+    containerClass: 'theme-blue', // Tema predefinido
+    dateInputFormat: 'DD/MM/YYYY',
+    locale: 'es', // Formato deseado
+  };
+  ngOnInit() {}
   constructor(private fb: FormBuilder) {
     this.filterGroup = this.fb.group({
       date: [''],
@@ -29,6 +33,7 @@ export class FiltersComponent implements OnInit {
     });
   }
   submitFilter() {
+    console.log(this.filterGroup.value);
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {
