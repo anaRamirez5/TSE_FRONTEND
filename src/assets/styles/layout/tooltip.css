@@ -1,6 +1,5 @@
 @import "../constants/colors.css";
 
-/* Si deseas cambiar el estilo solo de tooltips específicos, puedes usar una clase personalizada */
 .custom-tooltip {
   background-color: var(--COLOR-BLUE-DARK);
   color: var(--bs-white);

@@ -1,0 +1,20 @@
+@import "../constants/colors.css";
+
+.spinner-border {
+  width: 200px !important;
+  height: 200px !important;
+  --bs-spinner-border-width: 0.5em !important;
+  color: var(--COLOR-BLUE-DARK) !important;
+}
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(151, 145, 145, 0.5); /* Fondo con opacidad */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Asegúrate de que esté encima de todo */
+}

@@ -5,10 +5,13 @@
 @import "./controls/input.css";
 @import "./controls/button.css";
 
+@import "./layout/accordion.css";
 @import "./layout/background.css";
 @import "./layout/header.css";
 @import "./layout/images.css";
 @import "./layout/modal.css";
 @import "./layout/navbar.css";
+@import "./layout/spinner.css";
 @import "./layout/table.css";
+@import "./layout/tag.css";
 @import "./layout/tooltip.css";

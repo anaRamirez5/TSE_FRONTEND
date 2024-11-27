@@ -30,3 +30,13 @@ button:hover {
   color: #ffff !important;
   text-decoration: underline;
 }
+.edit_assign {
+  background-color: var(--COLOR-BLUE-DARK);
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+.download_historic {
+  background-color: var(--COLOR-BLUE-DARK) !important;
+  border-color: var(--COLOR-BLUE-DARK) !important;
+}
