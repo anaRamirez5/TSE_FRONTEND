@@ -67,6 +67,7 @@
       tooltip="Buscar"
       placement="top"
       containerClass="custom-tooltip"
+      container="body"
       (click)="submitFilter()"
     >
       <img
@@ -81,6 +82,7 @@
       tooltip="Limpiar Filtro"
       placement="top"
       containerClass="custom-tooltip"
+      container="body"
       (click)="cleanFilter()"
     >
       <img
@@ -89,13 +91,14 @@
         alt=""
       />
     </button>
-    <button
-      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
+    <!-- <button
+      class="d-none btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
       [ngClass]="{
         'd-none': role() === 'driver' || role() === 'programmer_assign'
       }"
       tooltip="Descargar Historico"
       placement="top"
+      container="body"
       containerClass="custom-tooltip"
     >
       <img
@@ -103,6 +106,6 @@
         style="width: 25px; height: 25px"
         alt=""
       />
-    </button>
+    </button> -->
   </div>
 </form>

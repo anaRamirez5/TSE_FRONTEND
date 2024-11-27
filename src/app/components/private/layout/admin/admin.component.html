@@ -13,15 +13,15 @@
   </div>
   } @if(finalResponse){
   <div class="spinner-overlay">
-    <div class="mx-auto my-4">
-      <p class="subtitle_data text-center">
-        No se encontraron resultados para los criterios seleccionados.
-      </p>
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Cargando...</span>
     </div>
   </div>
   } @else{ @if(historyTable.length===0){
   <div class="mx-auto">
-    <p class="subtitle_data">No hay datos</p>
+    <p class="subtitle_data">
+      No se encontraron resultados para los criterios seleccionados.
+    </p>
   </div>
   }@else {
   <table
@@ -43,8 +43,12 @@
     <tbody>
       <tr *ngFor="let row of historyTable">
         <td style="width: 10%">{{ row.date || "--" }}</td>
-        <td style="width: 10%">{{ row.hour_start || "--" }}</td>
-        <td style="width: 10%">{{ row.hour_end || "--" }}</td>
+        <td style="width: 10%">
+          {{ sharedService.convertTo12HourFormat(row.hour_start) || "--" }}
+        </td>
+        <td style="width: 10%">
+          {{ row.hour_end || "--" }}
+        </td>
         <td style="width: 10%">{{ row.license_plate_number || "--" }}</td>
         <td
           [tooltip]="row.adress_start"

@@ -17,11 +17,4 @@ export class AdminService {
       payload
     );
   }
-  formatDate(date: string) {
-    const date_filter = new Date(date);
-    const day = String(date_filter.getDate()).padStart(2, '0');
-    const month = String(date_filter.getMonth() + 1).padStart(2, '0');
-    const year = date_filter.getFullYear();
-    return `${year}-${month}-${day}`;
-  }
 }
