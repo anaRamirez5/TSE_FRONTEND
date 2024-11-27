@@ -3,6 +3,8 @@ import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
 import { DriverService } from '../../../../services/driver/driver.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { FormGroup } from '@angular/forms';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { AdminService } from '../../../../services/admin/admin.service';
 
 @Component({
   selector: 'app-history-per-driver',
@@ -12,32 +14,75 @@ import { FormGroup } from '@angular/forms';
 export class HistoryPerDriverComponent implements OnInit {
   historyTable: HistoryTable[] = [];
   filter!: Filter;
-  ngOnInit(): void {
-    const payload: Filter = {
-      date: '',
-      license_plate_number: '',
-      department: '',
-      city: '',
-      page: 0,
-      page_size: 0,
-    };
-    this.getHistoryData(payload);
+  totalItems: number = 0;
+  handle = false;
+  finalResponse: boolean = true;
+  pageSize: number = 10;
+  pageIndex: number = 1;
+  yesterday: string = '';
+  constructor(
+    private driverService: DriverService,
+    private adminService: AdminService
+  ) {}
+
+  handlePageEvent(e: PageChangedEvent) {
+    this.pageSize = e.itemsPerPage;
+    this.pageIndex = e.page;
+    this.getHistoryData(this.pageIndex, this.pageSize);
   }
 
-  constructor(private driverService: DriverService) {}
-  getHistoryData(payload: Filter) {
-    this.driverService.getHistoryTable(payload).subscribe({
+  ngOnInit(): void {
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    // Formatear la fecha al formato deseado (opcional)
+    this.yesterday = yesterday.toISOString().split('T')[0];
+    this.getHistoryData(1, 10);
+  }
+  filterPayload!: Filter;
+  getHistoryData(page: number, page_size: number) {
+    if (this.filter && this.handle) {
+      this.filterPayload = {
+        date: this.filter.date || '',
+        license_plate_number: this.filter.license_plate_number || '',
+        department: this.filter.department || '',
+        city: this.filter.city || '',
+        page: page,
+        page_size: page_size,
+      };
+    } else {
+      this.filterPayload = {
+        date: '',
+        license_plate_number: '',
+        department: '',
+        city: '',
+        page: page,
+        page_size: page_size,
+      };
+    }
+    this.finalResponse = true;
+    this.driverService.getHistoryTable(this.filterPayload).subscribe({
       next: (response: BodyResponse<HistoryTable[]>) => {
         if (response.code === 200) {
           this.historyTable = response.data;
+          this.totalItems = response.data[0].total_records;
         } else {
           this.historyTable = [];
         }
+      },
+      error: () => {
+        this.historyTable = [];
+        this.finalResponse = false;
+      },
+      complete: () => {
+        this.finalResponse = false;
       },
     });
   }
   handleClean(event: boolean) {
     if (event) {
+      this.handle = false;
       this.ngOnInit();
     }
   }
@@ -45,22 +90,11 @@ export class HistoryPerDriverComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const date = new Date(this.filter.date);
-    const day = String(date.getDate()).padStart(2, '0'); // Asegura que tenga dos dígitos
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0
-    const year = date.getFullYear();
+    const formattedDate = this.adminService.formatDate(this.filter.date);
+    this.filter.date = this.filter.date ? formattedDate : '';
+    this.handle = true;
+    this.pageIndex = 1;
 
-    // Formatear la fecha
-    const formattedDate = `${day}-${month}-${year}`;
-    const payload: Filter = {
-      date: formattedDate,
-      license_plate_number: '',
-      department: '',
-      city: '',
-      page: 0,
-      page_size: 0,
-    };
-
-    this.getHistoryData(payload);
+    this.getHistoryData(this.pageIndex, this.pageSize);
   }
 }

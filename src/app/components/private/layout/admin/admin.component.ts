@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
 import { AdminService } from '../../../../services/admin/admin.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -11,33 +13,71 @@ import { BodyResponse } from '../../../../models/shared/body-response.interface'
 export class AdminComponent implements OnInit {
   historyTable: HistoryTable[] = [];
   filter!: Filter;
-
+  totalItems: number = 0;
+  handle = false;
+  finalResponse: boolean = true;
+  pageSize: number = 10;
+  pageIndex: number = 1;
+  yesterday: string = 's';
   constructor(private adminService: AdminService) {}
   ngOnInit(): void {
-    const payload: Filter = {
-      date: '',
-      license_plate_number: '',
-      department: '',
-      city: '',
-      page: 0,
-      page_size: 0,
-    };
-    this.getHistoryTable(payload);
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+
+    // Formatear la fecha al formato deseado (opcional)
+    this.yesterday = yesterday.toISOString().split('T')[0];
+    this.getHistoryTable(1, 10);
   }
 
-  getHistoryTable(payload: Filter) {
-    this.adminService.getHistoryTable(payload).subscribe({
+  handlePageEvent(e: PageChangedEvent) {
+    this.pageSize = e.itemsPerPage;
+    this.pageIndex = e.page;
+    this.getHistoryTable(this.pageIndex, this.pageSize);
+  }
+  filterPayload!: Filter;
+  getHistoryTable(page: number, page_size: number) {
+    if (this.filter && this.handle) {
+      this.filterPayload = {
+        date: this.filter.date || '',
+        license_plate_number: this.filter.license_plate_number || '',
+        department: this.filter.department || '',
+        city: this.filter.city || '',
+        page: page,
+        page_size: page_size,
+      };
+    } else {
+      this.filterPayload = {
+        date: '',
+        license_plate_number: '',
+        department: '',
+        city: '',
+        page: page,
+        page_size: page_size,
+      };
+    }
+    this.finalResponse = true;
+    this.adminService.getHistoryTable(this.filterPayload).subscribe({
       next: (response: BodyResponse<HistoryTable[]>) => {
         if (response.code === 200) {
           this.historyTable = response.data;
+          this.totalItems = response.data[0].total_records;
         } else {
           this.historyTable = [];
         }
+      },
+      error: () => {
+        this.historyTable = [];
+        this.finalResponse = false;
+      },
+      complete: () => {
+        this.finalResponse = false;
       },
     });
   }
   handleClean(event: boolean) {
     if (event) {
+      this.handle = false;
       this.ngOnInit();
     }
   }
@@ -45,23 +85,10 @@ export class AdminComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const date = new Date(this.filter.date);
-    const day = String(date.getDate()).padStart(2, '0'); // Asegura que tenga dos dígitos
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0
-    const year = date.getFullYear();
-
-    // Formatear la fecha
-    const formattedDate = `${day}-${month}-${year}`;
-    const payload: Filter = {
-      date: formattedDate,
-      license_plate_number: this.filter.license_plate_number,
-      department: this.filter.department,
-      city: this.filter.city,
-      page: 0,
-      page_size: 0,
-    };
-    console.log(payload);
-
-    this.getHistoryTable(payload);
+    const formattedDate = this.adminService.formatDate(this.filter.date);
+    this.filter.date = this.filter.date ? formattedDate : '';
+    this.handle = true;
+    this.pageIndex = 1;
+    this.getHistoryTable(this.pageIndex, this.pageSize);
   }
 }

@@ -1,4 +1,12 @@
-import { Component, computed, Input, input } from '@angular/core';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  Input,
+  input,
+  Output,
+} from '@angular/core';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-paginator',
@@ -10,6 +18,7 @@ export class PaginatorComponent {
   itemsPerPage = input.required<number>();
   totalItems = input.required<number>(); // Cambia esto según el número total de elementos
   maxPagesToShow: number = 5; // Número máximo de páginas a mostrar al mismo tiempo
+  @Output() pageChange = new EventEmitter<PageChangedEvent>();
 
   get totalPages(): number {
     return Math.ceil(this.totalItems() / this.itemsPerPage());
@@ -35,13 +44,8 @@ export class PaginatorComponent {
 
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
-      this.currentPage = page;
-      this.loadItems();
+      this.pageChange.emit({ page, itemsPerPage: this.itemsPerPage() });
+      console.log(this.currentPage);
     }
-  }
-
-  loadItems() {
-    // Lógica para cargar los elementos de la página actual
-    console.log(`Cargando elementos de la página ${this.currentPage}`);
   }
 }

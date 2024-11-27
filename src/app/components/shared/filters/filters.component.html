@@ -14,8 +14,7 @@
       type="text"
       placeholder="Datepicker"
       formControlName="date"
-      style="border: 1px #0a0057 solid"
-      class="form-control"
+      class="form-control input_filter"
       placement="bottom"
       [bsConfig]="bsConfig"
       bsDatepicker
@@ -30,8 +29,7 @@
     <input
       type="text"
       formControlName="license_plate_number"
-      style="border: 1px #0a0057 solid"
-      class="form-control"
+      class="form-control input_filter"
       id="floatingInput"
       placeholder="name@example.com"
     />
@@ -42,9 +40,8 @@
     [ngClass]="{ 'd-none': role() === 'driver' }"
   >
     <select
-      class="form-select"
+      class="form-select input_filter"
       formControlName="department"
-      style="border: 1px #0a0057 solid"
       id="floatingSelectDepartament"
     ></select>
     <label for="floatingSelectDepartament">Departamento</label>
@@ -54,8 +51,7 @@
     [ngClass]="{ 'd-none': role() === 'driver' }"
   >
     <select
-      class="form-select"
-      style="border: 1px #0a0057 solid"
+      class="form-select input_filter"
       id="floatingSelectCity"
       formControlName="city"
     ></select>
@@ -94,15 +90,13 @@
       />
     </button>
     <button
-      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3"
-      [ngClass]="{ 'd-none': role() === 'driver' }"
+      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
+      [ngClass]="{
+        'd-none': role() === 'driver' || role() === 'programmer_assign'
+      }"
       tooltip="Descargar Historico"
       placement="top"
       containerClass="custom-tooltip"
-      style="
-        background-color: #0a0057 !important;
-        border-color: #0a0057 !important;
-      "
     >
       <img
         src="../../../../../assets/images/download.svg"
