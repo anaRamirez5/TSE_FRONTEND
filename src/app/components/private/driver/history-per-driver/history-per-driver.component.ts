@@ -4,7 +4,7 @@ import { DriverService } from '../../../../services/driver/driver.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-import { AdminService } from '../../../../services/admin/admin.service';
+import { SharedService } from '../../../../services/shared/shared.service';
 
 @Component({
   selector: 'app-history-per-driver',
@@ -22,7 +22,7 @@ export class HistoryPerDriverComponent implements OnInit {
   yesterday: string = '';
   constructor(
     private driverService: DriverService,
-    private adminService: AdminService
+    private sharedService: SharedService
   ) {}
 
   handlePageEvent(e: PageChangedEvent) {
@@ -90,7 +90,7 @@ export class HistoryPerDriverComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const formattedDate = this.adminService.formatDate(this.filter.date);
+    const formattedDate = this.sharedService.formatDate(this.filter.date);
     this.filter.date = this.filter.date ? formattedDate : '';
     this.handle = true;
     this.pageIndex = 1;
