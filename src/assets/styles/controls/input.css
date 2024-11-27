@@ -34,3 +34,6 @@ bs-datepicker-navigation-view > button {
   color: var(--COLOR-BLUE-DARK);
   border: none;
 }
+.input_filter {
+  border: 1px var(--COLOR-BLUE-DARK) solid !important;
+}

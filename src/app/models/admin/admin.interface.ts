@@ -14,7 +14,8 @@ export interface HistoryTable {
   license_plate_number: string;
   adress_start: string;
   adress_end: string;
-  departament: string;
+  department: string;
   city: string;
   municipality: string;
+  total_records: number;
 }

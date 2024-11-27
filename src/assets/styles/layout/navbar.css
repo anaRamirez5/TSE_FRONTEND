@@ -3,10 +3,7 @@
 .nav-link.active {
   border-bottom-color: var(--COLOR-BLUE) !important;
 }
-
-.accordion-button,
-.accordion-header {
-  font-weight: 600 !important;
-  color: var(--COLOR-BLUE-DARK) !important;
-  background-color: var(--COLOR-BLUE) !important;
+.nav-color {
+  color: var(--COLOR-BLUE-DARK);
+  cursor: pointer;
 }
