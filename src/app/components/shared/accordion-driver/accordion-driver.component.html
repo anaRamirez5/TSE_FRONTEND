@@ -15,6 +15,7 @@
         aria-controls="collapseOne"
       >
         Fecha de servicio: {{ data().date }}
+        {{ " " + sharedService.convertTo12HourFormat(data().hour_start) }}
       </button>
     </h2>
     <div
@@ -31,11 +32,17 @@
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Hora de inicio</p>
-            <p>{{ data().hour_start || "--" }}</p>
+            <p>
+              {{
+                sharedService.convertTo12HourFormat(data().hour_start) || "--"
+              }}
+            </p>
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Hora fin</p>
-            <p>{{ data().hour_end || "--" }}</p>
+            <p>
+              {{ data().hour_end || "--" }}
+            </p>
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Dirección de Origen</p>

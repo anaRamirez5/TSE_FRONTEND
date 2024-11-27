@@ -4,6 +4,7 @@ import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
 import { AdminService } from '../../../../services/admin/admin.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import { SharedService } from '../../../../services/shared/shared.service';
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +20,10 @@ export class AdminComponent implements OnInit {
   pageSize: number = 10;
   pageIndex: number = 1;
   yesterday: string = 's';
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private adminService: AdminService,
+    public sharedService: SharedService
+  ) {}
   ngOnInit(): void {
     const today = new Date();
     const yesterday = new Date(today);
@@ -85,7 +89,7 @@ export class AdminComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const formattedDate = this.adminService.formatDate(this.filter.date);
+    const formattedDate = this.sharedService.formatDate(this.filter.date);
     this.filter.date = this.filter.date ? formattedDate : '';
     this.handle = true;
     this.pageIndex = 1;

@@ -20,7 +20,7 @@ export class FiltersComponent implements OnInit {
   filterGroup!: FormGroup;
   bsConfig = {
     containerClass: 'theme-blue', // Tema predefinido
-    dateInputFormat: 'DD/MM/YYYY',
+    dateInputFormat: 'YYYY-MM-DD',
     locale: 'es', // Formato deseado
   };
   ngOnInit() {}
