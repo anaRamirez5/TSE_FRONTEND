@@ -1,4 +1,4 @@
-<!-- <div class="d-flex flex-column container-fluid">
+<div class="d-flex flex-column container-fluid">
   <app-filters role="programmer_assign"></app-filters>
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
@@ -33,7 +33,10 @@
           <div class="tag reject mx-3">Rechazado</div>
         </td>
         <td>
-          <button class="rounded-circle edit_assign">
+          <button
+            class="rounded-circle edit_assign"
+            (click)="editDriverAssign()"
+          >
             <img
               src="../../../../../../assets/images/edit.svg"
               alt=""
@@ -51,4 +54,6 @@
       [currentPage]="1"
     ></app-paginator>
   </div>
-</div> -->
+</div>
+
+<app-edit-asign></app-edit-asign>

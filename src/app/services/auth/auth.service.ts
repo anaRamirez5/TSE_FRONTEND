@@ -4,6 +4,7 @@ import { ILogin } from '../../models/auth/auth.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
 import { environment } from '../../../environments/environment';
 import { EndPointRoute } from '../../../enums/routes.enum';
+import { SessionStorageItems } from '../../../enums/session-storage';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +16,9 @@ export class AuthService {
       `${environment.API_PUBLIC}${EndPointRoute.LOGIN}`,
       payload
     );
+  }
+  isAuthenticated() {
+    const sessionToken = sessionStorage.getItem(SessionStorageItems.SESSION);
+    return !!sessionToken;
   }
 }
