@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-assignments',
   templateUrl: './assignments.component.html',
-  styleUrl: './assignments.component.css'
+  styleUrl: './assignments.component.css',
 })
 export class AssignmentsComponent {
+  handleModal: boolean = false;
 
+  editDriverAssign() {
+    this.handleModal = true;
+    console.log('entro');
+  }
 }
