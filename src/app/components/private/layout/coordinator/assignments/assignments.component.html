@@ -5,37 +5,41 @@
   >
     <thead class="rounded-3">
       <tr>
+        <th scope="col">ID del servicio</th>
         <th scope="col">Fecha del servicio</th>
         <th scope="col">Hora destino</th>
         <th scope="col">Placa</th>
         <th scope="col">Dirreción de origen</th>
         <th scope="col">Dirreción de destino</th>
-        <th scope="col">Departamento</th>
-        <th scope="col">Municipio</th>
+        <!-- <th scope="col">Departamento</th> -->
+        <th scope="col">Ciudad</th>
         <th scope="col">Estado</th>
-        <th scope="col-1"></th>
+        <th scope="col-1">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>row.date || "--"</td>
-        <td>row.hour_start || "--"</td>
-        <td>row.hour_end || "--"</td>
-        <td>row.license_plate_number || "--"</td>
-        <td placement="top" containerClass="custom-tooltip">
-          row.adress_start || "--"
-        </td>
-        <td placement="top" containerClass="custom-tooltip">
-          row.adress_end || "--"
-        </td>
-        <td>row.departament || "--"</td>
+        <td>124123</td>
+        <td>24/10/2024</td>
+        <td>7:30pm</td>
+        <td>9:30pm</td>
+        <td>AWR124</td>
+        <td placement="top" containerClass="custom-tooltip">Calle 212 23 32</td>
+        <td placement="top" containerClass="custom-tooltip">Calle 52 28 32</td>
+        <!-- <td>row.departament || "--"</td> -->
         <td>
           <div class="tag reject mx-3">Rechazado</div>
         </td>
-        <td>
+        <td
+          class="d-flex flex-row justify-content-evenly align-items-center w-auto"
+          style="height: inherit"
+        >
           <button
             class="rounded-circle edit_assign"
             (click)="editDriverAssign()"
+            tooltip="Editar asignación"
+            placement="top"
+            containerClass="custom-tooltip"
           >
             <img
               src="../../../../../../assets/images/edit.svg"
@@ -43,11 +47,31 @@
               style="width: 13px; vertical-align: unset"
             />
           </button>
+          <button
+            class="rounded-circle btn btn-danger"
+            (click)="cancelSerive()"
+            style="width: 24px; height: 24px"
+            tooltip="Cancelar Servicio"
+            placement="top"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/cancel.svg"
+              alt=""
+              style="width: 15px; vertical-align: super"
+            />
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="bg-white rounded-bottom-3">
+  <div
+    class="bg-white rounded-bottom-3 d-flex flex-row justify-content-end align-items-center"
+  >
+    <div class="d-flex flex-column mx-2 align-items-end">
+      <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
+      <p class="text-sub" style="margin-bottom: 0">342</p>
+    </div>
     <app-paginator
       [itemsPerPage]="10"
       [totalItems]="90"
@@ -56,4 +80,12 @@
   </div>
 </div>
 
-<app-edit-asign></app-edit-asign>
+<app-edit-assigned
+  *ngIf="handleModalEdit"
+  (closeModal)="closeModalEdit($event)"
+></app-edit-assigned>
+<app-cancel-services
+  *ngIf="handleModalCancel"
+  (closeModal)="closeModalCancel($event)"
+></app-cancel-services>
+<app-toast *ngIf="handleToast" action="cancel"></app-toast>

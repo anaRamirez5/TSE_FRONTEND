@@ -14,8 +14,7 @@
         (click)="toggleCollapse()"
         aria-controls="collapseOne"
       >
-        Fecha de servicio: {{ data().date }}
-        {{ " " + sharedService.convertTo12HourFormat(data().hour_start) }}
+        Id del servicio: {{ data().id_servicio }}
       </button>
     </h2>
     <div
@@ -26,6 +25,10 @@
     >
       <div class="accordion-body">
         <ul class="row" style="list-style-type: none">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Id del servicio</p>
+            <p>{{ data().id_servicio || "--" }}</p>
+          </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Fecha del Servicio</p>
             <p>{{ data().date || "--" }}</p>
@@ -52,18 +55,18 @@
             <p class="subtitle_data">Dirreción de destino</p>
             <p>{{ data().adress_end || "--" }}</p>
           </li>
-          <li class="col-12 col-md-6">
+          <!-- <li class="col-12 col-md-6">
             <p class="subtitle_data">Departamento</p>
             <p>{{ data().department || "--" }}</p>
-          </li>
+          </li> -->
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Ciudad</p>
             <p>{{ data().city || "--" }}</p>
           </li>
-          <li class="col-12 col-md-6">
+          <!-- <li class="col-12 col-md-6">
             <p class="subtitle_data">Municipio</p>
             <p>{{ data().municipality || "--" }}</p>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

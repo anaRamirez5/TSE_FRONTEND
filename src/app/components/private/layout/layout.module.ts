@@ -10,7 +10,9 @@ import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { AssignmentsComponent } from './coordinator/assignments/assignments.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { EditAsignComponent } from './coordinator/assignments/edit-asign/edit-asign.component';
+import { EditAsignComponent } from './coordinator/edit-assigned/edit-assigned.component';
+import { CancelServicesComponent } from './coordinator/cancel-services/cancel-services.component';
+
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -18,6 +20,7 @@ import { EditAsignComponent } from './coordinator/assignments/edit-asign/edit-as
     CoordinatorComponent,
     AssignmentsComponent,
     EditAsignComponent,
+    CancelServicesComponent,
   ],
   imports: [
     CommonModule,

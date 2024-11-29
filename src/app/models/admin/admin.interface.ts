@@ -8,6 +8,7 @@ export interface Filter {
 }
 
 export interface HistoryTable {
+  id_servicio: number;
   date: string;
   hour_start: string;
   hour_end: string;

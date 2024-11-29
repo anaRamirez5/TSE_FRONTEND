@@ -25,8 +25,11 @@
   </div>
   }@else{ @for (row of historyTable; track row ) {
   <app-accordion-driver [data]="row"></app-accordion-driver>
-
   }
+  <div class="d-flex flex-column mx-2 align-items-end">
+    <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
+    <p class="text-sub" style="margin-bottom: 0">{{ totalItems }}</p>
+  </div>
   <app-paginator
     [itemsPerPage]="pageSize"
     [totalItems]="totalItems"

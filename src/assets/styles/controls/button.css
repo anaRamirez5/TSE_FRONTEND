@@ -10,6 +10,9 @@
   --bs-btn-disabled-color: var(--COLOR-BLUE-DARK) !important;
   --bs-btn-disabled-bg: var(--COLOR-BLUE-DISABLED) !important;
   --bs-btn-disabled-border-color: var(--COLOR-BLUE-DISABLED) !important;
+  &:hover {
+    color: #ffff;
+  }
 }
 .btn {
   --bs-btn-padding-x: 0px;

@@ -9,7 +9,7 @@ export class ModalInformativeComponent implements OnInit {
   url: string = '';
   response = input.required<number>();
   content = input.required<string>();
-  visible = input.required<boolean>();
+  //visible = input.required<boolean>();
 
   constructor() {}
   ngOnInit() {

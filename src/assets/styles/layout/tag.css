@@ -21,3 +21,11 @@
     color: var(--COLOR-BLUE-DARK);
   }
 }
+.error {
+  background-color: #ca191999;
+  color: var(--COLOR-WHITE);
+  margin: 12px;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+}
