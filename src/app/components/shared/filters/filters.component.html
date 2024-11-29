@@ -33,9 +33,22 @@
       id="floatingInput"
       placeholder="name@example.com"
     />
-    <label for="floatingInput">Numero de placa</label>
+    <label for="floatingInput">Id del servicio</label>
   </div>
   <div
+    class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
+    [ngClass]="{ 'd-none': role() === 'driver' }"
+  >
+    <input
+      type="text"
+      formControlName="license_plate_number"
+      class="form-control input_filter"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Número de placa</label>
+  </div>
+  <!-- <div
     class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
     [ngClass]="{ 'd-none': role() === 'driver' }"
   >
@@ -45,7 +58,7 @@
       id="floatingSelectDepartament"
     ></select>
     <label for="floatingSelectDepartament">Departamento</label>
-  </div>
+  </div> -->
   <div
     class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
     [ngClass]="{ 'd-none': role() === 'driver' }"
@@ -67,7 +80,6 @@
       tooltip="Buscar"
       placement="top"
       containerClass="custom-tooltip"
-      container="body"
       (click)="submitFilter()"
     >
       <img
@@ -82,7 +94,6 @@
       tooltip="Limpiar Filtro"
       placement="top"
       containerClass="custom-tooltip"
-      container="body"
       (click)="cleanFilter()"
     >
       <img
@@ -92,13 +103,12 @@
       />
     </button>
     <!-- <button
-      class="d-none btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
+      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
       [ngClass]="{
         'd-none': role() === 'driver' || role() === 'programmer_assign'
       }"
       tooltip="Descargar Historico"
       placement="top"
-      container="body"
       containerClass="custom-tooltip"
     >
       <img

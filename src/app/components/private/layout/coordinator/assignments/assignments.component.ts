@@ -6,10 +6,29 @@ import { Component } from '@angular/core';
   styleUrl: './assignments.component.css',
 })
 export class AssignmentsComponent {
-  handleModal: boolean = false;
+  handleModalEdit: boolean = false;
+  handleModalCancel: boolean = false;
+  handleToast: boolean = false;
 
   editDriverAssign() {
-    this.handleModal = true;
+    this.handleModalEdit = true;
     console.log('entro');
+  }
+  closeModalEdit(event: boolean) {
+    this.handleModalEdit = !event;
+    this.handleToast = event;
+    setTimeout(() => {
+      this.handleToast = false;
+    }, 3000);
+  }
+  cancelSerive() {
+    this.handleModalCancel = true;
+  }
+  closeModalCancel(event: boolean) {
+    this.handleModalCancel = !event;
+    this.handleToast = event;
+    setTimeout(() => {
+      this.handleToast = false;
+    }, 3000);
   }
 }

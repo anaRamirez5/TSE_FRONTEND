@@ -11,6 +11,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ToastComponent } from './toast/toast.component';
 
 // Configura el locale a español
 defineLocale('es', esLocale);
@@ -21,6 +22,7 @@ defineLocale('es', esLocale);
     AccordionDriverComponent,
     NavbarComponent,
     FiltersComponent,
+    ToastComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ defineLocale('es', esLocale);
     AccordionDriverComponent,
     NavbarComponent,
     FiltersComponent,
+    ToastComponent,
   ],
 })
 export class SharedModule {}
