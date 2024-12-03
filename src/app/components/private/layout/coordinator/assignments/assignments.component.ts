@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HistoryTable } from '../../../../../models/admin/admin.interface';
 
 @Component({
   selector: 'app-assignments',
@@ -7,8 +8,26 @@ import { Component } from '@angular/core';
 })
 export class AssignmentsComponent {
   handleModalEdit: boolean = false;
-  handleModalCancel: boolean = false;
+  handleModalDetail: boolean = false;
   handleToast: boolean = false;
+  handleToastEdit: boolean = false;
+  action: string = '';
+  data: HistoryTable = {
+    id_servicio: 123123,
+    name_applicant: 'asdasd',
+    total_records: 12,
+    adress_end: 'asdasd',
+    adress_start: 'sadsa',
+    hour_end: 'asdas',
+    hour_start: 'asdasd',
+    date: 'asdasd',
+    license_plate_number: 'asdasd',
+    requirements: 'asdasd',
+    city: 'asdasd',
+    name_driver: 'asdasd',
+    type_car: 'asdasd',
+    type_document: 'asdasd',
+  };
 
   editDriverAssign() {
     this.handleModalEdit = true;
@@ -16,19 +35,25 @@ export class AssignmentsComponent {
   }
   closeModalEdit(event: boolean) {
     this.handleModalEdit = !event;
+  }
+  editToastHandle(event: boolean) {
     this.handleToast = event;
+    this.action = 'reassignment';
     setTimeout(() => {
       this.handleToast = false;
     }, 3000);
   }
-  cancelSerive() {
-    this.handleModalCancel = true;
+  openDialogDetail() {
+    this.handleModalDetail = true;
+  }
+  cancelToastHandle(event: boolean) {
+    this.handleToast = event;
+    this.action = 'cancel';
+    setTimeout(() => {
+      this.handleToast = false;
+    }, 3000);
   }
   closeModalCancel(event: boolean) {
-    this.handleModalCancel = !event;
-    this.handleToast = event;
-    setTimeout(() => {
-      this.handleToast = false;
-    }, 3000);
+    this.handleModalDetail = !event;
   }
 }

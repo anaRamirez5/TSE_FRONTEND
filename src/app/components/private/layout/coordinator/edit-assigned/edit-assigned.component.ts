@@ -7,6 +7,7 @@ import { Component, input, Input, OnInit, output } from '@angular/core';
 })
 export class EditAsignComponent {
   closeModal = output<boolean>();
+  handleToastEdit = output<boolean>();
   error: boolean = false;
 
   constructor() {}
@@ -15,6 +16,7 @@ export class EditAsignComponent {
     this.closeModal.emit(true);
   }
   editDriver() {
+    this.handleToastEdit.emit(true);
     this.closeModal.emit(true);
   }
 }

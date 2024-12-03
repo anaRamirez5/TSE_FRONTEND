@@ -38,7 +38,7 @@
         <th scope="col">Datos de destino</th>
         <!-- <th scope="col">Departamento</th> -->
         <th scope="col">Ciudad</th>
-        <!-- <th scope="col">Municipio</th> -->
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -70,7 +70,21 @@
         </td>
         <!-- <td>{{ row.department || "--" }}</td> -->
         <td>{{ row.city || "--" }}</td>
-        <!-- <td>{{ row.municipality || "--" }}</td> -->
+        <td>
+          <button
+            class="rounded-circle edit_assign"
+            tooltip="Detalles del servicio"
+            placement="top"
+            (click)="openDialogDetail(row)"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/eye.svg"
+              alt=""
+              style="width: 13px; vertical-align: unset"
+            />
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -91,3 +105,9 @@
 
   } }
 </div>
+<app-detail-services
+  (closeModal)="closeDialogDetail($event)"
+  [data]="service"
+  *ngIf="handleDetail"
+  [handleCancel]="false"
+></app-detail-services>

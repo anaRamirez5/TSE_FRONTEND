@@ -1,7 +1,7 @@
 export interface Filter {
   date: string;
   license_plate_number: string;
-  department: string;
+  id_servicio: string;
   city: string;
   page: number;
   page_size: number;
@@ -15,8 +15,11 @@ export interface HistoryTable {
   license_plate_number: string;
   adress_start: string;
   adress_end: string;
-  department: string;
   city: string;
-  municipality: string;
+  name_driver: string;
+  type_car: string;
+  name_applicant: string;
+  type_document: string;
+  requirements: string;
   total_records: number;
 }

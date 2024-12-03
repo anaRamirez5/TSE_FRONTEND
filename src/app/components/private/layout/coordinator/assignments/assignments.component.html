@@ -36,6 +36,19 @@
         >
           <button
             class="rounded-circle edit_assign"
+            tooltip="Detalles del servicio"
+            placement="top"
+            (click)="openDialogDetail()"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/eye.svg"
+              alt=""
+              style="width: 13px; vertical-align: unset"
+            />
+          </button>
+          <button
+            class="rounded-circle edit_assign"
             (click)="editDriverAssign()"
             tooltip="Editar asignación"
             placement="top"
@@ -45,20 +58,6 @@
               src="../../../../../../assets/images/edit.svg"
               alt=""
               style="width: 13px; vertical-align: unset"
-            />
-          </button>
-          <button
-            class="rounded-circle btn btn-danger"
-            (click)="cancelSerive()"
-            style="width: 24px; height: 24px"
-            tooltip="Cancelar Servicio"
-            placement="top"
-            containerClass="custom-tooltip"
-          >
-            <img
-              src="../../../../../../assets/images/cancel.svg"
-              alt=""
-              style="width: 15px; vertical-align: super"
             />
           </button>
         </td>
@@ -82,10 +81,14 @@
 
 <app-edit-assigned
   *ngIf="handleModalEdit"
+  (handleToastEdit)="editToastHandle($event)"
   (closeModal)="closeModalEdit($event)"
 ></app-edit-assigned>
-<app-cancel-services
-  *ngIf="handleModalCancel"
+<app-detail-services
+  [data]="data"
+  [handleCancel]="true"
+  (cancelToast)="cancelToastHandle($event)"
+  *ngIf="handleModalDetail"
   (closeModal)="closeModalCancel($event)"
-></app-cancel-services>
-<app-toast *ngIf="handleToast" action="cancel"></app-toast>
+></app-detail-services>
+<app-toast *ngIf="handleToast || handleToastEdit" [action]="action"></app-toast>

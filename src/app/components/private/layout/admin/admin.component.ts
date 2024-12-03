@@ -13,9 +13,12 @@ import { SharedService } from '../../../../services/shared/shared.service';
 })
 export class AdminComponent implements OnInit {
   historyTable: HistoryTable[] = [];
+  service!: HistoryTable;
   filter!: Filter;
+  filterPayload!: Filter;
   totalItems: number = 0;
   handle = false;
+  handleDetail: boolean = false;
   finalResponse: boolean = true;
   pageSize: number = 10;
   pageIndex: number = 1;
@@ -28,8 +31,6 @@ export class AdminComponent implements OnInit {
     const today = new Date();
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
-
-    // Formatear la fecha al formato deseado (opcional)
     this.yesterday = yesterday.toISOString().split('T')[0];
     this.getHistoryTable(1, 10);
   }
@@ -39,13 +40,12 @@ export class AdminComponent implements OnInit {
     this.pageIndex = e.page;
     this.getHistoryTable(this.pageIndex, this.pageSize);
   }
-  filterPayload!: Filter;
   getHistoryTable(page: number, page_size: number) {
     if (this.filter && this.handle) {
       this.filterPayload = {
         date: this.filter.date || '',
         license_plate_number: this.filter.license_plate_number || '',
-        department: this.filter.department || '',
+        id_servicio: this.filter.id_servicio || '',
         city: this.filter.city || '',
         page: page,
         page_size: page_size,
@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit {
       this.filterPayload = {
         date: '',
         license_plate_number: '',
-        department: '',
+        id_servicio: '',
         city: '',
         page: page,
         page_size: page_size,
@@ -94,5 +94,12 @@ export class AdminComponent implements OnInit {
     this.handle = true;
     this.pageIndex = 1;
     this.getHistoryTable(this.pageIndex, this.pageSize);
+  }
+  openDialogDetail(data: HistoryTable) {
+    this.handleDetail = true;
+    this.service = data;
+  }
+  closeDialogDetail(event: boolean) {
+    this.handleDetail = !event;
   }
 }
