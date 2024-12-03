@@ -11,7 +11,6 @@ import { AssignmentsComponent } from './coordinator/assignments/assignments.comp
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { EditAsignComponent } from './coordinator/edit-assigned/edit-assigned.component';
-import { CancelServicesComponent } from './coordinator/cancel-services/cancel-services.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { CancelServicesComponent } from './coordinator/cancel-services/cancel-se
     CoordinatorComponent,
     AssignmentsComponent,
     EditAsignComponent,
-    CancelServicesComponent,
   ],
   imports: [
     CommonModule,

@@ -42,8 +42,13 @@ mat-dialog-container {
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
   .modal-content {
     width: 350px; /* Ancho fijo solo para pantallas grandes */
+  }
+}
+@media (min-width: 700px) {
+  .modal-content {
+    width: 550px; /* Ancho fijo solo para pantallas grandes */
   }
 }

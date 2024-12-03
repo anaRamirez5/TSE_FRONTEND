@@ -1,0 +1,104 @@
+<div class="modal">
+  <div
+    class="modal-content d-flex justify-content-between align-items-center"
+    style="height: 450px; width: 100%; max-width: 550px"
+  >
+    <div style="height: 15px; width: 100%; background-color: #78cffd"></div>
+    <img
+      src="./../../../../assets/images/exit-popup.svg"
+      alt="exit"
+      style="
+        width: 26px;
+        top: 21px;
+        position: absolute;
+        left: 504px;
+        cursor: pointer;
+      "
+      (click)="closeModalFn()"
+    />
+    <img
+      class="col-3 col-sm-3 logo bg-transparent"
+      src="./../../../../assets/images/logo.png"
+      alt="logo_tse"
+    />
+    <h3 class="subtitle_data mb-0 text-center mx-4">
+      Información Detallada del Servicio N° {{ data().id_servicio }}
+    </h3>
+    <div
+      class="d-flex flex-row justify-content-evenly align-items-center w-100"
+    >
+      <div class="d-flex flex-column justify-content-start align-items-start">
+        <h2
+          style="
+            font-size: 16px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+        >
+          Datos del conductor
+        </h2>
+        <h4 class="subtitle_data ms-2 mb-0">Nombre del conductor</h4>
+        <p class="text-modal ms-2 mb-0">{{ data().name_driver }}</p>
+        <h4 class="subtitle_data ms-2 mb-0">Tipo de movil</h4>
+        <p class="text-modal ms-2 mb-0">{{ data().type_car }}</p>
+      </div>
+      <div class="d-flex flex-column justify-content-start align-items-start">
+        <h2
+          style="
+            font-size: 16px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+        >
+          Datos del solicitante
+        </h2>
+        <h4 class="subtitle_data ms-2 mb-0">Nombre del solicitante</h4>
+        <p class="text-modal ms-2 mb-0">{{ data().name_applicant }}</p>
+        <h4 class="subtitle_data ms-2 mb-0">Tipo de documento</h4>
+        <p class="text-modal ms-2 mb-0">{{ data().type_document }}</p>
+      </div>
+    </div>
+
+    <div
+      class="d-flex flex-column justify-content-start align-items-start mx-2 w-75"
+      [ngClass]="{ 'mb-4': !handleCancel() || !error }"
+    >
+      <h2
+        style="
+          font-size: 16px;
+          font-weight: 600;
+          color: #78cffd;
+          text-align: start;
+        "
+      >
+        Requerimientos
+      </h2>
+      <p class="text-modal ms-4 mb-0">
+        {{ data().requirements || "No aplica" }}
+      </p>
+    </div>
+    <div
+      class="d-flex flex-row justify-content-center align-items-center"
+      [ngClass]="{ 'd-none': !handleCancel(), 'mb-0': error, 'mb-4': !error }"
+    >
+      <button
+        tooltip="Advertencia: Esta acción cancelará el servicio de manera permanente "
+        class="btn btn-danger rounded-3 mx-4 col-12 col-md-12 col-sm-12 px-2"
+        placement="top"
+        (click)="cancelService()"
+        containerClass="custom-tooltip"
+      >
+        Cancelar Servicio
+      </button>
+    </div>
+    <div
+      class="error d-none"
+      [ngClass]="{ 'd-none': !error, 'd-block': error }"
+    >
+      Ocurrió un error al realizar la asignación. Por favor, inténtelo
+      nuevamente.
+    </div>
+  </div>
+</div>

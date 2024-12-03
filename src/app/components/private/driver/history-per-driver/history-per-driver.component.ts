@@ -46,7 +46,7 @@ export class HistoryPerDriverComponent implements OnInit {
       this.filterPayload = {
         date: this.filter.date || '',
         license_plate_number: this.filter.license_plate_number || '',
-        department: this.filter.department || '',
+        id_servicio: this.filter.id_servicio || '',
         city: this.filter.city || '',
         page: page,
         page_size: page_size,
@@ -55,7 +55,7 @@ export class HistoryPerDriverComponent implements OnInit {
       this.filterPayload = {
         date: '',
         license_plate_number: '',
-        department: '',
+        id_servicio: '',
         city: '',
         page: page,
         page_size: page_size,

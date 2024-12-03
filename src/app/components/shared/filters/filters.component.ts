@@ -28,7 +28,7 @@ export class FiltersComponent implements OnInit {
     this.filterGroup = this.fb.group({
       date: [''],
       license_plate_number: [''],
-      department: [''],
+      id_servicio: [''],
       city: [''],
     });
   }
