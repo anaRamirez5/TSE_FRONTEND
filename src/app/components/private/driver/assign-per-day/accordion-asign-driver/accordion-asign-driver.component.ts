@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { HistoryTable } from '../../../../../models/admin/admin.interface';
 import { SharedService } from '../../../../../services/shared/shared.service';
 
@@ -10,8 +10,12 @@ import { SharedService } from '../../../../../services/shared/shared.service';
 export class AccordionAsignDriverComponent {
   isCollapsed = false; // Estado inicial
   data = input.required<HistoryTable>();
+  @Input() handleButtons: boolean = false;
   constructor(public sharedService: SharedService) {}
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
+  }
+  acceptService() {
+    this.handleButtons = true;
   }
 }

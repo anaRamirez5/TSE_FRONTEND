@@ -6,7 +6,7 @@ import { HistoryPerDriverComponent } from './history-per-driver/history-per-driv
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { AccordionDriverComponent } from './history-per-driver/accordion-driver/accordion-driver.component';
-import { CommonModule } from '@angular/common';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionAsignDriverComponent } from './assign-per-day/accordion-asign-driver/accordion-asign-driver.component';
 @NgModule({
   declarations: [
@@ -16,6 +16,6 @@ import { AccordionAsignDriverComponent } from './assign-per-day/accordion-asign-
     AccordionDriverComponent,
     AccordionAsignDriverComponent,
   ],
-  imports: [BrowserModule, RouterModule, SharedModule],
+  imports: [BrowserModule, RouterModule, SharedModule, TooltipModule],
 })
 export class DriverModule {}
