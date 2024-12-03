@@ -14,6 +14,14 @@
     color: #ffff;
   }
 }
+.btn-success {
+  --bs-btn-bg: var(--COLOR-GREEN-TAG) !important;
+  --bs-btn-border-color: var(--COLOR-GREEN-TAG) !important;
+  --bs-btn-hover-bg: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-hover-border-color: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-disabled-bg: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-disabled-border-color: var(--COLOR-GREEN-HOVER) !important;
+}
 .btn {
   --bs-btn-padding-x: 0px;
 }

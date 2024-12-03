@@ -20,6 +20,7 @@ export class AssignPerDayComponent {
   pageSize: number = 10;
   pageIndex: number = 1;
   yesterday: string = '';
+  handleRoute: boolean = false;
   constructor(
     private driverService: DriverService,
     private sharedService: SharedService
@@ -96,5 +97,8 @@ export class AssignPerDayComponent {
     this.pageIndex = 1;
 
     this.getHistoryData(this.pageIndex, this.pageSize);
+  }
+  acceptRoute() {
+    this.handleRoute = true;
   }
 }

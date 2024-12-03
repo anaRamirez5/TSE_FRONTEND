@@ -21,64 +21,190 @@
       src="./../../../../assets/images/logo.png"
       alt="logo_tse"
     />
-    <h3 class="subtitle_data mb-0 text-center mx-4">
+    <h3 class="subtitle_data mb-0 text-center mx-4 mt-3">
       Información Detallada del Servicio N° {{ data().id_servicio }}
     </h3>
     <div
       class="d-flex flex-row justify-content-evenly align-items-center w-100"
     >
       <div class="d-flex flex-column justify-content-start align-items-start">
-        <h2
+        <h2 class="subtitle_data">Datos del conductor</h2>
+        <h4
           style="
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 600;
             color: #78cffd;
             text-align: start;
           "
+          class="ms-2 mb-0"
         >
-          Datos del conductor
-        </h2>
-        <h4 class="subtitle_data ms-2 mb-0">Nombre del conductor</h4>
+          Nombre del conductor
+        </h4>
         <p class="text-modal ms-2 mb-0">{{ data().name_driver }}</p>
-        <h4 class="subtitle_data ms-2 mb-0">Tipo de movil</h4>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Tipo de movil
+        </h4>
         <p class="text-modal ms-2 mb-0">{{ data().type_car }}</p>
       </div>
       <div class="d-flex flex-column justify-content-start align-items-start">
-        <h2
+        <h2 class="subtitle_data">Datos del solicitante</h2>
+        <h4
           style="
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 600;
             color: #78cffd;
             text-align: start;
           "
+          class="ms-2 mb-0"
         >
-          Datos del solicitante
-        </h2>
-        <h4 class="subtitle_data ms-2 mb-0">Nombre del solicitante</h4>
+          Nombre del solicitante
+        </h4>
         <p class="text-modal ms-2 mb-0">{{ data().name_applicant }}</p>
-        <h4 class="subtitle_data ms-2 mb-0">Tipo de documento</h4>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Tipo de documento
+        </h4>
         <p class="text-modal ms-2 mb-0">{{ data().type_document }}</p>
       </div>
     </div>
-
-    <div
-      class="d-flex flex-column justify-content-start align-items-start mx-2 w-75"
+    <div class="d-flex flex-row justify-content-evenly align-items-start w-100">
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        [ngClass]="{ 'mb-4': !handleCancel() || !error }"
+      >
+        <h2 class="subtitle_data">Datos de producto</h2>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Nombre del producto
+        </h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+          {{ data().product_name }}
+        </p>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Codigo del producto
+        </h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+          {{ data().product_code.replaceAll(",", " ") }}
+        </p>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Ciudad
+        </h4>
+        <p class="text-modal ms-2 mb-0 text-wrap">{{ data().city }}</p>
+      </div>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        style="width: 215.4px"
+      >
+        <h2 class="subtitle_data">Requerimiento</h2>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Decripcion
+        </h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data().requirements || "No aplica" }}
+        </p>
+      </div>
+    </div>
+    <!-- <div
+      class="d-flex flex-row justify-content-evenly align-items-start w-100"
       [ngClass]="{ 'mb-4': !handleCancel() || !error }"
     >
-      <h2
-        style="
-          font-size: 16px;
-          font-weight: 600;
-          color: #78cffd;
-          text-align: start;
-        "
-      >
-        Requerimientos
-      </h2>
-      <p class="text-modal ms-4 mb-0">
-        {{ data().requirements || "No aplica" }}
-      </p>
-    </div>
+      <div class="d-flex flex-column justify-content-start align-items-start">
+        <h2 class="subtitle_data">Datos del Producto</h2>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Nombre del Producto
+        </h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+          {{ data().product_name }}
+        </p>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Codigo
+        </h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+          {{ data().product_code.replaceAll(",", " ") }}
+        </p>
+        <h4
+          style="
+            font-size: 12px;
+            font-weight: 600;
+            color: #78cffd;
+            text-align: start;
+          "
+          class="ms-2 mb-0"
+        >
+          Ciudad
+        </h4>
+        <p class="text-modal ms-2 mb-0">{{ data().city }}</p>
+      </div>
+
+      <div class="d-flex flex-column justify-content-start align-items-start">
+        <h2 class="subtitle_data">Requerimientos</h2>
+        <p class="text-modal ms-2 mb-0">
+          {{ data().requirements || "No aplica" }}
+        </p>
+      </div>
+    </div> -->
     <div
       class="d-flex flex-row justify-content-center align-items-center"
       [ngClass]="{ 'd-none': !handleCancel(), 'mb-0': error, 'mb-4': !error }"

@@ -1,40 +1,27 @@
-<!-- <div class="d-flex flex-column container-fluid">
-  <app-filters
-    role="driver"
-    (filterForm)="extractFilterData($event)"
-    (clean)="handleClean($event)"
-  ></app-filters>
-  @if(!handle){
-  <div class="mx-auto my-2">
-    <p class="subtitle_data text-center">
-      De manera predeterminada se cargan los servicios realizados del dia
-      {{ yesterday }}
-    </p>
-  </div>
-  } @if(finalResponse){
+<div class="d-flex flex-column container-fluid">
+  <button
+    (click)="acceptRoute()"
+    style="position: fixed; bottom: 2%; right: 5%; z-index: 1"
+    class="rounded-5 btn btn-success px-2"
+    [ngClass]="{ 'd-none': handleRoute }"
+  >
+    <img
+      style="width: 30px"
+      src="../../../../../assets/images/check-driver.svg"
+      alt=""
+    />
+    Aceptar ruta completa
+  </button>
+  @if(finalResponse){
   <div class="spinner-overlay">
     <div class="spinner-border text-info" role="status">
       <span class="visually-hidden">Cargando...</span>
     </div>
   </div>
-  } @else { @if(historyTable.length===0){
-  <div class="mx-auto my-4">
-    <p class="subtitle_data text-center">
-      No se encontraron resultados para los criterios seleccionados.
-    </p>
-  </div>
-  }@else{ @for (row of historyTable; track row ) {
-  <app-accordion-driver [data]="row"></app-accordion-driver>
+  } @for (row of historyTable; track row ) {
+  <app-accordion-asign-driver
+    [handleButtons]="handleRoute"
+    [data]="row"
+  ></app-accordion-asign-driver>
   }
-  <div class="d-flex flex-column mx-2 align-items-end">
-    <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
-    <p class="text-sub" style="margin-bottom: 0">{{ totalItems }}</p>
-  </div>
-  <app-paginator
-    [itemsPerPage]="pageSize"
-    [totalItems]="totalItems"
-    [currentPage]="pageIndex"
-    (pageChange)="handlePageEvent($event)"
-  ></app-paginator>
-  } }
-</div> -->
+</div>

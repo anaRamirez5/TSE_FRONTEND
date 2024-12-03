@@ -13,6 +13,9 @@ export interface HistoryTable {
   hour_start: string;
   hour_end: string;
   license_plate_number: string;
+  product_code: string;
+  product_name: string;
+  product_city: string;
   adress_start: string;
   adress_end: string;
   city: string;

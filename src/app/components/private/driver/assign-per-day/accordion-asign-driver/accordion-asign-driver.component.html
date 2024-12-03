@@ -14,7 +14,7 @@
         (click)="toggleCollapse()"
         aria-controls="collapseOne"
       >
-        Id del servicio: {{ data().id_servicio }}
+        Asignación N°: {{ data().id_servicio }}
       </button>
     </h2>
     <div
@@ -24,14 +24,13 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body">
-        <ul class="row" style="list-style-type: none">
+        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
+          >Datos del servicio</span
+        >
+        <ul class="row list-unstyled ms-2">
           <li class="col-12 col-md-6">
-            <p class="subtitle_data">Id del servicio</p>
-            <p>{{ data().id_servicio || "--" }}</p>
-          </li>
-          <li class="col-12 col-md-6">
-            <p class="subtitle_data">Fecha del Servicio</p>
-            <p>{{ data().date || "--" }}</p>
+            <p class="subtitle_data">Dirección de Origen</p>
+            <p>{{ data().adress_start || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Hora de inicio</p>
@@ -42,32 +41,97 @@
             </p>
           </li>
           <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirreción de destino</p>
+            <p>{{ data().adress_end || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
             <p class="subtitle_data">Hora fin</p>
             <p>
               {{ data().hour_end || "--" }}
             </p>
           </li>
           <li class="col-12 col-md-6">
-            <p class="subtitle_data">Dirección de Origen</p>
-            <p>{{ data().adress_start || "--" }}</p>
-          </li>
-          <li class="col-12 col-md-6">
-            <p class="subtitle_data">Dirreción de destino</p>
-            <p>{{ data().adress_end || "--" }}</p>
-          </li>
-          <!-- <li class="col-12 col-md-6">
-            <p class="subtitle_data">Departamento</p>
-            <p>{{ data().department || "--" }}</p>
-          </li> -->
-          <li class="col-12 col-md-6">
             <p class="subtitle_data">Ciudad</p>
             <p>{{ data().city || "--" }}</p>
           </li>
-          <!-- <li class="col-12 col-md-6">
-            <p class="subtitle_data">Municipio</p>
-            <p>{{ data().municipality || "--" }}</p>
-          </li> -->
         </ul>
+
+        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
+          >Datos del protegido</span
+        >
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Nombre del solicitante</p>
+            <p>{{ data().name_applicant || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Tipo de documento</p>
+            <p>{{ data().type_document || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Requerimientos</p>
+            <p>{{ data().requirements || "No aplica" }}</p>
+          </li>
+        </ul>
+        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
+          >Datos del producto</span
+        >
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Nombre del producto</p>
+            <p>{{ data().product_name || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Codigo de producto</p>
+            <p>{{ data().product_code.replaceAll(",", " ") || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().city || "No aplica" }}</p>
+          </li>
+        </ul>
+        @if(!handleButtons){
+        <div class="d-flex flew-row justify-content-center align-items-center">
+          <button
+            class="btn btn-success rounded-5 mx-2"
+            (click)="acceptService()"
+            style="font-size: 12px; padding: 5px 12px"
+          >
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/check-driver.svg"
+              alt=""
+            />
+            Aceptar
+          </button>
+          <button
+            class="btn btn-danger rounded-5 mx-2"
+            style="font-size: 12px; padding: 5px 12px"
+          >
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/cancel.svg"
+              alt=""
+            />
+            Rechazar
+          </button>
+        </div>
+        }@else{
+        <div class="d-flex flew-row justify-content-center align-items-center">
+          <button
+            class="btn btn-info rounded-5 mx-2"
+            style="font-size: 12px; padding: 5px 12px"
+          >
+            Iniciar Viaje
+          </button>
+          <button
+            class="btn download_historic rounded-5 mx-2"
+            style="font-size: 12px; padding: 5px 12px; color: white"
+          >
+            Finalizar Viaje
+          </button>
+        </div>
+        }
       </div>
     </div>
   </div>

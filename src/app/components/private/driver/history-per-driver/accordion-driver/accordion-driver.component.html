@@ -72,6 +72,14 @@
             <p class="subtitle_data">Requerimientos</p>
             <p>{{ data().requirements || "No aplica" }}</p>
           </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Nombre del producto</p>
+            <p>{{ data().product_name || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Codigo de producto</p>
+            <p>{{ data().product_code.replaceAll(",", " ") || "--" }}</p>
+          </li>
         </ul>
       </div>
     </div>
