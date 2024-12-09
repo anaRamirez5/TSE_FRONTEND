@@ -8,12 +8,10 @@
         <th scope="col">ID del servicio</th>
         <th scope="col">Fecha del servicio</th>
         <th scope="col">Hora destino</th>
-
         <th scope="col">Placa</th>
         <th scope="col">Producto</th>
         <th scope="col">Dirreción de origen</th>
         <th scope="col">Dirreción de destino</th>
-        <!-- <th scope="col">Departamento</th> -->
         <th scope="col">Ciudad</th>
         <th scope="col">Estado</th>
         <th scope="col-1">Acciones</th>
@@ -28,14 +26,13 @@
         <td>sadasdasdasd</td>
         <td placement="top" containerClass="custom-tooltip">Calle 212 23 32</td>
         <td placement="top" containerClass="custom-tooltip">Calle 52 28 32</td>
-        <!-- <td>row.departament || "--"</td> -->
-        <td>
-          <div class="tag reject mx-3">Rechazado</div>
-        </td>
         <td>Bogota</td>
+        <td>
+          <div class="tag reject m-auto">Rechazado</div>
+        </td>
+
         <td
           class="d-flex flex-row justify-content-evenly align-items-center w-auto"
-          style="height: inherit"
         >
           <button
             class="rounded-circle edit_assign"
@@ -46,7 +43,7 @@
           >
             <img
               src="../../../../../../assets/images/eye.svg"
-              alt=""
+              alt="visualizar"
               style="width: 16px"
             />
           </button>
@@ -59,7 +56,7 @@
           >
             <img
               src="../../../../../../assets/images/edit.svg"
-              alt=""
+              alt="editar"
               style="width: 13px"
             />
           </button>
@@ -71,8 +68,8 @@
     class="bg-white rounded-bottom-3 d-flex flex-row justify-content-end align-items-center"
   >
     <div class="d-flex flex-column mx-2 align-items-end">
-      <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
-      <p class="text-sub" style="margin-bottom: 0">342</p>
+      <p class="subtitle_data mb-0">Total de servicios:</p>
+      <p class="text-sub">342</p>
     </div>
     <app-paginator
       [itemsPerPage]="10"
@@ -90,8 +87,7 @@
 <app-detail-services
   [data]="data"
   [handleCancel]="true"
-  (cancelToast)="cancelToastHandle($event)"
   *ngIf="handleModalDetail"
   (closeModal)="closeModalCancel($event)"
 ></app-detail-services>
-<app-toast *ngIf="handleToast || handleToastEdit" [action]="action"></app-toast>
+<app-toast *ngIf="handleToast"></app-toast>

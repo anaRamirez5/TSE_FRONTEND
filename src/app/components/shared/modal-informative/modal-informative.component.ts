@@ -14,7 +14,6 @@ export class ModalInformativeComponent implements OnInit {
   constructor() {}
   ngOnInit() {
     if (this.response() === 200) {
-      console.log('es correcto');
       this.url = '../../../../assets/images/check.svg';
     } else {
       this.url = '../../../../assets/images/error.svg';

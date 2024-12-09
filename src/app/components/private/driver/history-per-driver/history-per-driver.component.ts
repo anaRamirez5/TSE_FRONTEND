@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
+import { HistoryTable } from '../../../../models/admin/admin.interface';
 import { DriverService } from '../../../../services/driver/driver.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { SharedService } from '../../../../services/shared/shared.service';
+import { Filter } from '../../../../models/shared/shared.interface';
 
 @Component({
   selector: 'app-history-per-driver',

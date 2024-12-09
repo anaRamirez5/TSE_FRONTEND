@@ -5,6 +5,4 @@ import { Component, input } from '@angular/core';
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.css',
 })
-export class ToastComponent {
-  action = input.required<string>();
-}
+export class ToastComponent {}

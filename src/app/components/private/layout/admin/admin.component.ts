@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
+import { HistoryTable } from '../../../../models/admin/admin.interface';
 import { AdminService } from '../../../../services/admin/admin.service';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { SharedService } from '../../../../services/shared/shared.service';
+import { Filter } from '../../../../models/shared/shared.interface';
 
 @Component({
   selector: 'app-admin',

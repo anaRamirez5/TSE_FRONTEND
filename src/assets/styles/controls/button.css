@@ -11,7 +11,7 @@
   --bs-btn-disabled-bg: var(--COLOR-BLUE-DISABLED) !important;
   --bs-btn-disabled-border-color: var(--COLOR-BLUE-DISABLED) !important;
   &:hover {
-    color: #ffff;
+    color: var(--COLOR-WHITE);
   }
 }
 .btn-success {
@@ -38,7 +38,7 @@ button:hover {
 }
 
 .redirect {
-  color: #ffff !important;
+  color: var(--COLOR-WHITE) !important;
   text-decoration: underline;
 }
 .edit_assign {
@@ -50,4 +50,21 @@ button:hover {
 .download_historic {
   background-color: var(--COLOR-BLUE-DARK) !important;
   border-color: var(--COLOR-BLUE-DARK) !important;
+}
+.button_assign_driver {
+  position: fixed;
+  bottom: 2%;
+  right: 5%;
+  z-index: 1;
+}
+.button_service {
+  font-size: 12px;
+  padding: 5px 12px;
+}
+.exit_modal {
+  width: 26px;
+  top: 21px;
+  position: absolute;
+  left: 504px;
+  cursor: pointer;
 }

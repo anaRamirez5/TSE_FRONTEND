@@ -45,7 +45,6 @@ export class PaginatorComponent {
   changePage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.pageChange.emit({ page, itemsPerPage: this.itemsPerPage() });
-      console.log(this.currentPage);
     }
   }
 }

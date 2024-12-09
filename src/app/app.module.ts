@@ -8,20 +8,20 @@ import { DriverModule } from './components/private/driver/driver.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TSEInterceptor } from './services/interceptors/http-request-interceptor';
 import { SharedModule } from './components/shared/shared.module';
-import { CommonModule } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
     LoginModule,
     LayoutModule,
     DriverModule,
     SharedModule,
-    CommonModule,
     TooltipModule.forRoot(),
+    AppRoutingModule,
   ],
   providers: [provideHttpClient(withInterceptors([TSEInterceptor]))],
   bootstrap: [AppComponent],

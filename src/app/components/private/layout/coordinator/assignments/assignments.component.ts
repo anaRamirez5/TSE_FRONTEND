@@ -10,7 +10,6 @@ export class AssignmentsComponent {
   handleModalEdit: boolean = false;
   handleModalDetail: boolean = false;
   handleToast: boolean = false;
-  handleToastEdit: boolean = false;
   action: string = '';
   data: HistoryTable = {
     id_servicio: 123123,
@@ -34,7 +33,6 @@ export class AssignmentsComponent {
 
   editDriverAssign() {
     this.handleModalEdit = true;
-    console.log('entro');
   }
   closeModalEdit(event: boolean) {
     this.handleModalEdit = !event;
@@ -49,13 +47,7 @@ export class AssignmentsComponent {
   openDialogDetail() {
     this.handleModalDetail = true;
   }
-  cancelToastHandle(event: boolean) {
-    this.handleToast = event;
-    this.action = 'cancel';
-    setTimeout(() => {
-      this.handleToast = false;
-    }, 3000);
-  }
+
   closeModalCancel(event: boolean) {
     this.handleModalDetail = !event;
   }
