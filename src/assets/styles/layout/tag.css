@@ -1,0 +1,23 @@
+@import "../constants/colors.css";
+
+.tag {
+  color: var(--COLOR-WHITE);
+  border-radius: 4px;
+  margin: auto 3px;
+  &.confirm {
+    background-color: var(--COLOR-GREEN-TAG);
+  }
+  &.reject {
+    background-color: var(--COLOR-RED-TAG);
+  }
+}
+.indicator {
+  color: var(--COLOR-WHITE);
+  &.blue-dark {
+    background-color: var(--COLOR-BLUE-DARK);
+  }
+  &.blue {
+    background-color: var(--COLOR-BLUE);
+    color: var(--COLOR-BLUE-DARK);
+  }
+}

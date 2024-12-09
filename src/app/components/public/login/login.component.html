@@ -2,8 +2,7 @@
   class="bg-image container-fluid h-100 d-flex flex-column justify-content-around align-items-center pt-4"
 >
   <img
-    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo"
-    style="background-color: transparent"
+    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo bg-transparent"
     src="./../../../../assets/images/logo.png"
     alt="logo_tse"
   />
@@ -34,9 +33,8 @@
   </form>
   <button
     type="button"
-    class="btn btn-info col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2"
+    class="btn btn-info col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 rounded-pill"
     [disabled]="loginForm.invalid"
-    style="border-radius: 20px"
     (click)="login(loginForm.value)"
   >
     Ingresar

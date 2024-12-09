@@ -1,19 +1,22 @@
 <nav aria-label="Page navigation example" class="p-2">
   <ul class="pagination justify-content-end">
     <li class="page-item disabled" [class.disabled]="currentPage === 1">
-      <a class="page-link" [class.disabled]="currentPage === 1">Previous</a>
+      <a
+        class="page-link"
+        (click)="changePage(currentPage - 1)"
+        [class.disabled]="currentPage === 1"
+        >Atras</a
+      >
     </li>
     <li
       class="page-item"
       *ngFor="let page of pages"
       [class.active]="page === currentPage"
     >
-      <a class="page-link" (click)="changePage(page)" href="#">{{ page }}</a>
+      <a class="page-link" (click)="changePage(page)">{{ page }}</a>
     </li>
     <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <a class="page-link" (click)="changePage(currentPage + 1)" href="#"
-        >Next</a
-      >
+      <a class="page-link" (click)="changePage(currentPage + 1)">Siguiente</a>
     </li>
   </ul>
 </nav>

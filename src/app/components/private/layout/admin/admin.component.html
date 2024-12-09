@@ -4,20 +4,37 @@
     (filterForm)="extractFilterData($event)"
     (clean)="handleClean($event)"
   ></app-filters>
-  @if(historyTable.length===0){
-  <div>No hay datos</div>
+  @if(!handle){
+  <div class="mx-auto my-2">
+    <p class="subtitle_data text-center">
+      De manera predeterminada se cargan los servicios realizados del dia
+      {{ yesterday }}
+    </p>
+  </div>
+  } @if(finalResponse){
+  <div class="spinner-overlay">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  } @else{ @if(historyTable.length===0){
+  <div class="mx-auto">
+    <p class="subtitle_data">
+      No se encontraron resultados para los criterios seleccionados.
+    </p>
+  </div>
   }@else {
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
   >
     <thead class="rounded-3">
       <tr>
-        <th scope="col">Fecha del servicio</th>
-        <th scope="col">Hora inicio</th>
-        <th scope="col">Hora fin</th>
-        <th scope="col">Placa</th>
-        <th scope="col">Dirreción de origen</th>
-        <th scope="col">Dirreción de destino</th>
+        <th scope="col" style="width: 10%">Fecha del servicio</th>
+        <th scope="col" style="width: 10%">Hora inicio</th>
+        <th scope="col" style="width: 10%">Hora fin</th>
+        <th scope="col" style="width: 10%">Placa</th>
+        <th scope="col">Datos de origen</th>
+        <th scope="col">Datos de destino</th>
         <th scope="col">Departamento</th>
         <th scope="col">Ciudad</th>
         <th scope="col">Municipio</th>
@@ -25,38 +42,44 @@
     </thead>
     <tbody>
       <tr *ngFor="let row of historyTable">
-        <td>{{ row.date || "--" }}</td>
-        <td>{{ row.hour_start || "--" }}</td>
-        <td>{{ row.hour_end || "--" }}</td>
-        <td>{{ row.license_plate_number || "--" }}</td>
+        <td style="width: 10%">{{ row.date || "--" }}</td>
+        <td style="width: 10%">
+          {{ sharedService.convertTo12HourFormat(row.hour_start) || "--" }}
+        </td>
+        <td style="width: 10%">
+          {{ row.hour_end || "--" }}
+        </td>
+        <td style="width: 10%">{{ row.license_plate_number || "--" }}</td>
         <td
-          [tooltip]="row.adress_start || '--'"
+          [tooltip]="row.adress_start"
           placement="top"
+          container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.adress_start || "--" }}
+          {{ row.adress_start }}
         </td>
         <td
-          [tooltip]="row.adress_end || '--'"
+          [tooltip]="row.adress_end"
           placement="top"
+          container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.adress_end || "--" }}
+          {{ row.adress_end }}
         </td>
-        <td>{{ row.departament || "--" }}</td>
+        <td>{{ row.department || "--" }}</td>
         <td>{{ row.city || "--" }}</td>
         <td>{{ row.municipality || "--" }}</td>
       </tr>
     </tbody>
   </table>
-  <!-- <div class="bg-white rounded-bottom-3">
+  <div class="bg-white rounded-bottom-3">
     <app-paginator
-      [itemsPerPage]="10"
-      [totalItems]="90"
-      [currentPage]="1"
+      [itemsPerPage]="pageSize"
+      [totalItems]="totalItems"
+      [currentPage]="pageIndex"
+      (pageChange)="handlePageEvent($event)"
     ></app-paginator>
+  </div>
 
-  </div> -->
-
-  }
+  } }
 </div>

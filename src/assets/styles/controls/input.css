@@ -21,6 +21,23 @@ bs-datepicker-container {
 .bs-datepicker-body > table > thead > tr > th {
   color: var(--COLOR-BLUE);
 }
+.bs-datepicker-body > table > tbody > tr {
+  border: none;
+}
+.bs-datepicker-body > table > tbody > tr > td {
+  cursor: pointer;
+}
+.bs-datepicker-body > table > tbody > tr > td > span {
+  &:hover {
+    background-color: var(--COLOR-BLUE);
+    border-radius: 100%;
+    padding: 5px;
+  }
+}
+.bs-datepicker-body tbody .week {
+  color: var(--COLOR-BLUE-DARK);
+  font-weight: 700;
+}
 .bs-datepicker-head {
   background-color: var(--COLOR-WHITE);
   border-top-left-radius: 10px;
@@ -33,4 +50,7 @@ bs-datepicker-navigation-view > button {
   background-color: var(--COLOR-WHITE);
   color: var(--COLOR-BLUE-DARK);
   border: none;
+}
+.input_filter {
+  border: 1px var(--COLOR-BLUE-DARK) solid !important;
 }
