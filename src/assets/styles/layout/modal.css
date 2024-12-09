@@ -22,3 +22,33 @@ mat-dialog-container {
   width: 50px;
   transform: translate(24px, 23px);
 }
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--COLOR-BACKGROUND-DARK); /* Fondo oscuro */
+}
+
+.modal-content {
+  width: 90%; /* Ajusta el ancho en pantallas pequeñas */
+  max-width: 350px; /* Límite máximo */
+  background: var(--COLOR-WHITE);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (min-width: 400px) {
+  .modal-content {
+    width: 350px; /* Ancho fijo solo para pantallas grandes */
+  }
+}
+@media (min-width: 700px) {
+  .modal-content {
+    width: 550px; /* Ancho fijo solo para pantallas grandes */
+  }
+}

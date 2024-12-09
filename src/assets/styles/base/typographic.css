@@ -38,4 +38,20 @@
 p {
   font-size: 15px;
   font-weight: normal;
+  margin-bottom: 0 !important;
+}
+.text-modal {
+  font-size: 12px;
+  color: var(--COLOR-BLUE-DARK);
+  text-align: start;
+}
+.subtitle_assign {
+  color: var(--COLOR-BLUE);
+  font-weight: 500;
+  font-size: 16px;
+}
+.subtitle_details {
+  color: var(--COLOR-BLUE);
+  font-weight: 500;
+  font-size: 12px;
 }

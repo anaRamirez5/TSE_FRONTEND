@@ -1,0 +1,120 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" style="border-radius: 10px">
+      <button
+        class="accordion-button"
+        type="button"
+        [ngClass]="{ collapsed: !isCollapsed }"
+        data-bs-target="#collapseOne"
+        [attr.aria-expanded]="isCollapsed"
+        (click)="toggleCollapse()"
+        aria-controls="collapseOne"
+      >
+        Asignación N°: {{ data().id_servicio }}
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse"
+      [ngClass]="{ show: isCollapsed }"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <span class="subtitle_assign">Datos del servicio</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirección de Origen</p>
+            <p>{{ data().adress_start || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora de inicio</p>
+            <p>
+              {{
+                sharedService.convertTo12HourFormat(data().hour_start) || "--"
+              }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirreción de destino</p>
+            <p>{{ data().adress_end || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora fin</p>
+            <p>
+              {{ data().hour_end || "--" }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().city || "--" }}</p>
+          </li>
+        </ul>
+
+        <span class="subtitle_assign">Datos del protegido</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Nombre</p>
+            <p>{{ data().name_applicant || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Tipo de documento</p>
+            <p>{{ data().type_document || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Requerimientos</p>
+            <p>{{ data().requirements || "No aplica" }}</p>
+          </li>
+        </ul>
+        <span class="subtitle_assign">Datos del producto</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Nombre</p>
+            <p>{{ data().product_name || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Codigo</p>
+            <p>{{ data().product_code.replaceAll(",", " ") || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().city || "No aplica" }}</p>
+          </li>
+        </ul>
+        @if(!handleButtons){
+        <div class="d-flex flew-row justify-content-around align-items-center">
+          <button
+            class="btn btn-success rounded-5 mx-2 button_service"
+            (click)="acceptService()"
+          >
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/check-driver.svg"
+              alt="success"
+            />
+            Aceptar
+          </button>
+          <button class="btn btn-danger button_service rounded-5 mx-2">
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/cancel.svg"
+              alt="reject"
+            />
+            Rechazar
+          </button>
+        </div>
+        }@else{
+        <div class="d-flex flew-row justify-content-around align-items-center">
+          <button class="btn btn-info button_service rounded-5 mx-2">
+            Iniciar Viaje
+          </button>
+          <button
+            class="btn button_service download_historic rounded-5 mx-2 text-light"
+          >
+            Finalizar Viaje
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

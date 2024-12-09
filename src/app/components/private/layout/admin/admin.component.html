@@ -29,27 +29,30 @@
   >
     <thead class="rounded-3">
       <tr>
+        <th scope="col">ID Servicio</th>
         <th scope="col" style="width: 10%">Fecha del servicio</th>
-        <th scope="col" style="width: 10%">Hora inicio</th>
-        <th scope="col" style="width: 10%">Hora fin</th>
-        <th scope="col" style="width: 10%">Placa</th>
+        <th scope="col">Hora inicio</th>
+        <th scope="col">Hora fin</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Placa</th>
         <th scope="col">Datos de origen</th>
         <th scope="col">Datos de destino</th>
-        <th scope="col">Departamento</th>
-        <th scope="col">Ciudad</th>
-        <th scope="col">Municipio</th>
+        <th scope="col" style="width: 10%">Ciudad</th>
+        <th scope="col" style="width: 5%">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let row of historyTable">
+        <td style="width: 10%">{{ row.id_servicio || "--" }}</td>
         <td style="width: 10%">{{ row.date || "--" }}</td>
-        <td style="width: 10%">
+        <td>
           {{ sharedService.convertTo12HourFormat(row.hour_start) || "--" }}
         </td>
-        <td style="width: 10%">
+        <td>
           {{ row.hour_end || "--" }}
         </td>
-        <td style="width: 10%">{{ row.license_plate_number || "--" }}</td>
+        <td>{{ row.product_code || "--" }}</td>
+        <td>{{ row.license_plate_number || "--" }}</td>
         <td
           [tooltip]="row.adress_start"
           placement="top"
@@ -66,13 +69,32 @@
         >
           {{ row.adress_end }}
         </td>
-        <td>{{ row.department || "--" }}</td>
-        <td>{{ row.city || "--" }}</td>
-        <td>{{ row.municipality || "--" }}</td>
+        <td style="width: 10%">{{ row.city || "--" }}</td>
+        <td style="width: 5%">
+          <button
+            class="rounded-circle edit_assign"
+            tooltip="Detalles del servicio"
+            placement="top"
+            (click)="openDialogDetail(row)"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/eye.svg"
+              alt="visualizar"
+              style="width: 13px"
+            />
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
-  <div class="bg-white rounded-bottom-3">
+  <div
+    class="bg-white rounded-bottom-3 d-flex flex-row justify-content-end align-items-center"
+  >
+    <div class="d-flex flex-column mx-2 align-items-end">
+      <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
+      <p class="text-sub" style="margin-bottom: 0">{{ totalItems }}</p>
+    </div>
     <app-paginator
       [itemsPerPage]="pageSize"
       [totalItems]="totalItems"
@@ -83,3 +105,9 @@
 
   } }
 </div>
+<app-detail-services
+  (closeModal)="closeDialogDetail($event)"
+  [data]="service"
+  *ngIf="handleDetail"
+  [handleCancel]="false"
+></app-detail-services>

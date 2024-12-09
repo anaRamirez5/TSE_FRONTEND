@@ -18,11 +18,11 @@
     background-color: var(--COLOR-BLUE);
   }
   &[data-enable="true"] {
-    background-color: #f44150f8;
+    background-color: var(--COLOR-RED);
   }
 }
 .bg-transparent {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .all {
   --bs-gutter-x: 0 !important;

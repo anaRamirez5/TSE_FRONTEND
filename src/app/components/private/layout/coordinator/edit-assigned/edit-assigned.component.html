@@ -1,0 +1,49 @@
+<div class="modal">
+  <div
+    class="modal-content d-flex flex-column justify-content-between align-items-center"
+    style="height: 350px"
+  >
+    <div class="header_modal"></div>
+    <img
+      class="col-5 col-sm-5 logo bg-transparent mt-4"
+      src="./../../../../assets/images/logo.png"
+      alt="logo_tse"
+    />
+    <div
+      class="text-modal d-flex flex-column align-items-center mx-2 text-center"
+    >
+      Por favor, ingrese el número de la placa del vehículo al cual desea
+      reasignar el servicio.
+      <div class="form-floating my-3 col-sm-6 col-md-6 col-lg-6 col-6">
+        <input
+          type="text"
+          class="form-control input_filter"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Numero de placa</label>
+      </div>
+    </div>
+    <div
+      class="d-flex flex-row justify-content-center align-items-center"
+      [ngClass]="{ 'mb-4': !error }"
+    >
+      <button
+        class="btn btn-info rounded-3 mx-2 col-5 col-md-5 col-sm-5 px-2"
+        (click)="editDriver()"
+      >
+        Confirmar
+      </button>
+      <button
+        class="btn btn-danger rounded-3 mx-2 col-5 col-md-5 col-sm-5 px-2"
+        (click)="closeModalFn()"
+      >
+        Cancelar
+      </button>
+    </div>
+    <div class="error" [ngClass]="{ 'd-none': !error }">
+      Ocurrió un error al realizar la asignación. Por favor, inténtelo
+      nuevamente.
+    </div>
+  </div>
+</div>

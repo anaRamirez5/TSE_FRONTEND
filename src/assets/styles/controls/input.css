@@ -33,6 +33,12 @@ bs-datepicker-container {
     border-radius: 100%;
     padding: 5px;
   }
+  &:active {
+    background-color: var(--COLOR-BLUE-DARK);
+    color: var(--COLOR-WHITE);
+    border-radius: 100%;
+    padding: 5px;
+  }
 }
 .bs-datepicker-body tbody .week {
   color: var(--COLOR-BLUE-DARK);

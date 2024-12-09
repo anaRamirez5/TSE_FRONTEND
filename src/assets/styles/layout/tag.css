@@ -4,6 +4,8 @@
   color: var(--COLOR-WHITE);
   border-radius: 4px;
   margin: auto 3px;
+  height: 26px;
+  align-content: center;
   &.confirm {
     background-color: var(--COLOR-GREEN-TAG);
   }
@@ -20,4 +22,12 @@
     background-color: var(--COLOR-BLUE);
     color: var(--COLOR-BLUE-DARK);
   }
+}
+.error {
+  background-color: var(--COLOR-RED-TAG);
+  color: var(--COLOR-WHITE);
+  margin: 12px;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
 }

@@ -28,12 +28,11 @@ export class FiltersComponent implements OnInit {
     this.filterGroup = this.fb.group({
       date: [''],
       license_plate_number: [''],
-      department: [''],
+      id_servicio: [''],
       city: [''],
     });
   }
   submitFilter() {
-    console.log(this.filterGroup.value);
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {

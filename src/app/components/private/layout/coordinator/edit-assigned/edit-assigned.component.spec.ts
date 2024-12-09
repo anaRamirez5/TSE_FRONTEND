@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditAsignComponent } from './edit-asign.component';
+import { EditAsignComponent } from './edit-assigned.component';
 
 describe('EditAsignComponent', () => {
   let component: EditAsignComponent;
@@ -8,9 +8,8 @@ describe('EditAsignComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EditAsignComponent]
-    })
-    .compileComponents();
+      declarations: [EditAsignComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EditAsignComponent);
     component = fixture.componentInstance;

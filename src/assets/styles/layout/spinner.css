@@ -12,7 +12,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(151, 145, 145, 0.5); /* Fondo con opacidad */
+  background-color: var(--COLOR-BACKGROUND-DARK); /* Fondo con opacidad */
   display: flex;
   justify-content: center;
   align-items: center;

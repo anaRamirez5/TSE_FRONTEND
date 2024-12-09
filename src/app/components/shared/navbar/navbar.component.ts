@@ -14,21 +14,21 @@ export class NavbarComponent implements OnInit {
   route: string = '';
   constructor(private router: Router) {}
   ngOnInit(): void {
-    this.isActive('history');
+    this.isActive('assignments');
   }
   isActive(route: string) {
-    if (route === 'history') {
-      this.assignmentsActive = false;
-      this.historyActive = true;
+    if (route === 'assignments') {
+      this.assignmentsActive = true;
+      this.historyActive = false;
       this.route =
         this.component() === 'driver'
           ? `/${RoutesApp.DRIVER}/`
           : `/${RoutesApp.LAYOUT}/${RoutesApp.COORDINATOR}/`;
-      this.router.navigate([this.route + `${RoutesApp.HISTORY}`]);
-    } else {
-      this.assignmentsActive = true;
-      this.historyActive = false;
       this.router.navigate([this.route + `${RoutesApp.ASSIGMENTS}`]);
+    } else {
+      this.assignmentsActive = false;
+      this.historyActive = true;
+      this.router.navigate([this.route + `${RoutesApp.HISTORY}`]);
     }
   }
 }
