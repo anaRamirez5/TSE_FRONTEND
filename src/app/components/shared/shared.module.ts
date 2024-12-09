@@ -12,6 +12,7 @@ import { esLocale } from 'ngx-bootstrap/locale';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ToastComponent } from './toast/toast.component';
 import { DetailServicesComponent } from './detail-services/detail-services.component';
+import { RouterModule } from '@angular/router';
 
 // Configura el locale a español
 defineLocale('es', esLocale);
@@ -28,7 +29,6 @@ defineLocale('es', esLocale);
     CommonModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule,
     TooltipModule,
   ],
   exports: [
@@ -38,6 +38,7 @@ defineLocale('es', esLocale);
     NavbarComponent,
     FiltersComponent,
     ToastComponent,
+    CommonModule,
   ],
 })
 export class SharedModule {}

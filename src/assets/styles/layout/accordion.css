@@ -10,3 +10,7 @@
   max-height: 300px;
   overflow: auto;
 }
+.accordion {
+  margin: 10px auto;
+  border-radius: 10px;
+}

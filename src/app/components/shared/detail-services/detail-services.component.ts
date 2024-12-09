@@ -8,15 +8,10 @@ import { HistoryTable } from '../../../models/admin/admin.interface';
 })
 export class DetailServicesComponent {
   closeModal = output<boolean>();
-  cancelToast = output<boolean>();
   handleCancel = input.required<boolean>();
   data = input.required<HistoryTable>();
   error: boolean = false;
   closeModalFn() {
-    this.closeModal.emit(true);
-  }
-  cancelService() {
-    this.cancelToast.emit(true);
     this.closeModal.emit(true);
   }
 }

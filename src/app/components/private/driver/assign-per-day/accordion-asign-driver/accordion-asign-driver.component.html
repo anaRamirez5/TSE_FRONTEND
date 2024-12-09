@@ -1,8 +1,4 @@
-<div
-  class="accordion"
-  id="accordionExample"
-  style="margin: 10px auto; border-radius: 10px"
->
+<div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" style="border-radius: 10px">
       <button
@@ -24,9 +20,7 @@
       data-bs-parent="#accordionExample"
     >
       <div class="accordion-body">
-        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
-          >Datos del servicio</span
-        >
+        <span class="subtitle_assign">Datos del servicio</span>
         <ul class="row list-unstyled ms-2">
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Dirección de Origen</p>
@@ -56,12 +50,10 @@
           </li>
         </ul>
 
-        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
-          >Datos del protegido</span
-        >
+        <span class="subtitle_assign">Datos del protegido</span>
         <ul class="row list-unstyled ms-2">
           <li class="col-12 col-md-6">
-            <p class="subtitle_data">Nombre del solicitante</p>
+            <p class="subtitle_data">Nombre</p>
             <p>{{ data().name_applicant || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
@@ -73,16 +65,14 @@
             <p>{{ data().requirements || "No aplica" }}</p>
           </li>
         </ul>
-        <span style="color: #78cffd; font-weight: 500; font-size: 16px"
-          >Datos del producto</span
-        >
+        <span class="subtitle_assign">Datos del producto</span>
         <ul class="row list-unstyled ms-2">
           <li class="col-12 col-md-6">
-            <p class="subtitle_data mb-0">Nombre del producto</p>
+            <p class="subtitle_data mb-0">Nombre</p>
             <p>{{ data().product_name || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
-            <p class="subtitle_data mb-0">Codigo de producto</p>
+            <p class="subtitle_data mb-0">Codigo</p>
             <p>{{ data().product_code.replaceAll(",", " ") || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
@@ -91,42 +81,34 @@
           </li>
         </ul>
         @if(!handleButtons){
-        <div class="d-flex flew-row justify-content-center align-items-center">
+        <div class="d-flex flew-row justify-content-around align-items-center">
           <button
-            class="btn btn-success rounded-5 mx-2"
+            class="btn btn-success rounded-5 mx-2 button_service"
             (click)="acceptService()"
-            style="font-size: 12px; padding: 5px 12px"
           >
             <img
               style="width: 15px"
               src="../../../../../../assets/images/check-driver.svg"
-              alt=""
+              alt="success"
             />
             Aceptar
           </button>
-          <button
-            class="btn btn-danger rounded-5 mx-2"
-            style="font-size: 12px; padding: 5px 12px"
-          >
+          <button class="btn btn-danger button_service rounded-5 mx-2">
             <img
               style="width: 15px"
               src="../../../../../../assets/images/cancel.svg"
-              alt=""
+              alt="reject"
             />
             Rechazar
           </button>
         </div>
         }@else{
-        <div class="d-flex flew-row justify-content-center align-items-center">
-          <button
-            class="btn btn-info rounded-5 mx-2"
-            style="font-size: 12px; padding: 5px 12px"
-          >
+        <div class="d-flex flew-row justify-content-around align-items-center">
+          <button class="btn btn-info button_service rounded-5 mx-2">
             Iniciar Viaje
           </button>
           <button
-            class="btn download_historic rounded-5 mx-2"
-            style="font-size: 12px; padding: 5px 12px; color: white"
+            class="btn button_service download_historic rounded-5 mx-2 text-light"
           >
             Finalizar Viaje
           </button>

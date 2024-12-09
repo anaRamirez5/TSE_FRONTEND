@@ -11,6 +11,7 @@ import { AssignmentsComponent } from './coordinator/assignments/assignments.comp
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { EditAsignComponent } from './coordinator/edit-assigned/edit-assigned.component';
+import { LayoutRoutingModule } from './layout-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,12 @@ import { EditAsignComponent } from './coordinator/edit-assigned/edit-assigned.co
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
     PaginationModule,
-    RouterModule,
     TooltipModule,
+    CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    LayoutRoutingModule,
   ],
 })
 export class LayoutModule {}

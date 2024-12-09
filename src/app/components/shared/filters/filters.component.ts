@@ -33,7 +33,6 @@ export class FiltersComponent implements OnInit {
     });
   }
   submitFilter() {
-    console.log(this.filterGroup.value);
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {

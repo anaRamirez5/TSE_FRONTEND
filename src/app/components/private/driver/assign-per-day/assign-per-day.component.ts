@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Filter, HistoryTable } from '../../../../models/admin/admin.interface';
+import { HistoryTable } from '../../../../models/admin/admin.interface';
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
 import { DriverService } from '../../../../services/driver/driver.service';
 import { SharedService } from '../../../../services/shared/shared.service';
+import { Filter } from '../../../../models/shared/shared.interface';
 
 @Component({
   selector: 'app-assign-per-day',
@@ -35,10 +36,11 @@ export class AssignPerDayComponent {
   ngOnInit(): void {
     const today = new Date();
     const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
+    yesterday.setDate(today.getDate());
 
     // Formatear la fecha al formato deseado (opcional)
     this.yesterday = yesterday.toISOString().split('T')[0];
+    console.log;
     this.getHistoryData(1, 10);
   }
   filterPayload!: Filter;
@@ -53,8 +55,12 @@ export class AssignPerDayComponent {
         page_size: page_size,
       };
     } else {
+      const today = new Date();
+      const yesterday = new Date(today);
+      yesterday.setDate(today.getDate());
+      this.yesterday = yesterday.toISOString().split('T')[0];
       this.filterPayload = {
-        date: '',
+        date: this.yesterday,
         license_plate_number: '',
         id_servicio: '',
         city: '',

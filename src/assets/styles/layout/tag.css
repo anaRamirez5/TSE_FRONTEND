@@ -5,7 +5,7 @@
   border-radius: 4px;
   margin: auto 3px;
   height: 26px;
-  align-items: center;
+  align-content: center;
   &.confirm {
     background-color: var(--COLOR-GREEN-TAG);
   }
@@ -24,7 +24,7 @@
   }
 }
 .error {
-  background-color: #ca191999;
+  background-color: var(--COLOR-RED-TAG);
   color: var(--COLOR-WHITE);
   margin: 12px;
   padding: 5px;

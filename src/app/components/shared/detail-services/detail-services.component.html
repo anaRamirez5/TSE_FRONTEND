@@ -3,17 +3,11 @@
     class="modal-content d-flex justify-content-between align-items-center"
     style="height: 450px; width: 100%; max-width: 550px"
   >
-    <div style="height: 15px; width: 100%; background-color: #78cffd"></div>
+    <div class="header_modal"></div>
     <img
       src="./../../../../assets/images/exit-popup.svg"
       alt="exit"
-      style="
-        width: 26px;
-        top: 21px;
-        position: absolute;
-        left: 504px;
-        cursor: pointer;
-      "
+      class="exit_modal"
       (click)="closeModalFn()"
     />
     <img
@@ -29,202 +23,51 @@
     >
       <div class="d-flex flex-column justify-content-start align-items-start">
         <h2 class="subtitle_data">Datos del conductor</h2>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Nombre del conductor
-        </h4>
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del conductor</h4>
         <p class="text-modal ms-2 mb-0">{{ data().name_driver }}</p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Tipo de movil
-        </h4>
-        <p class="text-modal ms-2 mb-0">{{ data().type_car }}</p>
+        <h4 class="ms-2 mb-0 subtitle_details">Tipo de movil</h4>
+        <p class="text-modal ms-2 mb-0">{{ data().type_car || "--" }}</p>
       </div>
       <div class="d-flex flex-column justify-content-start align-items-start">
         <h2 class="subtitle_data">Datos del solicitante</h2>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Nombre del solicitante
-        </h4>
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del solicitante</h4>
         <p class="text-modal ms-2 mb-0">{{ data().name_applicant }}</p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Tipo de documento
-        </h4>
+        <h4 class="subtitle_details ms-2 mb-0">Tipo de documento</h4>
         <p class="text-modal ms-2 mb-0">{{ data().type_document }}</p>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-evenly align-items-start w-100">
       <div
-        class="d-flex flex-column justify-content-start align-items-start"
-        [ngClass]="{ 'mb-4': !handleCancel() || !error }"
+        class="d-flex flex-column justify-content-start align-items-start mb-4"
+        style="width: 170px"
       >
         <h2 class="subtitle_data">Datos de producto</h2>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Nombre del producto
-        </h4>
-        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del producto</h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 142.533px">
           {{ data().product_name }}
         </p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Codigo del producto
-        </h4>
-        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
+        <h4 class="ms-2 mb-0 subtitle_details">Codigo del producto</h4>
+        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 180.533px">
           {{ data().product_code.replaceAll(",", " ") }}
         </p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Ciudad
-        </h4>
+        <h4 class="subtitle_details ms-2 mb-0">Ciudad</h4>
         <p class="text-modal ms-2 mb-0 text-wrap">{{ data().city }}</p>
       </div>
       <div
         class="d-flex flex-column justify-content-start align-items-start"
-        style="width: 215.4px"
+        style="width: 221px"
       >
         <h2 class="subtitle_data">Requerimiento</h2>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Decripcion
-        </h4>
+        <h4 class="subtitle_details ms-2 mb-0">Decripcion</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data().requirements || "No aplica" }}
+        </p>
+        <h2 class="subtitle_data">Restricciónes</h2>
+        <h4 class="subtitle_details ms-2 mb-0">Tipo</h4>
         <p class="text-modal ms-2 mb-0">
           {{ data().requirements || "No aplica" }}
         </p>
       </div>
-    </div>
-    <!-- <div
-      class="d-flex flex-row justify-content-evenly align-items-start w-100"
-      [ngClass]="{ 'mb-4': !handleCancel() || !error }"
-    >
-      <div class="d-flex flex-column justify-content-start align-items-start">
-        <h2 class="subtitle_data">Datos del Producto</h2>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Nombre del Producto
-        </h4>
-        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
-          {{ data().product_name }}
-        </p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Codigo
-        </h4>
-        <p class="text-modal ms-2 mb-0 text-wrap" style="width: 190.533px">
-          {{ data().product_code.replaceAll(",", " ") }}
-        </p>
-        <h4
-          style="
-            font-size: 12px;
-            font-weight: 600;
-            color: #78cffd;
-            text-align: start;
-          "
-          class="ms-2 mb-0"
-        >
-          Ciudad
-        </h4>
-        <p class="text-modal ms-2 mb-0">{{ data().city }}</p>
-      </div>
-
-      <div class="d-flex flex-column justify-content-start align-items-start">
-        <h2 class="subtitle_data">Requerimientos</h2>
-        <p class="text-modal ms-2 mb-0">
-          {{ data().requirements || "No aplica" }}
-        </p>
-      </div>
-    </div> -->
-    <div
-      class="d-flex flex-row justify-content-center align-items-center"
-      [ngClass]="{ 'd-none': !handleCancel(), 'mb-0': error, 'mb-4': !error }"
-    >
-      <button
-        tooltip="Advertencia: Esta acción cancelará el servicio de manera permanente "
-        class="btn btn-danger rounded-3 mx-4 col-12 col-md-12 col-sm-12 px-2"
-        placement="top"
-        (click)="cancelService()"
-        containerClass="custom-tooltip"
-      >
-        Cancelar Servicio
-      </button>
-    </div>
-    <div
-      class="error d-none"
-      [ngClass]="{ 'd-none': !error, 'd-block': error }"
-    >
-      Ocurrió un error al realizar la asignación. Por favor, inténtelo
-      nuevamente.
     </div>
   </div>
 </div>
