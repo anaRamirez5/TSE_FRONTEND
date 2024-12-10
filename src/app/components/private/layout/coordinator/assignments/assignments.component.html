@@ -18,15 +18,22 @@
       </tr>
     </thead>
     <tbody>
+      @for( row of datalist;track row){
       <tr>
-        <td>124123</td>
-        <td>24/10/2024</td>
-        <td>7:30pm</td>
-        <td>AWR124</td>
-        <td>sadasdasdasd</td>
-        <td placement="top" containerClass="custom-tooltip">Calle 212 23 32</td>
-        <td placement="top" containerClass="custom-tooltip">Calle 52 28 32</td>
-        <td>Bogota</td>
+        <td>{{ row.id_servicio }}</td>
+        <td>{{ row.date }}</td>
+        <td>{{ row.hour_start }}</td>
+        <td>{{ row.license_plate_number }}</td>
+        <td placement="top" containerClass="custom-tooltip">
+          {{ row.product_code }}
+        </td>
+        <td placement="top" containerClass="custom-tooltip">
+          {{ row.adress_start }}
+        </td>
+        <td placement="top" containerClass="custom-tooltip">
+          {{ row.adress_end }}
+        </td>
+        <td>{{ row.city }}</td>
         <td>
           <div class="tag reject m-auto">Rechazado</div>
         </td>
@@ -38,7 +45,7 @@
             class="rounded-circle edit_assign"
             tooltip="Detalles del servicio"
             placement="top"
-            (click)="openDialogDetail()"
+            (click)="openDialogDetail(row)"
             containerClass="custom-tooltip"
           >
             <img
@@ -62,6 +69,7 @@
           </button>
         </td>
       </tr>
+      }
     </tbody>
   </table>
   <div
@@ -85,7 +93,7 @@
   (closeModal)="closeModalEdit($event)"
 ></app-edit-assigned>
 <app-detail-services
-  [data]="data"
+  [data]="dataDetail"
   [handleCancel]="true"
   *ngIf="handleModalDetail"
   (closeModal)="closeModalCancel($event)"

@@ -11,7 +11,8 @@ export class AssignmentsComponent {
   handleModalDetail: boolean = false;
   handleToast: boolean = false;
   action: string = '';
-  data: HistoryTable[] = [
+  dataDetail!: HistoryTable;
+  datalist: HistoryTable[] = [
     {
       id_servicio: 1707853,
       date: '2024-12-09',
@@ -131,7 +132,7 @@ export class AssignmentsComponent {
       product_code: 'P100923000,T340019710,T340019709,P100622000',
       product_name: 'BARRANQUILLA URBANO SIMPLE',
       adress_start: 'CRA 4 #19-17 BRR SIMON BOLIVAR',
-      adress_end: 'FRESENIUS CALLE 70 B N\u00ba 38 ? 152 ? BARRANQUILLA',
+      adress_end: 'FRESENIUS CALLE 70 B N 38 ? 152 ? BARRANQUILLA',
       city: 'BARRANQUILLA',
       name_driver: 'PAJARO VASQUEZ VICTOR',
       type_car: 'CAMIONETA',
@@ -148,7 +149,7 @@ export class AssignmentsComponent {
       license_plate_number: 'WGX076',
       product_code: 'P100923000,T340019710,T340019709,P100622000',
       product_name: 'BARRANQUILLA URBANO SIMPLE',
-      adress_start: 'FRESENIUS CALLE 70 B N\u00ba 38 ? 152 ? BARRANQUILLA',
+      adress_start: 'FRESENIUS CALLE 70 B N38 ? 152 ? BARRANQUILLA',
       adress_end: 'CRA 4 #19-17 BRR SIMON BOLIVAR',
       city: 'BARRANQUILLA',
       name_driver: 'NAJERA POLO OSCAR GUILLERMO',
@@ -172,7 +173,7 @@ export class AssignmentsComponent {
       city: 'BARRANQUILLA',
       name_driver: 'DE ALBA ESCORCIA JONH FELIX',
       type_car: 'CAMIONETA',
-      name_applicant: 'SIERRA MU\u00d1OZ LUIS ANGEL',
+      name_applicant: 'SIERRA MUOZ LUIS ANGEL',
       type_document: 'CC',
       requirements: 'BARRIO EL CRMEN DE MALAMBO',
       total_records: 2646,
@@ -191,7 +192,7 @@ export class AssignmentsComponent {
       city: 'BARRANQUILLA',
       name_driver: 'PALLARES DE LA CRUZ VIRGILIO DE JESUS',
       type_car: 'CAMIONETA',
-      name_applicant: 'SIERRA MU\u00d1OZ LUIS ANGEL',
+      name_applicant: 'SIERRA MU1OZ LUIS ANGEL',
       type_document: 'CC',
       requirements: '',
       total_records: 2646,
@@ -211,8 +212,9 @@ export class AssignmentsComponent {
       this.handleToast = false;
     }, 3000);
   }
-  openDialogDetail() {
+  openDialogDetail(data: HistoryTable) {
     this.handleModalDetail = true;
+    this.dataDetail = data;
   }
 
   closeModalCancel(event: boolean) {
