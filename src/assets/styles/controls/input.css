@@ -78,7 +78,6 @@ bs-datepicker-navigation-view > button {
   bs-datepicker-container {
     width: 300px;
     left: 0px !important;
-
     background-color: var(--COLOR-WHITE) !important ;
     border-radius: 10px;
     border: 1px solid var(--COLOR-BLUE-DARK);

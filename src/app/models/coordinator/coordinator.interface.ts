@@ -13,12 +13,14 @@ export interface assignService {
   origen_servicio: string;
   destino_servicio: string;
   ciudad: string;
-  name_conductor: string; ape_conductor: string;
+  name_conductor: string;
+  ape_conductor: string;
   type_car: string;
   name_applicant: string;
   type_document: string;
   estado_servicio: string;
   requerimiento: string;
+  requirement: string;
   total_records: number;
 }
 
