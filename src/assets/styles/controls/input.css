@@ -8,24 +8,29 @@
 }
 bs-datepicker-container {
   width: 300px;
-  left: 68px !important;
   background-color: var(--COLOR-WHITE) !important ;
   border-radius: 10px;
   border: 1px solid var(--COLOR-BLUE-DARK);
 }
-
+.bs-datepicker-body > table {
+  margin: auto;
+}
 .bs-datepicker-body > table > thead {
   background-color: var(--COLOR-WHITE);
   box-shadow: none;
+  height: 20px;
 }
 .bs-datepicker-body > table > thead > tr > th {
   color: var(--COLOR-BLUE);
+  height: 20px;
 }
 .bs-datepicker-body > table > tbody > tr {
   border: none;
+  height: 40px;
 }
 .bs-datepicker-body > table > tbody > tr > td {
   cursor: pointer;
+  height: 40px;
 }
 .bs-datepicker-body > table > tbody > tr > td > span {
   &:hover {
@@ -59,4 +64,23 @@ bs-datepicker-navigation-view > button {
 }
 .input_filter {
   border: 1px var(--COLOR-BLUE-DARK) solid !important;
+}
+@media (min-width: 300px) {
+  bs-datepicker-container {
+    width: 300px;
+    left: 68px !important;
+    background-color: var(--COLOR-WHITE) !important ;
+    border-radius: 10px;
+    border: 1px solid var(--COLOR-BLUE-DARK);
+  }
+}
+@media (min-width: 700px) {
+  bs-datepicker-container {
+    width: 300px;
+    left: 0px !important;
+
+    background-color: var(--COLOR-WHITE) !important ;
+    border-radius: 10px;
+    border: 1px solid var(--COLOR-BLUE-DARK);
+  }
 }

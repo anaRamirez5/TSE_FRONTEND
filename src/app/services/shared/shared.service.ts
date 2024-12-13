@@ -1,10 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EndPointRoute } from '../../../enums/routes.enum';
+import { environment } from '../../../environments/environment';
+import { BodyResponse } from '../../models/shared/body-response.interface';
+import { City } from '../../models/shared/shared.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
   formatDate(date: string) {
     const date_filter = new Date(date);
     const day = String(date_filter.getDate()).padStart(2, '0');
@@ -23,5 +28,14 @@ export class SharedService {
       minutes < 10 ? '0' + minutes : minutes
     } ${period}`;
     return formattedTime;
+  }
+  getCitys() {
+    const payload = {
+      entity: 'ciudades',
+    };
+    return this.http.post<BodyResponse<City[]>>(
+      `${environment.API_PUBLIC}${EndPointRoute.CITYS}`,
+      payload
+    );
   }
 }

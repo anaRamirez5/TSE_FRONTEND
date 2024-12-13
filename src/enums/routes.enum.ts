@@ -11,4 +11,6 @@ export enum EndPointRoute {
   LOGIN = 'login',
   HISORY_TABLE_ADMIN = 'admin/historic',
   HISORY_TABLE_DRIVER = 'driver/historic',
+  ASSIGN_SERVICES_PROGRAMMER = 'assigned/services',
+  CITYS = 'catalogs',
 }

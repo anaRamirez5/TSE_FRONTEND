@@ -6,7 +6,6 @@
   <div
     class="form-floating my-3 col-md-2 col-lg-2 col-xl-2"
     [ngClass]="{
-      'd-none ': role() === 'programmer_assign',
       'col-6 col-sm-6 col-md-6': role() === 'driver'
     }"
   >
@@ -56,7 +55,13 @@
       class="form-select input_filter"
       id="floatingSelectCity"
       formControlName="city"
-    ></select>
+    >
+      @for(municipality of citys;track municipality){
+      <option [value]="municipality.municipality_name">
+        {{ municipality.municipality_name }}
+      </option>
+      }
+    </select>
     <label for="floatingSelectCity">Ciudad</label>
   </div>
 

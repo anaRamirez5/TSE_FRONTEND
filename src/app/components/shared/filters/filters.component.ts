@@ -7,6 +7,9 @@ import {
   BsDaterangepickerDirective,
   BsLocaleService,
 } from 'ngx-bootstrap/datepicker';
+import { SharedService } from '../../../services/shared/shared.service';
+import { City } from '../../../models/shared/shared.interface';
+import { BodyResponse } from '../../../models/shared/body-response.interface';
 
 @Component({
   selector: 'app-filters',
@@ -18,13 +21,16 @@ export class FiltersComponent implements OnInit {
   filterForm = output<FormGroup>();
   clean = output<boolean>();
   filterGroup!: FormGroup;
+  citys: any[] = [];
   bsConfig = {
     containerClass: 'theme-blue', // Tema predefinido
     dateInputFormat: 'YYYY-MM-DD',
     locale: 'es', // Formato deseado
   };
-  ngOnInit() {}
-  constructor(private fb: FormBuilder) {
+  ngOnInit() {
+    this.getCity();
+  }
+  constructor(private fb: FormBuilder, private sharedService: SharedService) {
     this.filterGroup = this.fb.group({
       date: [''],
       license_plate_number: [''],
@@ -38,5 +44,20 @@ export class FiltersComponent implements OnInit {
   cleanFilter() {
     this.filterGroup.reset();
     this.clean.emit(true);
+  }
+  getCity() {
+    this.sharedService.getCitys().subscribe({
+      next: (response: BodyResponse<City[]>) => {
+        if (response.code === 200) {
+          this.citys = response.data;
+        } else {
+          this.citys = [];
+        }
+      },
+      error: () => {
+        this.citys = [];
+      },
+      complete: () => {},
+    });
   }
 }

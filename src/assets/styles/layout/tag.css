@@ -5,12 +5,16 @@
   border-radius: 4px;
   margin: auto 3px;
   height: 26px;
+  text-transform: capitalize;
   align-content: center;
   &.confirm {
     background-color: var(--COLOR-GREEN-TAG);
   }
   &.reject {
     background-color: var(--COLOR-RED-TAG);
+  }
+  &.active {
+    background-color: var(--COLOR-ACTIVE-TAG);
   }
 }
 .indicator {

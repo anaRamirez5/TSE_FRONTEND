@@ -97,7 +97,7 @@ export class AssignPerDayComponent {
     if (event) {
       this.filter = event.value;
     }
-    const formattedDate = this.sharedService.formatDate(this.filter.date);
+    const formattedDate = this.sharedService.formatDate(this.filter.date || '');
     this.filter.date = this.filter.date ? formattedDate : '';
     this.handle = true;
     this.pageIndex = 1;

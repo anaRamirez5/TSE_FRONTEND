@@ -1,13 +1,18 @@
 <div class="d-flex flex-column container-fluid">
-  <app-filters role="programmer_assign"></app-filters>
+  <app-filters
+    role="programmer_assign"
+    (clean)="handleClean($event)"
+    (filterForm)="extractFilterData($event)"
+  ></app-filters>
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
   >
     <thead class="rounded-3">
       <tr>
-        <th scope="col">ID del servicio</th>
-        <th scope="col">Fecha del servicio</th>
+        <th scope="col " style="width: 5%">ID</th>
+        <th scope="col" style="width: 5%">Fecha</th>
         <th scope="col">Hora destino</th>
+        <th scope="col">Hora final</th>
         <th scope="col">Placa</th>
         <th scope="col">Producto</th>
         <th scope="col">Dirreción de origen</th>
@@ -20,22 +25,47 @@
     <tbody>
       @for( row of datalist;track row){
       <tr>
-        <td>{{ row.id_servicio }}</td>
-        <td>{{ row.date }}</td>
-        <td>{{ row.hour_start }}</td>
-        <td>{{ row.license_plate_number }}</td>
-        <td placement="top" containerClass="custom-tooltip">
-          {{ row.product_code }}
+        <td style="width: 5%">{{ row.id_servicio }}</td>
+        <td style="width: 5%">{{ row.f_inicio }}</td>
+        <td>{{ row.t_inicio }}</td>
+        <td>{{ row.t_final }}</td>
+        <td>{{ row.placa_movil }}</td>
+        <td
+          [tooltip]="row.cod_producto"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.cod_producto.replaceAll(",", " ") }}
         </td>
-        <td placement="top" containerClass="custom-tooltip">
-          {{ row.adress_start }}
+        <td
+          [tooltip]="row.origen_servicio"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.origen_servicio }}
         </td>
-        <td placement="top" containerClass="custom-tooltip">
-          {{ row.adress_end }}
+        <td
+          [tooltip]="row.destino_servicio"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.destino_servicio }}
         </td>
-        <td>{{ row.city }}</td>
+        <td>{{ row.ciudad }}</td>
         <td>
-          <div class="tag reject m-auto">Rechazado</div>
+          <div
+            class="tag m-auto"
+            [ngClass]="{
+              reject: row.estado_servicio === 'cancelado',
+              confirm: row.estado_servicio === 'confirmado',
+              active: row.estado_servicio === 'activo'
+            }"
+          >
+            {{ row.estado_servicio }}
+          </div>
         </td>
 
         <td
@@ -77,12 +107,13 @@
   >
     <div class="d-flex flex-column mx-2 align-items-end">
       <p class="subtitle_data mb-0">Total de servicios:</p>
-      <p class="text-sub">342</p>
+      <p class="text-sub">{{ totalItems }}</p>
     </div>
     <app-paginator
-      [itemsPerPage]="10"
-      [totalItems]="90"
-      [currentPage]="1"
+      [itemsPerPage]="pageSize"
+      [totalItems]="totalItems"
+      [currentPage]="pageIndex"
+      (pageChange)="handlePageEvent($event)"
     ></app-paginator>
   </div>
 </div>
