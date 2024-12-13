@@ -29,8 +29,8 @@
   >
     <thead class="rounded-3">
       <tr>
-        <th scope="col">ID Servicio</th>
-        <th scope="col" style="width: 10%">Fecha del servicio</th>
+        <th scope="col " style="width: 5%">ID </th>
+        <th scope="col" style="width: 5%">Fecha </th>
         <th scope="col">Hora inicio</th>
         <th scope="col">Hora fin</th>
         <th scope="col">Producto</th>
@@ -43,16 +43,19 @@
     </thead>
     <tbody>
       <tr *ngFor="let row of historyTable">
-        <td style="width: 10%">{{ row.id_servicio || "--" }}</td>
-        <td style="width: 10%">{{ row.date || "--" }}</td>
+        <td style="width: 5%">{{ row.id_servicio || "--" }}</td>
+        <td style="width: 5%">{{ row.date || "--" }}</td>
         <td>
           {{ sharedService.convertTo12HourFormat(row.hour_start) || "--" }}
         </td>
         <td>
-          {{ row.hour_end || "--" }}
+          {{ row.t_final || "--" }}
         </td>
-        <td>{{ row.product_code || "--" }}</td>
-        <td>{{ row.license_plate_number || "--" }}</td>
+        <td [tooltip]="row.product_code"
+        placement="top"
+        container="body"
+        containerClass="custom-tooltip">{{ row.product_code.replaceAll(",", " ") }}</td>
+        <td>{{ row.license_plate_number	 || "--" }}</td>
         <td
           [tooltip]="row.adress_start"
           placement="top"

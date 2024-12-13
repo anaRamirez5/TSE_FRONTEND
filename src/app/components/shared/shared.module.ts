@@ -5,7 +5,7 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FiltersComponent } from './filters/filters.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { defineLocale } from 'ngx-bootstrap/chronos';
 import { esLocale } from 'ngx-bootstrap/locale';
@@ -29,7 +29,7 @@ defineLocale('es', esLocale);
     CommonModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
-    TooltipModule,
+    TooltipModule, 
   ],
   exports: [
     ModalInformativeComponent,

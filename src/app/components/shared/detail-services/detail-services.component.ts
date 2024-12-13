@@ -1,5 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { HistoryTable } from '../../../models/admin/admin.interface';
+import { assignService } from '../../../models/coordinator/coordinator.interface';
 
 @Component({
   selector: 'app-detail-services',
@@ -9,7 +10,7 @@ import { HistoryTable } from '../../../models/admin/admin.interface';
 export class DetailServicesComponent {
   closeModal = output<boolean>();
   handleCancel = input.required<boolean>();
-  data = input.required<HistoryTable>();
+  data = input.required<assignService | HistoryTable>();
   error: boolean = false;
   closeModalFn() {
     this.closeModal.emit(true);
