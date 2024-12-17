@@ -33,7 +33,9 @@
           }}
         </p>
         <h4 class="ms-2 mb-0 subtitle_details">Tipo de movil</h4>
-        <p class="text-modal ms-2 mb-0">{{ data()?.type_car || "--" }}</p>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.tipov_funcionario || "--" }}
+        </p>
       </div>
       <div
         class="d-flex flex-column justify-content-start align-items-start"
@@ -42,12 +44,12 @@
         <h2 class="subtitle_data">Datos del solicitante</h2>
         <h4 class="ms-2 mb-0 subtitle_details">Nombre del solicitante</h4>
         <p class="text-modal ms-2 mb-0">
-          {{
-            (data()?.name_conductor || "") + " " + (data()?.ape_conductor || "")
-          }}
+          {{ data()?.nom_funcionario || "" }}
         </p>
         <h4 class="subtitle_details ms-2 mb-0">Tipo de documento</h4>
-        <p class="text-modal ms-2 mb-0">{{ data()?.type_document || "--" }}</p>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.tipdocu_funcionario || "--" }}
+        </p>
       </div>
     </div>
     <div class="d-flex flex-row justify-content-evenly align-items-start w-100">
