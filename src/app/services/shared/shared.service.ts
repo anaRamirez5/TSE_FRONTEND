@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { EndPointRoute } from '../../../enums/routes.enum';
 import { environment } from '../../../environments/environment';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { City } from '../../models/shared/shared.interface';
+import { City, Status } from '../../models/shared/shared.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +34,16 @@ export class SharedService {
       entity: 'ciudades',
     };
     return this.http.post<BodyResponse<City[]>>(
-      `${environment.API_PUBLIC}${EndPointRoute.CITYS}`,
+      `${environment.API_PUBLIC}${EndPointRoute.CATALOGS}`,
+      payload
+    );
+  }
+  getStatus() {
+    const payload = {
+      entity: 'estados',
+    };
+    return this.http.post<BodyResponse<Status[]>>(
+      `${environment.API_PUBLIC}${EndPointRoute.CATALOGS}`,
       payload
     );
   }

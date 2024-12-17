@@ -41,6 +41,7 @@ export class AssignmentsComponent implements OnInit {
         license_plate_number: this.filter.license_plate_number || null,
         id_servicio: this.filter.id_servicio || null,
         city: this.filter.city || null,
+        status: Number(this.filter.status) || null,
         page: page,
         page_size: page_size,
       };
@@ -50,6 +51,7 @@ export class AssignmentsComponent implements OnInit {
         license_plate_number: null,
         id_servicio: null,
         city: null,
+        status: null,
         page: page,
         page_size: page_size,
       };
