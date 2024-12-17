@@ -8,7 +8,7 @@ import {
   BsLocaleService,
 } from 'ngx-bootstrap/datepicker';
 import { SharedService } from '../../../services/shared/shared.service';
-import { City } from '../../../models/shared/shared.interface';
+import { City, Status } from '../../../models/shared/shared.interface';
 import { BodyResponse } from '../../../models/shared/body-response.interface';
 
 @Component({
@@ -21,7 +21,8 @@ export class FiltersComponent implements OnInit {
   filterForm = output<FormGroup>();
   clean = output<boolean>();
   filterGroup!: FormGroup;
-  citys: any[] = [];
+  citys: City[] = [];
+  status: Status[] = [];
   bsConfig = {
     containerClass: 'theme-blue', // Tema predefinido
     dateInputFormat: 'YYYY-MM-DD',
@@ -29,6 +30,7 @@ export class FiltersComponent implements OnInit {
   };
   ngOnInit() {
     this.getCity();
+    this.getStatus();
   }
   constructor(private fb: FormBuilder, private sharedService: SharedService) {
     this.filterGroup = this.fb.group({
@@ -36,6 +38,7 @@ export class FiltersComponent implements OnInit {
       license_plate_number: [''],
       id_servicio: [''],
       city: [''],
+      status: [''],
     });
   }
   submitFilter() {
@@ -56,6 +59,21 @@ export class FiltersComponent implements OnInit {
       },
       error: () => {
         this.citys = [];
+      },
+      complete: () => {},
+    });
+  }
+  getStatus() {
+    this.sharedService.getStatus().subscribe({
+      next: (response: BodyResponse<Status[]>) => {
+        if (response.code === 200) {
+          this.status = response.data;
+        } else {
+          this.status = [];
+        }
+      },
+      error: () => {
+        this.status = [];
       },
       complete: () => {},
     });

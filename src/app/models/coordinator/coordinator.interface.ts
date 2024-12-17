@@ -21,6 +21,9 @@ export interface assignService {
   estado_servicio: string;
   requerimiento: string;
   requirement: string;
+  tipov_funcionario: string;
+  nom_funcionario: string;
+  tipdocu_funcionario: string;
   total_records: number;
 }
 

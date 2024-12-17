@@ -4,6 +4,13 @@
     (clean)="handleClean($event)"
     (filterForm)="extractFilterData($event)"
   ></app-filters>
+  @if(datalist.length===0){
+  <div class="mx-auto">
+    <p class="subtitle_data">
+      No se encontraron resultados para los criterios seleccionados.
+    </p>
+  </div>
+  }@else {
   <table
     class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
   >
@@ -116,6 +123,7 @@
       (pageChange)="handlePageEvent($event)"
     ></app-paginator>
   </div>
+  }
 </div>
 
 <app-edit-assigned

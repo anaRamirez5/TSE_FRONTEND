@@ -83,3 +83,6 @@ bs-datepicker-navigation-view > button {
     border: 1px solid var(--COLOR-BLUE-DARK);
   }
 }
+.form-floating > .form-select {
+  text-transform: capitalize;
+}
