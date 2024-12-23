@@ -4,7 +4,14 @@
     (clean)="handleClean($event)"
     (filterForm)="extractFilterData($event)"
   ></app-filters>
-  @if(datalist.length===0){
+  @if(!handle){
+  <div class="mx-auto my-2">
+    <p class="subtitle_data text-center">
+      De manera predeterminada, se mostrarán los servicios asignados del dia
+      {{ tommorow }}
+    </p>
+  </div>
+  } @if(datalist.length===0){
   <div class="mx-auto">
     <p class="subtitle_data">
       No se encontraron resultados para los criterios seleccionados.
@@ -18,13 +25,14 @@
       <tr>
         <th scope="col " style="width: 5%">ID</th>
         <th scope="col" style="width: 5%">Fecha</th>
-        <th scope="col">Hora destino</th>
+        <th scope="col">Hora origen</th>
         <th scope="col">Hora final</th>
         <th scope="col">Placa</th>
         <th scope="col">Producto</th>
         <th scope="col">Dirreción de origen</th>
         <th scope="col">Dirreción de destino</th>
         <th scope="col">Ciudad</th>
+        <th scope="col"></th>
         <th scope="col">Estado</th>
         <th scope="col-1">Acciones</th>
       </tr>
@@ -63,12 +71,27 @@
         </td>
         <td>{{ row.ciudad }}</td>
         <td>
+          <img
+            tooltip="Tiene requerimiento"
+            placement="left"
+            container="body"
+            containerClass="custom-tooltip"
+            [ngClass]="{ 'd-none': row.requerimiento === '' }"
+            src="../../../../../../assets/images/danger.svg"
+            style="width: 16px"
+            alt="danger"
+          />
+        </td>
+        <td>
           <div
             class="tag m-auto"
             [ngClass]="{
-              reject: row.estado_servicio === 'cancelado',
+              cancel: row.estado_servicio === 'cancelado',
               confirm: row.estado_servicio === 'confirmado',
-              active: row.estado_servicio === 'activo'
+              active: row.estado_servicio === 'activo',
+              assigned: row.estado_servicio === 'asignado',
+              unassigned: row.estado_servicio === 'sin asignacion',
+              reject: row.estado_servicio === 'rechazado',
             }"
           >
             {{ row.estado_servicio }}
@@ -81,7 +104,7 @@
           <button
             class="rounded-circle edit_assign"
             tooltip="Detalles del servicio"
-            placement="top"
+            placement="right"
             (click)="openDialogDetail(row)"
             containerClass="custom-tooltip"
           >
@@ -95,8 +118,9 @@
             class="rounded-circle edit_assign"
             (click)="editDriverAssign()"
             tooltip="Editar asignación"
-            placement="top"
+            placement="right"
             containerClass="custom-tooltip"
+            [disabled]="row.estado_servicio === 'cancelado'"
           >
             <img
               src="../../../../../../assets/images/edit.svg"

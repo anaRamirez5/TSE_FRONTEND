@@ -10,11 +10,20 @@
   &.confirm {
     background-color: var(--COLOR-GREEN-TAG);
   }
-  &.reject {
+  &.cancel {
     background-color: var(--COLOR-RED-TAG);
   }
   &.active {
     background-color: var(--COLOR-ACTIVE-TAG);
+  }
+  &.assigned {
+    background-color: var(--COLOR-ASSIGNED-TAG);
+  }
+  &.reject {
+    background-color: var(--COLOR-REJECT-TAG);
+  }
+  &.unassigned {
+    background-color: var(--COLOR-BLUE-DARK);
   }
 }
 .indicator {

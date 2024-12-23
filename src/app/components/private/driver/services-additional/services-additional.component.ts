@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
-import { HistoryTable } from '../../../../models/admin/admin.interface';
-import { FormGroup } from '@angular/forms';
-import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import {
+  assignService,
+  service,
+} from '../../../../models/driver/driver.interface';
 import { BodyResponse } from '../../../../models/shared/body-response.interface';
+import { FormGroup } from '@angular/forms';
+import { SessionStorageItems } from '../../../../../enums/session-storage';
+import { Filter } from '../../../../models/shared/shared.interface';
 import { DriverService } from '../../../../services/driver/driver.service';
 import { SharedService } from '../../../../services/shared/shared.service';
-import { Filter } from '../../../../models/shared/shared.interface';
-import { assignService } from '../../../../models/coordinator/coordinator.interface';
-import { service } from '../../../../models/driver/driver.interface';
-import { SessionStorageItems } from '../../../../../enums/session-storage';
-import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-assign-per-day',
-  templateUrl: './assign-per-day.component.html',
-  styleUrl: './assign-per-day.component.css',
+  selector: 'app-services-additional',
+  templateUrl: './services-additional.component.html',
+  styleUrl: './services-additional.component.css',
 })
-export class AssignPerDayComponent {
-  assignedServices: assignService[] = [];
+export class ServicesAdditionalComponent {
+  assignedServices: any[] = [];
   finalResponse: boolean = true;
   idsServices: number[] = [];
   handle = false;
@@ -36,16 +35,7 @@ export class AssignPerDayComponent {
     this.license_plate_number =
       sessionStorage.getItem(SessionStorageItems.CAR_ID) ?? '';
     this.tomorrow = this.tommorrowDate();
-    this.getAssignedServices().then(() => {
-      this.assignedServices.forEach((item) => {
-        console.log(item.estado_servicio);
-      });
-      if (this.idsServices.length > 0) {
-        this.handleRoute = false;
-      } else {
-        this.handleRoute = true;
-      }
-    });
+    this.getAssignedServices();
   }
   tommorrowDate(): string {
     const today = new Date();
@@ -53,25 +43,31 @@ export class AssignPerDayComponent {
     tomorrow.setDate(today.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
   }
-  async getAssignedServices() {
+  getAssignedServices() {
     this.finalResponse = true;
-    try {
-      const response: BodyResponse<assignService[]> = await firstValueFrom(
-        this.driverService.getAssignedServices()
-      );
-      if (response.code === 200) {
-        this.assignedServices = response.data;
-        this.assignedServices.forEach((service) => {
-          if (service.estado_servicio === 'asignado') {
-            this.idsServices.push(service.id_servicio);
-            console.log(this.idsServices);
-          }
-        });
+    this.driverService.getAssignedServices().subscribe({
+      next: (response: BodyResponse<assignService[]>) => {
+        if (response.code === 200) {
+          this.assignedServices = response.data;
+
+          this.assignedServices.forEach((service) => {
+            if (service.estado_servicio === 'asignado') {
+              this.idsServices.push(service.id_servicio);
+            } else {
+            }
+          });
+        } else {
+          this.assignedServices = [];
+        }
+      },
+      error: () => {
+        this.assignedServices = [];
         this.finalResponse = false;
-      }
-    } catch (err) {
-      this.finalResponse = false;
-    }
+      },
+      complete: () => {
+        this.finalResponse = false;
+      },
+    });
   }
   handleClean(event: boolean) {
     if (event) {
@@ -103,6 +99,7 @@ export class AssignPerDayComponent {
     };
     this.driverService.confirmedService(payload).subscribe({
       next: (response: BodyResponse<string>) => {
+        console.log(response);
         this.handleRoute = true;
       },
       error: () => {},

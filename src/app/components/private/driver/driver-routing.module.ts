@@ -4,6 +4,7 @@ import { DriverComponent } from './driver.component';
 import { AssignPerDayComponent } from './assign-per-day/assign-per-day.component';
 import { HistoryPerDriverComponent } from './history-per-driver/history-per-driver.component';
 import { RoutesApp } from '../../../../enums/routes.enum';
+import { ServicesAdditionalComponent } from './services-additional/services-additional.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
     children: [
       { path: RoutesApp.ASSIGMENTS, component: AssignPerDayComponent },
       { path: RoutesApp.HISTORY, component: HistoryPerDriverComponent },
+      {
+        path: RoutesApp.ADDITIONAL_DRIVER,
+        component: ServicesAdditionalComponent,
+      },
     ],
   },
 ];

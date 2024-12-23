@@ -9,6 +9,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionAsignDriverComponent } from './assign-per-day/accordion-asign-driver/accordion-asign-driver.component';
 import { DriverRoutingModule } from './driver-routing.module';
 import { CommonModule } from '@angular/common';
+import { ServicesAdditionalComponent } from './services-additional/services-additional.component';
 @NgModule({
   declarations: [
     DriverComponent,
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
     HistoryPerDriverComponent,
     AccordionDriverComponent,
     AccordionAsignDriverComponent,
+    ServicesAdditionalComponent,
   ],
   imports: [SharedModule, CommonModule, TooltipModule, DriverRoutingModule],
 })
