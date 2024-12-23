@@ -26,6 +26,7 @@
         style="width: 160px"
       >
         <h2 class="subtitle_data">Datos del conductor</h2>
+        @if(data()?.placa_movil){
         <h4 class="ms-2 mb-0 subtitle_details">Nombre del conductor</h4>
         <p class="text-modal ms-2 mb-0">
           {{
@@ -36,6 +37,11 @@
         <p class="text-modal ms-2 mb-0">
           {{ data()?.tipov_funcionario || "--" }}
         </p>
+        }@else {
+        <p class="text-modal ms-2 mb-0">
+          Este servicio no ha sido asignado a un conductor
+        </p>
+        }
       </div>
       <div
         class="d-flex flex-column justify-content-start align-items-start"
@@ -64,7 +70,7 @@
         </p>
         <h4 class="ms-2 mb-0 subtitle_details">Codigo del producto</h4>
         <p class="text-modal ms-2 mb-0 text-wrap">
-          {{ data()?.cod_producto?.replace(",", " ") || "--" }}
+          {{ data()?.cod_producto?.replaceAll(",", " ") || "--" }}
         </p>
         <h4 class="subtitle_details ms-2 mb-0">Ciudad</h4>
         <p class="text-modal ms-2 mb-0 text-wrap">

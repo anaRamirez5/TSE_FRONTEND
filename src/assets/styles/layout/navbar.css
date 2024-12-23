@@ -2,8 +2,10 @@
 
 .nav-link.active {
   border-bottom-color: var(--COLOR-BLUE) !important;
+  font-weight: 500;
 }
 .nav-color {
   color: var(--COLOR-BLUE-DARK);
   cursor: pointer;
+  font-size: 12px;
 }

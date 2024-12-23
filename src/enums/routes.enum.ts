@@ -6,12 +6,16 @@ export enum RoutesApp {
   ASSIGMENTS = 'assignments',
   HISTORY = 'history',
   DRIVER = 'driver',
+  ADDITIONAL_DRIVER = 'services_add',
 }
 export enum EndPointRoute {
   LOGIN = 'login',
   HISORY_TABLE_ADMIN = 'admin/historic',
   HISORY_TABLE_DRIVER = 'driver/historic',
   ASSIGN_SERVICES_PROGRAMMER = 'assigned/services',
-  ASSIGN_SERVICES_DRIVER = 'assigned/services',
+  CONFIRM_SERVICES = 'driver/update-service-status',
+  ASSIGN_SERVICES_DRIVER = 'driver/services',
+  START_JOURNEY = 'driver/inicio-viaje',
+  END_JOURNEY = 'driver/fin-viaje',
   CATALOGS = 'catalogs',
 }

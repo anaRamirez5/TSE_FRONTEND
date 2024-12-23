@@ -1,18 +1,33 @@
-export interface assignServiceDriver {
+export interface assignService {
   id_servicio: number;
-  hour_start: string;
-  hour_end: string;
-  license_plate_number: string;
-  product_code: string;
-  product_name: string;
-  product_city: string;
-  adress_start: string;
-  adress_end: string;
-  city: string;
-  name_driver: string;
-  type_car: string;
-  name_applicant: string;
-  type_document: string;
-  requirements: string;
+  f_inicio: string;
+  f_final: string;
+  t_inicio: string;
+  t_final: string;
+  placa_movil: string;
+  cod_producto: string;
+  nom_producto: string;
+  origen_servicio: string;
+  destino_servicio: string;
+  ciudad: string;
+  estado_servicio: string;
+  requerimiento: string;
+  nom_funcionario: string;
+  tipdocu_funcionario: string;
   total_records: number;
+}
+
+export interface service {
+  id_servicio: number[];
+  placa_movil: string;
+  confirmar_servicio?: boolean;
+}
+export interface service {
+  id_servicio: number[];
+  placa_movil: string;
+  confirmar_servicio?: boolean;
+}
+export interface startOrEnd {
+  id_servicio: number;
+  placa_movil: string;
 }
