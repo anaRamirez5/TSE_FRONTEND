@@ -1,0 +1,19 @@
+<div class="d-flex flex-column container-fluid">
+  @if(assignedServices.length===0){
+  <p class="subtitle_data text-center">
+    En este momento no hay servicios adicionales disponibles.
+  </p>
+  }@else {
+  <p class="subtitle_data text-center">
+    Existen servicios sin asignar. Por favor, revise si puede incluirlos en su
+    ruta del día.
+  </p>
+  @for (row of assignedServices; track row ) {
+  <app-accordion-asign-driver
+    [handleButtons]="handleRoute"
+    [data]="row"
+    tab="add"
+    (handle)="refresh($event)"
+  ></app-accordion-asign-driver>
+  } }
+</div>
