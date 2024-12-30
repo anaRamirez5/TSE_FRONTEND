@@ -13,9 +13,12 @@ export enum EndPointRoute {
   HISORY_TABLE_ADMIN = 'admin/historic',
   HISORY_TABLE_DRIVER = 'driver/historic',
   ASSIGN_SERVICES_PROGRAMMER = 'assigned/services',
+  UPDATE_ASIGN_SERVICES = 'driver/update/service/driver',
   CONFIRM_SERVICES = 'driver/update-service-status',
   ASSIGN_SERVICES_DRIVER = 'driver/services',
   START_JOURNEY = 'driver/inicio-viaje',
   END_JOURNEY = 'driver/fin-viaje',
   CATALOGS = 'catalogs',
+  ORPHAN_SERVICES = 'orphan/services',
+  CONFIRM_SERVICES_ORPHAN = 'driver/confirm/service/orphan',
 }

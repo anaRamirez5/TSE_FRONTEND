@@ -6,7 +6,11 @@ import { HistoryTable } from '../../models/admin/admin.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
 import { Filter } from '../../models/shared/shared.interface';
 import { assignService } from '../../models/coordinator/coordinator.interface';
-import { service, startOrEnd } from '../../models/driver/driver.interface';
+import {
+  orphanService,
+  service,
+  startOrEnd,
+} from '../../models/driver/driver.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +28,18 @@ export class DriverService {
     return this.http.post<BodyResponse<assignService[]>>(
       `${environment.API_PUBLIC}${EndPointRoute.ASSIGN_SERVICES_DRIVER}`,
       null
+    );
+  }
+  getOrphanServices() {
+    return this.http.post<BodyResponse<orphanService[]>>(
+      `${environment.API_PUBLIC}${EndPointRoute.ORPHAN_SERVICES}`,
+      null
+    );
+  }
+  confirmedServiceOrphan(payload: startOrEnd) {
+    return this.http.post<BodyResponse<string>>(
+      `${environment.API_PUBLIC}${EndPointRoute.CONFIRM_SERVICES_ORPHAN}`,
+      payload
     );
   }
   confirmedService(payload: service) {

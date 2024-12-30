@@ -8,6 +8,7 @@ import {
   startOrEnd,
 } from '../../../../../models/driver/driver.interface';
 import { BodyResponse } from '../../../../../models/shared/body-response.interface';
+import { SessionStorageItems } from '../../../../../../enums/session-storage';
 
 @Component({
   selector: 'app-accordion-asign-driver',
@@ -17,6 +18,7 @@ import { BodyResponse } from '../../../../../models/shared/body-response.interfa
 export class AccordionAsignDriverComponent implements OnInit {
   isCollapsed = false; // Estado inicial
   handleEndJourney = true;
+  license_plate_number: string = '';
   data = input.required<assignService>();
   tab = input.required<string>();
   handle = output<boolean>();
@@ -25,13 +27,19 @@ export class AccordionAsignDriverComponent implements OnInit {
     public sharedService: SharedService,
     private driverService: DriverService
   ) {}
-  ngOnInit(): void {
-    if (this.data().estado_servicio === 'confirmado') {
-      this.handleButtons = true;
-    } else {
-      this.handleButtons = false;
+  ngOnInit() {
+    this.license_plate_number =
+      sessionStorage.getItem(SessionStorageItems.CAR_ID) ?? '';
+    this.handleButtons = this.data().estado_servicio === 'confirmado';
+    this.handleButtonsJourney();
+  }
+
+  handleButtonsJourney() {
+    if (this.data().inicio_viaje !== null) {
+      this.handleEndJourney = false;
     }
   }
+
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
   }
@@ -43,7 +51,20 @@ export class AccordionAsignDriverComponent implements OnInit {
     };
     this.driverService.confirmedService(payload).subscribe({
       next: (response: BodyResponse<string>) => {
-        console.log(response);
+        this.handleButtons = true;
+        this.handle.emit(true);
+      },
+      error: () => {},
+      complete: () => {},
+    });
+  }
+  acceptServiceOrpah(handle: boolean) {
+    const payload: startOrEnd = {
+      id_servicio: this.data().id_servicio,
+      placa_movil: this.data().placa_movil || this.license_plate_number,
+    };
+    this.driverService.confirmedServiceOrphan(payload).subscribe({
+      next: (response: BodyResponse<string>) => {
         this.handleButtons = true;
         this.handle.emit(true);
       },
@@ -58,8 +79,8 @@ export class AccordionAsignDriverComponent implements OnInit {
     };
     this.driverService.startJourney(payload).subscribe({
       next: (response: BodyResponse<string>) => {
-        console.log('incio de viaje');
         this.handleEndJourney = false;
+        this.handle.emit(true);
       },
       error: () => {},
       complete: () => {},
@@ -73,8 +94,8 @@ export class AccordionAsignDriverComponent implements OnInit {
     };
     this.driverService.endJourney(payload).subscribe({
       next: (response: BodyResponse<string>) => {
-        console.log('fin de viaje');
         this.handleEndJourney = true;
+        this.handle.emit(true);
       },
       error: () => {},
       complete: () => {},
