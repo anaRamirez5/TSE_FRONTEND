@@ -24,6 +24,7 @@ export class AssignmentsComponent implements OnInit {
   pageIndex: number = 1;
   totalItems: number = 0;
   filter!: Filter;
+  id: number = 0;
   handle = false;
   filterPayload!: Filter;
   tommorow: string = 's';
@@ -80,6 +81,7 @@ export class AssignmentsComponent implements OnInit {
       },
     });
   }
+
   extractFilterData(event?: FormGroup) {
     if (event) {
       this.filter = event.value;
@@ -90,11 +92,14 @@ export class AssignmentsComponent implements OnInit {
     this.pageIndex = 1;
     this.getAssignedService(this.pageIndex, this.pageSize);
   }
-  editDriverAssign() {
+  editDriverAssign(id: number) {
     this.handleModalEdit = true;
+    this.id = id;
   }
   closeModalEdit(event: boolean) {
     this.handleModalEdit = !event;
+    this.pageIndex = 1;
+    this.getAssignedService(this.pageIndex, this.pageSize);
   }
   editToastHandle(event: boolean) {
     this.handleToast = event;

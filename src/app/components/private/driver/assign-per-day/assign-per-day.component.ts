@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HistoryTable } from '../../../../models/admin/admin.interface';
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
@@ -16,7 +16,7 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './assign-per-day.component.html',
   styleUrl: './assign-per-day.component.css',
 })
-export class AssignPerDayComponent {
+export class AssignPerDayComponent implements OnInit {
   assignedServices: assignService[] = [];
   finalResponse: boolean = true;
   idsServices: number[] = [];
@@ -32,7 +32,7 @@ export class AssignPerDayComponent {
     private sharedService: SharedService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.license_plate_number =
       sessionStorage.getItem(SessionStorageItems.CAR_ID) ?? '';
     this.tomorrow = this.tommorrowDate();
@@ -45,8 +45,41 @@ export class AssignPerDayComponent {
       } else {
         this.handleRoute = true;
       }
+      this.updateActiveRoutes();
     });
   }
+
+  updateActiveRoutes() {
+    const viajeIniciado = this.assignedServices.find(
+      (service) => service.inicio_viaje != null && service.fin_viaje === null
+    );
+
+    if (viajeIniciado) {
+      const rutaActiva = viajeIniciado.sector_ruta;
+      this.assignedServices.forEach((service) => {
+        if (service.sector_ruta === null) {
+          service.isButtonEnabled = true;
+        } else if (service.sector_ruta === rutaActiva) {
+          if (service.inicio_viaje !== null) {
+            service.isButtonEnabled = true;
+          } else {
+            service.isButtonEnabled = false;
+          }
+        } else {
+          service.isButtonEnabled = true;
+        }
+      });
+    } else {
+      this.assignedServices.forEach((service) => {
+        service.isButtonEnabled = false;
+        if (service.inicio_viaje !== null && service.fin_viaje !== null) {
+          service.isButtonEnabled = true;
+          return;
+        }
+      });
+    }
+  }
+
   tommorrowDate(): string {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -64,7 +97,6 @@ export class AssignPerDayComponent {
         this.assignedServices.forEach((service) => {
           if (service.estado_servicio === 'asignado') {
             this.idsServices.push(service.id_servicio);
-            console.log(this.idsServices);
           }
         });
         this.finalResponse = false;
@@ -92,7 +124,7 @@ export class AssignPerDayComponent {
   }
   refresh(handle: boolean) {
     if (handle) {
-      this.getAssignedServices();
+      this.ngOnInit();
     }
   }
   acceptRoute(handle: boolean) {

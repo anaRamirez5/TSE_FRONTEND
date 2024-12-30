@@ -46,6 +46,9 @@ button:hover {
   border: none;
   width: 24px;
   height: 24px;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 .download_historic {
   background-color: var(--COLOR-BLUE-DARK) !important;

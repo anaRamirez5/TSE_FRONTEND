@@ -46,12 +46,12 @@
         <td>{{ row.t_final }}</td>
         <td>{{ row.placa_movil }}</td>
         <td
-          [tooltip]="row.cod_producto"
+          [tooltip]="row.nom_producto"
           placement="top"
           container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.cod_producto.replaceAll(",", " ") }}
+          {{ row.nom_producto }}
         </td>
         <td
           [tooltip]="row.origen_servicio"
@@ -78,6 +78,16 @@
             containerClass="custom-tooltip"
             [ngClass]="{ 'd-none': row.requerimiento === '' }"
             src="../../../../../../assets/images/danger.svg"
+            style="width: 16px"
+            alt="danger"
+          />
+          <img
+            tooltip="Si puede ir en ruta"
+            placement="top"
+            container="body"
+            containerClass="custom-tooltip"
+            [ngClass]="{ 'd-none': row.ruta === null }"
+            src="../../../../../../assets/images/route.svg"
             style="width: 16px"
             alt="danger"
           />
@@ -116,7 +126,7 @@
           </button>
           <button
             class="rounded-circle edit_assign"
-            (click)="editDriverAssign()"
+            (click)="editDriverAssign(row.id_servicio)"
             tooltip="Editar asignación"
             placement="right"
             containerClass="custom-tooltip"
@@ -154,6 +164,7 @@
   *ngIf="handleModalEdit"
   (handleToastEdit)="editToastHandle($event)"
   (closeModal)="closeModalEdit($event)"
+  [id]="id"
 ></app-edit-assigned>
 <app-detail-services
   [data]="dataDetail"

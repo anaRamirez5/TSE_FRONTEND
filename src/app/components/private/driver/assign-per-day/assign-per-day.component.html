@@ -21,7 +21,7 @@
   <div class="mx-auto my-4">
     <p class="subtitle_data text-center">No tiene servicios asignados.</p>
   </div>
-  }@else{ @for (row of assignedServices; track row ) {
+  }@else{ @for (row of assignedServices; let i=$index;track row ) {
   <app-accordion-asign-driver
     [handleButtons]="handleRoute"
     [data]="row"

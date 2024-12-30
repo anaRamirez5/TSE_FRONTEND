@@ -19,4 +19,10 @@ export class CoordinatorService {
       payload
     );
   }
+  updateDriver(payload: any) {
+    return this.http.post<BodyResponse<string>>(
+      `${environment.API_PUBLIC}${EndPointRoute.UPDATE_ASIGN_SERVICES}`,
+      payload
+    );
+  }
 }
