@@ -17,7 +17,12 @@ export interface assignService {
   tipov_funcionario: string;
   nom_funcionario: string;
   tipdocu_funcionario: string;
+  ruta?: string;
+  sector_ruta: string;
+  inicio_viaje?: string;
+  fin_viaje?: string;
   total_records: number;
+  isButtonEnabled?: boolean;
 }
 
 export interface licensePlate {

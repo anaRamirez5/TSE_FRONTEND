@@ -29,8 +29,8 @@
   >
     <thead class="rounded-3">
       <tr>
-        <th scope="col " style="width: 5%">ID </th>
-        <th scope="col" style="width: 5%">Fecha </th>
+        <th scope="col " style="width: 5%">ID</th>
+        <th scope="col" style="width: 5%">Fecha</th>
         <th scope="col">Hora inicio</th>
         <th scope="col">Hora fin</th>
         <th scope="col">Producto</th>
@@ -51,11 +51,15 @@
         <td>
           {{ row.t_final || "--" }}
         </td>
-        <td [tooltip]="row.product_code"
-        placement="top"
-        container="body"
-        containerClass="custom-tooltip">{{ row.product_code.replaceAll(",", " ") }}</td>
-        <td>{{ row.license_plate_number	 || "--" }}</td>
+        <td
+          [tooltip]="row.product_name"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.product_name }}
+        </td>
+        <td>{{ row.license_plate_number || "--" }}</td>
         <td
           [tooltip]="row.adress_start"
           placement="top"

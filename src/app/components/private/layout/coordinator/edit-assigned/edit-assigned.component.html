@@ -9,7 +9,8 @@
       src="./../../../../assets/images/logo.png"
       alt="logo_tse"
     />
-    <div
+    <form
+      [formGroup]="updateForm"
       class="text-modal d-flex flex-column align-items-center mx-2 text-center"
     >
       Por favor, ingrese el número de la placa del vehículo al cual desea
@@ -19,11 +20,12 @@
           type="text"
           class="form-control input_filter"
           id="floatingInput"
+          formControlName="placa_movil"
           placeholder="name@example.com"
         />
         <label for="floatingInput">Numero de placa</label>
       </div>
-    </div>
+    </form>
     <div
       class="d-flex flex-row justify-content-center align-items-center"
       [ngClass]="{ 'mb-4': !error }"
@@ -31,6 +33,7 @@
       <button
         class="btn btn-info rounded-3 mx-2 col-5 col-md-5 col-sm-5 px-2"
         (click)="editDriver()"
+        [disabled]="updateForm.invalid"
       >
         Confirmar
       </button>

@@ -1,8 +1,19 @@
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
-    <h2 class="accordion-header" style="border-radius: 10px">
+    <h2
+      class="accordion-header"
+      [attr.data-enabled]="data().fin_viaje !== null"
+      [attr.data-enabled-inservice]="
+        data().inicio_viaje !== null && data().fin_viaje == null
+      "
+      style="border-radius: 10px"
+    >
       <button
         class="accordion-button"
+        [attr.data-enabled]="data().fin_viaje !== null"
+        [attr.data-enabled-inservice]="
+          data().inicio_viaje !== null && data().fin_viaje == null
+        "
         type="button"
         [ngClass]="{ collapsed: !isCollapsed }"
         data-bs-target="#collapseOne"
@@ -37,7 +48,7 @@
             <p>{{ data().destino_servicio || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
-            <p class="subtitle_data">Hora fin</p>
+            <p class="subtitle_data">Hora estimada de finalización</p>
             <p>
               {{ data().t_final || "--" }}
             </p>
@@ -45,6 +56,10 @@
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Ciudad</p>
             <p>{{ data().ciudad || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">¿Pertence a una ruta?</p>
+            <p>{{ data().ruta ? "Si " + data().sector_ruta : "No" }}</p>
           </li>
         </ul>
 
@@ -82,7 +97,9 @@
         <div class="d-flex flew-row justify-content-around align-items-center">
           <button
             class="btn btn-success rounded-5 mx-2 button_service"
-            (click)="acceptService(true)"
+            (click)="
+              tab() === 'add' ? acceptServiceOrpah(true) : acceptService(true)
+            "
           >
             <img
               style="width: 15px"
@@ -109,13 +126,20 @@
           <button
             class="btn btn-info button_service rounded-5 mx-2"
             (click)="startJourney()"
-            [disabled]="!handleEndJourney"
+            [disabled]="data().isButtonEnabled"
+            [tooltip]="
+              data().isButtonEnabled
+                ? ''
+                : 'Hasta no terminar el servicio o ruta iniciado no se podra iniciar otro'
+            "
+            placement="right"
+            containerClass="custom-tooltip"
           >
             Iniciar Viaje
           </button>
           <button
             class="btn button_service download_historic rounded-5 mx-2 text-light"
-            [disabled]="handleEndJourney"
+            [disabled]="handleEndJourney || data().fin_viaje"
             (click)="endJourney()"
           >
             Finalizar Viaje
