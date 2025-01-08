@@ -25,11 +25,6 @@ export interface assignService {
   isButtonEnabled?: boolean;
 }
 
-export interface licensePlate {
-  id_servicio: number;
-  license_plate_number: string;
-}
-
 export interface stadistic {
   servicios_rechazados: number;
   servicios_aceptados: number;
