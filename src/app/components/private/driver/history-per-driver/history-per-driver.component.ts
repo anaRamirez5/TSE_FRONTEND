@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryTable } from '../../../../models/admin/admin.interface';
-import { DriverService } from '../../../../services/driver/driver.service';
-import { BodyResponse } from '../../../../models/shared/body-response.interface';
+import { HistoryTable } from '../../../../core/models/admin/admin.interface';
+import { DriverService } from '../../../../core/services/driver/driver.service';
+import { BodyResponse } from '../../../../core/models/shared/body-response.interface';
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-import { SharedService } from '../../../../services/shared/shared.service';
-import { Filter } from '../../../../models/shared/shared.interface';
+import { SharedService } from '../../../../core/services/shared/shared.service';
+import { Filter } from '../../../../core/models/shared/shared.interface';
 
 @Component({
   selector: 'app-history-per-driver',
@@ -45,19 +45,19 @@ export class HistoryPerDriverComponent implements OnInit {
   getHistoryData(page: number, page_size: number) {
     if (this.filter && this.handle) {
       this.filterPayload = {
-        date: this.filter.date || '',
-        license_plate_number: this.filter.license_plate_number || '',
-        id_servicio: this.filter.id_servicio || '',
-        city: this.filter.city || '',
+        date: this.filter.date || null,
+        license_plate_number: this.filter.license_plate_number || null,
+        id_servicio: this.filter.id_servicio || null,
+        city: this.filter.city || null,
         page: page,
         page_size: page_size,
       };
     } else {
       this.filterPayload = {
-        date: '',
-        license_plate_number: '',
-        id_servicio: '',
-        city: '',
+        date: this.yesterday,
+        license_plate_number: null,
+        id_servicio: null,
+        city: null,
         page: page,
         page_size: page_size,
       };
@@ -92,7 +92,7 @@ export class HistoryPerDriverComponent implements OnInit {
       this.filter = event.value;
     }
     const formattedDate = this.sharedService.formatDate(this.filter.date || '');
-    this.filter.date = this.filter.date ? formattedDate : '';
+    this.filter.date = this.filter.date ? formattedDate : null;
     this.handle = true;
     this.pageIndex = 1;
 

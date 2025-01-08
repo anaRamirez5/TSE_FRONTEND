@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DriverComponent } from './driver.component';
 import { AssignPerDayComponent } from './assign-per-day/assign-per-day.component';
 import { HistoryPerDriverComponent } from './history-per-driver/history-per-driver.component';
-import { RoutesApp } from '../../../../enums/routes.enum';
+import { RoutesApp } from '../../../core/enums/routes.enum';
 import { ServicesAdditionalComponent } from './services-additional/services-additional.component';
 
 const routes: Routes = [

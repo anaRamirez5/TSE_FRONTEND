@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesApp } from '../../../../enums/routes.enum';
-import { SessionStorageItems } from '../../../../enums/session-storage';
+import { RoutesApp } from '../../../core/enums/routes.enum';
+import { SessionStorageItems } from '../../../core/enums/session-storage';
 
 @Component({
   selector: 'app-driver',

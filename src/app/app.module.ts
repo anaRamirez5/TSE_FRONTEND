@@ -6,10 +6,11 @@ import { LoginModule } from './components/public/login/login.module';
 import { LayoutModule } from './components/private/layout/layout.module';
 import { DriverModule } from './components/private/driver/driver.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { TSEInterceptor } from './services/interceptors/http-request-interceptor';
+import { TSEInterceptor } from './core/services/interceptors/http-request-interceptor';
 import { SharedModule } from './components/shared/shared.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { CommonModule } from '@angular/common';import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { CommonModule } from '@angular/common';import { BrowserAnimationsModule 
     DriverModule,
     SharedModule,
     TooltipModule.forRoot(),
-    AppRoutingModule,BrowserAnimationsModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [provideHttpClient(withInterceptors([TSEInterceptor]))],
   bootstrap: [AppComponent],

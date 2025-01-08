@@ -1,9 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EndPointRoute } from '../../../enums/routes.enum';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
+import { EndPointRoute } from '../../enums/routes.enum';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { City, Status } from '../../models/shared/shared.interface';
+import {
+  City,
+  Filter,
+  Inform,
+  Status,
+} from '../../models/shared/shared.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +49,13 @@ export class SharedService {
     };
     return this.http.post<BodyResponse<Status[]>>(
       `${environment.API_PUBLIC}${EndPointRoute.CATALOGS}`,
+      payload
+    );
+  }
+
+  getInform(payload: Filter) {
+    return this.http.post<BodyResponse<Inform>>(
+      `${environment.API_PUBLIC}${EndPointRoute.EXPORT_DATA}`,
       payload
     );
   }

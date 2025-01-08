@@ -1,6 +1,6 @@
 import { Component, input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesApp } from '../../../../enums/routes.enum';
+import { RoutesApp } from '../../../core/enums/routes.enum';
 
 @Component({
   selector: 'app-navbar',

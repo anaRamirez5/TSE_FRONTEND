@@ -44,39 +44,39 @@
     <tbody>
       <tr *ngFor="let row of historyTable">
         <td style="width: 5%">{{ row.id_servicio || "--" }}</td>
-        <td style="width: 5%">{{ row.date || "--" }}</td>
+        <td style="width: 5%">{{ row.f_inicio || "--" }}</td>
         <td>
-          {{ sharedService.convertTo12HourFormat(row.hour_start) || "--" }}
+          {{ sharedService.convertTo12HourFormat(row.t_inicio) || "--" }}
         </td>
         <td>
           {{ row.t_final || "--" }}
         </td>
         <td
-          [tooltip]="row.product_name"
+          [tooltip]="row.nom_producto"
           placement="top"
           container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.product_name }}
+          {{ row.nom_producto }}
         </td>
-        <td>{{ row.license_plate_number || "--" }}</td>
+        <td>{{ row.placa_movil || "--" }}</td>
         <td
-          [tooltip]="row.adress_start"
+          [tooltip]="row.origen_servicio"
           placement="top"
           container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.adress_start }}
+          {{ row.origen_servicio }}
         </td>
         <td
-          [tooltip]="row.adress_end"
+          [tooltip]="row.destino_servicio"
           placement="top"
           container="body"
           containerClass="custom-tooltip"
         >
-          {{ row.adress_end }}
+          {{ row.destino_servicio }}
         </td>
-        <td style="width: 10%">{{ row.city || "--" }}</td>
+        <td style="width: 10%">{{ row.ciudad || "--" }}</td>
         <td style="width: 5%">
           <button
             class="rounded-circle edit_assign"
