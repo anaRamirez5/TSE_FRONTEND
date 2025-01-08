@@ -1,7 +1,8 @@
 import { Component, input, Input, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CoordinatorService } from '../../../../../services/coordinator/coordinator.service';
-import { BodyResponse } from '../../../../../models/shared/body-response.interface';
+import { CoordinatorService } from '../../../../../core/services/coordinator/coordinator.service';
+import { BodyResponse } from '../../../../../core/models/shared/body-response.interface';
+import { startOrEnd } from '../../../../../core/models/driver/driver.interface';
 
 @Component({
   selector: 'app-edit-assigned',
@@ -28,7 +29,7 @@ export class EditAsignComponent {
     this.closeModal.emit(true);
   }
   editDriver() {
-    const payload = {
+    const payload: startOrEnd = {
       id_servicio: this.id(),
       placa_movil: this.updateForm.get('placa_movil')?.value,
     };

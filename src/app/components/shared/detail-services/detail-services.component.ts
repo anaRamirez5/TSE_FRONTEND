@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
-import { HistoryTable } from '../../../models/admin/admin.interface';
-import { assignService } from '../../../models/coordinator/coordinator.interface';
+import { HistoryTable } from '../../../core/models/admin/admin.interface';
+import { assignService } from '../../../core/models/coordinator/coordinator.interface';
 
 @Component({
   selector: 'app-detail-services',

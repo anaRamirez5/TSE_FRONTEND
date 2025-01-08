@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryTable } from '../../../../models/admin/admin.interface';
 import { FormGroup } from '@angular/forms';
-import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-import { BodyResponse } from '../../../../models/shared/body-response.interface';
-import { DriverService } from '../../../../services/driver/driver.service';
-import { SharedService } from '../../../../services/shared/shared.service';
-import { Filter } from '../../../../models/shared/shared.interface';
-import { assignService } from '../../../../models/coordinator/coordinator.interface';
-import { service } from '../../../../models/driver/driver.interface';
-import { SessionStorageItems } from '../../../../../enums/session-storage';
+import { BodyResponse } from '../../../../core/models/shared/body-response.interface';
+import { DriverService } from '../../../../core/services/driver/driver.service';
+import { SharedService } from '../../../../core/services/shared/shared.service';
+import { Filter } from '../../../../core/models/shared/shared.interface';
+import { assignService } from '../../../../core/models/coordinator/coordinator.interface';
+import { service } from '../../../../core/models/driver/driver.interface';
+import { SessionStorageItems } from '../../../../core/enums/session-storage';
 import { firstValueFrom } from 'rxjs';
 
 @Component({

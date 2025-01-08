@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
-import {
-  assignService,
-  orphanService,
-  service,
-} from '../../../../models/driver/driver.interface';
-import { BodyResponse } from '../../../../models/shared/body-response.interface';
-import { FormGroup } from '@angular/forms';
-import { SessionStorageItems } from '../../../../../enums/session-storage';
-import { Filter } from '../../../../models/shared/shared.interface';
-import { DriverService } from '../../../../services/driver/driver.service';
-import { SharedService } from '../../../../services/shared/shared.service';
+import { orphanService } from '../../../../core/models/driver/driver.interface';
+import { BodyResponse } from '../../../../core/models/shared/body-response.interface';
+import { SessionStorageItems } from '../../../../core/enums/session-storage';
+import { DriverService } from '../../../../core/services/driver/driver.service';
+import { SharedService } from '../../../../core/services/shared/shared.service';
 
 @Component({
   selector: 'app-services-additional',

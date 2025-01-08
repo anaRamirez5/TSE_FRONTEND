@@ -121,12 +121,14 @@
         alt=""
       />
     </button>
-    <!-- <button
+    <button
       class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
       [ngClass]="{
-        'd-none': role() === 'driver' || role() === 'programmer_assign'
+        'd-none': role() === 'driver'
       }"
-      tooltip="Descargar Historico"
+      tooltip="Descargar servicios
+      "
+      (click)="getInform(filterGroup.value)"
       placement="top"
       containerClass="custom-tooltip"
     >
@@ -135,6 +137,6 @@
         style="width: 25px; height: 25px"
         alt=""
       />
-    </button> -->
+    </button>
   </div>
 </form>

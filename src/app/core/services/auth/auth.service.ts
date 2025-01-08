@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ILogin } from '../../models/auth/auth.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { environment } from '../../../environments/environment';
-import { EndPointRoute } from '../../../enums/routes.enum';
-import { SessionStorageItems } from '../../../enums/session-storage';
+import { environment } from '../../../../environments/environment';
+import { EndPointRoute } from '../../enums/routes.enum';
+import { SessionStorageItems } from '../../enums/session-storage';
 
 @Injectable({
   providedIn: 'root',
