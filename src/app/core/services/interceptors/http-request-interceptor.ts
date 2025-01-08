@@ -7,7 +7,7 @@ import {
 
 import { catchError, throwError, map } from 'rxjs';
 import * as CryptoJS from 'crypto-js';
-import { SessionStorageItems } from '../../../enums/session-storage';
+import { SessionStorageItems } from '../../enums/session-storage';
 
 export const TSEInterceptor: HttpInterceptorFn = (req, next) => {
   const authToken = sessionStorage.getItem(SessionStorageItems.SESSION);

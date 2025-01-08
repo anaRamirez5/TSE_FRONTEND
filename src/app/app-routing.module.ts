@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoutesApp } from '../enums/routes.enum';
-import { authGuard } from './guards/auth-guard.guard';
+import { RoutesApp } from './core/enums/routes.enum';
 import { CommonModule } from '@angular/common';
+import { authGuard } from './core/guards/auth-guard.guard';
 
 const routes: Routes = [
   {

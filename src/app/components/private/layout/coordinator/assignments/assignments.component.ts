@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { HistoryTable } from '../../../../../models/admin/admin.interface';
-import { CoordinatorService } from '../../../../../services/coordinator/coordinator.service';
-import { Filter } from '../../../../../models/shared/shared.interface';
-import { BodyResponse } from '../../../../../models/shared/body-response.interface';
+import { CoordinatorService } from '../../../../../core/services/coordinator/coordinator.service';
+import { Filter } from '../../../../../core/models/shared/shared.interface';
+import { BodyResponse } from '../../../../../core/models/shared/body-response.interface';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
-import { assignService } from '../../../../../models/coordinator/coordinator.interface';
+import {
+  assignService,
+  stadistic,
+} from '../../../../../core/models/coordinator/coordinator.interface';
 import { FormGroup } from '@angular/forms';
-import { SharedService } from '../../../../../services/shared/shared.service';
+import { SharedService } from '../../../../../core/services/shared/shared.service';
 
 @Component({
   selector: 'app-assignments',
@@ -36,6 +38,7 @@ export class AssignmentsComponent implements OnInit {
   ngOnInit(): void {
     this.getAssignedService(1, 10);
     const today = new Date();
+
     const tommorow = new Date(today);
     tommorow.setDate(today.getDate() + 1);
     this.tommorow = tommorow.toISOString().split('T')[0];
@@ -53,7 +56,7 @@ export class AssignmentsComponent implements OnInit {
       };
     } else {
       this.filterPayload = {
-        date: null,
+        date: this.tommorow,
         license_plate_number: null,
         id_servicio: null,
         city: null,

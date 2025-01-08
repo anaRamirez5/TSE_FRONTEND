@@ -1,14 +1,13 @@
 import { Component, Input, input, OnInit, output } from '@angular/core';
-import { HistoryTable } from '../../../../../models/admin/admin.interface';
-import { SharedService } from '../../../../../services/shared/shared.service';
-import { assignService } from '../../../../../models/coordinator/coordinator.interface';
-import { DriverService } from '../../../../../services/driver/driver.service';
+import { assignService } from '../../../../../core/models/coordinator/coordinator.interface';
+import { DriverService } from '../../../../../core/services/driver/driver.service';
 import {
   service,
   startOrEnd,
-} from '../../../../../models/driver/driver.interface';
-import { BodyResponse } from '../../../../../models/shared/body-response.interface';
-import { SessionStorageItems } from '../../../../../../enums/session-storage';
+} from '../../../../../core/models/driver/driver.interface';
+import { BodyResponse } from '../../../../../core/models/shared/body-response.interface';
+import { SessionStorageItems } from '../../../../../core/enums/session-storage';
+import { SharedService } from '../../../../../core/services/shared/shared.service';
 
 @Component({
   selector: 'app-accordion-asign-driver',

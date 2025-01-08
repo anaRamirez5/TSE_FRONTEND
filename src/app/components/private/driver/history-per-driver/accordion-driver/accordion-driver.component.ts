@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { HistoryTable } from '../../../../../models/admin/admin.interface';
-import { SharedService } from '../../../../../services/shared/shared.service';
+import { HistoryTable } from '../../../../../core/models/admin/admin.interface';
+import { SharedService } from '../../../../../core/services/shared/shared.service';
 
 @Component({
   selector: 'app-accordion-driver',

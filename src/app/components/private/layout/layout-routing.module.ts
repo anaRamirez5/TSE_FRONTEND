@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { CoordinatorComponent } from './coordinator/coordinator.component';
 import { AdminComponent } from './admin/admin.component';
-import { RoutesApp } from '../../../../enums/routes.enum';
+import { RoutesApp } from '../../../core/enums/routes.enum';
 import { AssignmentsComponent } from './coordinator/assignments/assignments.component';
 
 const routes: Routes = [

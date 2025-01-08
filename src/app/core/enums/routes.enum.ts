@@ -21,4 +21,6 @@ export enum EndPointRoute {
   CATALOGS = 'catalogs',
   ORPHAN_SERVICES = 'orphan/services',
   CONFIRM_SERVICES_ORPHAN = 'driver/confirm/service/orphan',
+  STADISTIC = 'statistics',
+  EXPORT_DATA = 'get/inform',
 }

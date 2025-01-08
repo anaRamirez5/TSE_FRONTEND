@@ -1,4 +1,4 @@
-export interface assignService {
+export interface HistoryTable {
   id_servicio: number;
   f_inicio: string;
   f_final: string;
@@ -11,21 +11,14 @@ export interface assignService {
   destino_servicio: string;
   ciudad: string;
   name_conductor: string;
-  ape_conductor: string;
-  estado_servicio: string;
-  requerimiento: string;
   tipov_funcionario: string;
   nom_funcionario: string;
   tipdocu_funcionario: string;
-  ruta?: string;
-  sector_ruta: string;
-  inicio_viaje?: string;
-  fin_viaje?: string;
+  ape_conductor: string;
+  type_car: string;
+  name_applicant: string;
+  type_document: string;
+  estado_servicio: string;
+  requerimiento: string;
   total_records: number;
-  isButtonEnabled?: boolean;
-}
-
-export interface licensePlate {
-  id_servicio: number;
-  license_plate_number: string;
 }

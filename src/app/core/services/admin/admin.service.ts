@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HistoryTable } from '../../models/admin/admin.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { environment } from '../../../environments/environment';
-import { EndPointRoute } from '../../../enums/routes.enum';
+import { environment } from '../../../../environments/environment';
+import { EndPointRoute } from '../../enums/routes.enum';
 import { Filter } from '../../models/shared/shared.interface';
 
 @Injectable({

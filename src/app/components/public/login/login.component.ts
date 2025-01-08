@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
 import {
   ILogin,
   ISession,
   roleRoute,
-} from '../../../models/auth/auth.interface';
-import { BodyResponse } from '../../../models/shared/body-response.interface';
-import { SessionStorageItems } from '../../../../enums/session-storage';
+} from '../../../core/models/auth/auth.interface';
+import { BodyResponse } from '../../../core/models/shared/body-response.interface';
+import { SessionStorageItems } from '../../../core/enums/session-storage';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
-import { RoutesApp } from '../../../../enums/routes.enum';
+import { RoutesApp } from '../../../core/enums/routes.enum';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
