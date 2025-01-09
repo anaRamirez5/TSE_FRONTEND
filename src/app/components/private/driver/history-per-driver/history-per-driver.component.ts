@@ -5,7 +5,7 @@ import { BodyResponse } from '../../../../core/models/shared/body-response.inter
 import { FormGroup } from '@angular/forms';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { SharedService } from '../../../../core/services/shared/shared.service';
-import { Filter } from '../../../../core/models/shared/shared.interface';
+import { FilterDriver } from '../../../../core/models/shared/shared.interface';
 
 @Component({
   selector: 'app-history-per-driver',
@@ -14,7 +14,7 @@ import { Filter } from '../../../../core/models/shared/shared.interface';
 })
 export class HistoryPerDriverComponent implements OnInit {
   historyTable: HistoryTable[] = [];
-  filter!: Filter;
+  filter!: FilterDriver;
   totalItems: number = 0;
   handle = false;
   finalResponse: boolean = true;
@@ -41,23 +41,17 @@ export class HistoryPerDriverComponent implements OnInit {
     this.yesterday = yesterday.toISOString().split('T')[0];
     this.getHistoryData(1, 10);
   }
-  filterPayload!: Filter;
+  filterPayload!: FilterDriver;
   getHistoryData(page: number, page_size: number) {
     if (this.filter && this.handle) {
       this.filterPayload = {
         date: this.filter.date || null,
-        license_plate_number: this.filter.license_plate_number || null,
-        id_servicio: this.filter.id_servicio || null,
-        city: this.filter.city || null,
         page: page,
         page_size: page_size,
       };
     } else {
       this.filterPayload = {
         date: this.yesterday,
-        license_plate_number: null,
-        id_servicio: null,
-        city: null,
         page: page,
         page_size: page_size,
       };
