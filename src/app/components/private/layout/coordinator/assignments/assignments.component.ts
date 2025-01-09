@@ -29,19 +29,18 @@ export class AssignmentsComponent implements OnInit {
   id: number = 0;
   handle = false;
   filterPayload!: Filter;
-  tommorow: string = 's';
+  tommorow: string = '';
   datalist: assignService[] = [];
   constructor(
     private programmerService: CoordinatorService,
     public sharedService: SharedService
   ) {}
   ngOnInit(): void {
-    this.getAssignedService(1, 10);
     const today = new Date();
-
     const tommorow = new Date(today);
     tommorow.setDate(today.getDate() + 1);
     this.tommorow = tommorow.toISOString().split('T')[0];
+    this.getAssignedService(1, 10);
   }
   getAssignedService(page: number, page_size: number) {
     if (this.filter && this.handle) {

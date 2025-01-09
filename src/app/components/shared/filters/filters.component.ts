@@ -22,12 +22,22 @@ export class FiltersComponent implements OnInit {
   filterGroup!: FormGroup;
   citys: City[] = [];
   status: Status[] = [];
+  tommorow: string = '';
+  handleToast: boolean = false;
+  yesterday: string = '';
   bsConfig = {
     containerClass: 'theme-blue', // Tema predefinido
     dateInputFormat: 'YYYY-MM-DD',
     locale: 'es', // Formato deseado
   };
   ngOnInit() {
+    const today = new Date();
+    const tommorow = new Date(today);
+    const yesterday = new Date(today);
+    tommorow.setDate(today.getDate() + 1);
+    yesterday.setDate(today.getDate() - 1);
+    this.tommorow = tommorow.toISOString().split('T')[0];
+    this.yesterday = yesterday.toISOString().split('T')[0];
     this.getCity();
     this.getStatus();
   }
@@ -48,32 +58,39 @@ export class FiltersComponent implements OnInit {
     this.clean.emit(true);
   }
   getInform(payload: Filter) {
+    this.handleToast = false;
+    const date =
+      this.filterGroup.get('date')?.value !== null
+        ? this.filterGroup.get('date')?.value.toISOString().split('T')[0]
+        : this.role() === 'admin' || 'driver-history'
+        ? this.yesterday
+        : this.tommorow;
     const payloadInform: Filter = {
-      service_date: this.filterGroup
-        .get('date')
-        ?.value.toISOString()
-        .split('T')[0],
+      service_date: date,
       id_servicio: payload.id_servicio,
       license_plate_number: payload.license_plate_number,
       city: payload.city,
     };
     this.sharedService.getInform(payloadInform).subscribe({
       next: (response: BodyResponse<Inform>) => {
-        console.log(response.data);
-        const byteCharacters = atob(response.data.base64);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        if (response.code === 200) {
+          const byteCharacters = atob(response.data.base64);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = response.data.file_name;
+          link.click();
+          URL.revokeObjectURL(link.href);
+        } else {
+          this.handleToast = true;
         }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], {
-          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = response.data.file_name;
-        link.click();
-        URL.revokeObjectURL(link.href);
       },
       error: () => {},
       complete: () => {},

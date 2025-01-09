@@ -49,7 +49,7 @@
           {{ sharedService.convertTo12HourFormat(row.t_inicio) || "--" }}
         </td>
         <td>
-          {{ row.t_final || "--" }}
+          {{ sharedService.convertTo12HourFormat(row.t_final) || "--" }}
         </td>
         <td
           [tooltip]="row.nom_producto"
@@ -61,7 +61,7 @@
         </td>
         <td>{{ row.placa_movil || "--" }}</td>
         <td
-          [tooltip]="row.origen_servicio"
+          [tooltip]="row.origen_servicio.length > 25 ? row.origen_servicio : ''"
           placement="top"
           container="body"
           containerClass="custom-tooltip"
@@ -69,7 +69,9 @@
           {{ row.origen_servicio }}
         </td>
         <td
-          [tooltip]="row.destino_servicio"
+          [tooltip]="
+            row.destino_servicio.length > 25 ? row.destino_servicio : ''
+          "
           placement="top"
           container="body"
           containerClass="custom-tooltip"
@@ -82,6 +84,7 @@
             class="rounded-circle edit_assign"
             tooltip="Detalles del servicio"
             placement="top"
+            container="body"
             (click)="openDialogDetail(row)"
             containerClass="custom-tooltip"
           >

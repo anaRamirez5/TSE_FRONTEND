@@ -4,7 +4,7 @@ import { EndPointRoute } from '../../enums/routes.enum';
 import { environment } from '../../../../environments/environment';
 import { HistoryTable } from '../../models/admin/admin.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { Filter } from '../../models/shared/shared.interface';
+import { Filter, FilterDriver } from '../../models/shared/shared.interface';
 import { assignService } from '../../models/coordinator/coordinator.interface';
 import {
   orphanService,
@@ -18,16 +18,16 @@ import {
 export class DriverService {
   constructor(private http: HttpClient) {}
 
-  getHistoryTable(payload: Filter) {
+  getHistoryTable(payload: FilterDriver) {
     return this.http.post<BodyResponse<HistoryTable[]>>(
       `${environment.API_PUBLIC}${EndPointRoute.HISORY_TABLE_DRIVER}`,
       payload
     );
   }
-  getAssignedServices() {
+  getAssignedServices(paylaod: FilterDriver) {
     return this.http.post<BodyResponse<assignService[]>>(
       `${environment.API_PUBLIC}${EndPointRoute.ASSIGN_SERVICES_DRIVER}`,
-      null
+      paylaod
     );
   }
   getOrphanServices() {

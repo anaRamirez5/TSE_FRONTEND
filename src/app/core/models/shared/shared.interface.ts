@@ -1,8 +1,13 @@
+export interface FilterDriver {
+  date?: string | null;
+  page?: number;
+  page_size?: number;
+}
 export interface Filter {
   date?: string | null;
   service_date?: string | null;
   license_plate_number: string | null;
-  id_servicio: string | null;
+  id_servicio: number | null;
   city: string | null;
   status?: number | null;
   page?: number;

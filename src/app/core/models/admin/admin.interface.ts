@@ -21,4 +21,6 @@ export interface HistoryTable {
   estado_servicio: string;
   requerimiento: string;
   total_records: number;
+  ruta: string;
+  sector_ruta: string;
 }
