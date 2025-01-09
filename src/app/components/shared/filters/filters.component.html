@@ -5,9 +5,9 @@
 >
   <div
     class="form-floating my-3"
-    [ngStyle]="{ 'width: 12.333%': role() !== 'driver' }"
+    [ngStyle]="{ 'width: 12.333%': !role().includes('driver') }"
     [ngClass]="{
-      'col-6 col-sm-6 col-md-6': role() === 'driver'
+      'col-6 col-sm-6 col-md-6': role().includes('driver')
     }"
   >
     <input
@@ -25,7 +25,7 @@
   <div
     class="form-floating my-3"
     style="width: 12.333%"
-    [ngClass]="{ 'd-none': role() === 'driver' }"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
   >
     <input
       type="text"
@@ -39,7 +39,7 @@
   <div
     class="form-floating my-3"
     style="width: 12.333%"
-    [ngClass]="{ 'd-none': role() === 'driver' }"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
   >
     <input
       type="text"
@@ -53,7 +53,7 @@
   <div
     style="width: 14.333%"
     class="form-floating my-3"
-    [ngClass]="{ 'd-none': role() === 'driver' }"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
   >
     <select
       class="form-select input_filter"
@@ -74,7 +74,7 @@
   <div
     style="width: 12.333%"
     class="form-floating my-3"
-    [ngClass]="{ 'd-none': role() === 'driver' || role() === 'admin' }"
+    [ngClass]="{ 'd-none': role().includes('driver') || role() === 'admin' }"
   >
     <select
       class="form-select input_filter"
@@ -94,7 +94,7 @@
     class="my-3 col-md-2 col-lg-2 col-xl-2 d-flex flew-row justify-content-evenly"
   >
     <button
-      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role().includes('driver') }"
       class="btn btn-info rounded-3 mx-2 col-md-3 col-lg-2"
       tooltip="Buscar"
       placement="top"
@@ -108,7 +108,7 @@
       />
     </button>
     <button
-      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role() === 'driver' }"
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role().includes('driver') }"
       class="btn btn-danger rounded-3 mx-2 col-md-3 col-lg-2"
       tooltip="Limpiar Filtro"
       placement="top"
@@ -124,7 +124,7 @@
     <button
       class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
       [ngClass]="{
-        'd-none': role() === 'driver'
+        'd-none': role().includes('driver')
       }"
       tooltip="Descargar servicios
       "
@@ -140,3 +140,4 @@
     </button>
   </div>
 </form>
+<app-toast *ngIf="handleToast" [result]="false"></app-toast>

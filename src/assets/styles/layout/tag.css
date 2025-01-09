@@ -25,6 +25,12 @@
   &.unassigned {
     background-color: var(--COLOR-BLUE-DARK);
   }
+  &.start {
+    background-color: var(--COLOR-JOURNEY_START);
+  }
+  &.end {
+    background-color: var(--COLOR-JOURNEY_END);
+  }
 }
 .indicator {
   color: var(--COLOR-WHITE);

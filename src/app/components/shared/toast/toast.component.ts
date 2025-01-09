@@ -5,4 +5,6 @@ import { Component, input } from '@angular/core';
   templateUrl: './toast.component.html',
   styleUrl: './toast.component.css',
 })
-export class ToastComponent {}
+export class ToastComponent {
+  result = input.required<boolean>();
+}

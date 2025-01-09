@@ -42,7 +42,7 @@
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Hora fin</p>
             <p>
-              {{ data().t_final || "--" }}
+              {{ sharedService.convertTo12HourFormat(data().t_final) || "--" }}
             </p>
           </li>
           <li class="col-12 col-md-6">
@@ -60,11 +60,11 @@
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Nombre del solicitante</p>
-            <p>{{ data().name_applicant || "--" }}</p>
+            <p>{{ data().nom_funcionario || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Tipo de documento</p>
-            <p>{{ data().type_document || "--" }}</p>
+            <p>{{ data().tipdocu_funcionario || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Requerimientos</p>
@@ -77,6 +77,19 @@
           <li class="col-12 col-md-6">
             <p class="subtitle_data mb-0">Codigo de producto</p>
             <p>{{ data().cod_producto.replaceAll(",", " ") || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">¿Pertence a una ruta?</p>
+            <p>
+              {{
+                data().ruta
+                  ? "Si " +
+                    (data().sector_ruta
+                      ? data().sector_ruta
+                      : ",pero no ha sido asignado")
+                  : "No"
+              }}
+            </p>
           </li>
         </ul>
       </div>
