@@ -38,6 +38,7 @@ export class FiltersComponent implements OnInit {
     yesterday.setDate(today.getDate() - 1);
     this.tommorow = tommorow.toISOString().split('T')[0];
     this.yesterday = yesterday.toISOString().split('T')[0];
+    console.log(this.yesterday);
     this.getCity();
     this.getStatus();
   }
@@ -59,12 +60,26 @@ export class FiltersComponent implements OnInit {
   }
   getInform(payload: Filter) {
     this.handleToast = false;
-    const date =
-      this.filterGroup.get('date')?.value !== null
-        ? this.filterGroup.get('date')?.value.toISOString().split('T')[0]
-        : this.role() === 'admin' || 'driver-history'
-        ? this.yesterday
-        : this.tommorow;
+    let date = '';
+    console.log(payload);
+    if (this.filterGroup.get('date')?.value !== null) {
+      date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
+    } else {
+      console.log('no hya nada en el filtro');
+      console.log(this.yesterday, this.tommorow);
+      if (
+        this.role() === 'programmer_assign' ||
+        this.role() === 'driver-assign'
+      ) {
+        date = this.tommorow;
+        console.log('es assign');
+      } else if (this.role() === 'admin' || this.role() === 'driver-history') {
+        date = this.yesterday;
+        console.log('es historial');
+      }
+    }
+
+    console.log(date, this.role());
     const payloadInform: Filter = {
       service_date: date,
       id_servicio: payload.id_servicio,
