@@ -7,4 +7,5 @@ export const environment = {
   context: 'prod',
   version: packageJson.version,
   minutesInactive: 15,
+  minutesToRefresh: 10,
 };

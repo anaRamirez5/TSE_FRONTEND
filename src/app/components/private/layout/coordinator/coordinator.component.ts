@@ -18,7 +18,7 @@ export class CoordinatorComponent implements OnInit {
   }
   getStadistic(today: string) {
     const payload: stadisticget = {
-      indicator_date: '2024-12-31',
+      indicator_date: today,
     };
     this.programmerService.getStadictic(payload).subscribe({
       next: (response: BodyResponse<stadistic>) => {
