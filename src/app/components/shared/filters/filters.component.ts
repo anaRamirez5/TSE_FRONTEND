@@ -61,21 +61,16 @@ export class FiltersComponent implements OnInit {
   getInform(payload: Filter) {
     this.handleToast = false;
     let date = '';
-    console.log(payload);
     if (this.filterGroup.get('date')?.value !== null) {
       date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
     } else {
-      console.log('no hya nada en el filtro');
-      console.log(this.yesterday, this.tommorow);
       if (
         this.role() === 'programmer_assign' ||
         this.role() === 'driver-assign'
       ) {
         date = this.tommorow;
-        console.log('es assign');
       } else if (this.role() === 'admin' || this.role() === 'driver-history') {
         date = this.yesterday;
-        console.log('es historial');
       }
     }
 
