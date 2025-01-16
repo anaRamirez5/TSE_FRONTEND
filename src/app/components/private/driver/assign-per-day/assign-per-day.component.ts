@@ -52,7 +52,7 @@ export class AssignPerDayComponent implements OnInit {
       (service) => service.inicio_viaje && !service.fin_viaje
     );
     if (activeTrip) {
-      const activeRoute = activeTrip.sector_ruta;
+      const activeRoute = activeTrip.ruta || '';
       this.assignedServices.forEach((service) => {
         service.isButtonEnabled = this.shouldEnableButton(service, activeRoute);
       });
@@ -66,9 +66,9 @@ export class AssignPerDayComponent implements OnInit {
     service: assignService,
     activeSector: string | null
   ): boolean {
-    if (service.sector_ruta === null) {
+    if (service.ruta === 'no') {
       return true;
-    } else if (service.sector_ruta === activeSector) {
+    } else if (service.ruta === activeSector) {
       if (service.inicio_viaje !== null) {
         return true;
       } else {

@@ -10,6 +10,7 @@ export enum RoutesApp {
 }
 export enum EndPointRoute {
   LOGIN = 'login',
+  REFRESH_TOKEN = 'refresh/token',
   HISORY_TABLE_ADMIN = 'admin/historic',
   HISORY_TABLE_DRIVER = 'driver/historic',
   ASSIGN_SERVICES_PROGRAMMER = 'assigned/services',

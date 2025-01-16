@@ -4,7 +4,11 @@ import { EndPointRoute } from '../../enums/routes.enum';
 import { environment } from '../../../../environments/environment';
 import { HistoryTable } from '../../models/admin/admin.interface';
 import { BodyResponse } from '../../models/shared/body-response.interface';
-import { Filter, FilterDriver } from '../../models/shared/shared.interface';
+import {
+  Filter,
+  FilterDriver,
+  FilterOrphan,
+} from '../../models/shared/shared.interface';
 import { assignService } from '../../models/coordinator/coordinator.interface';
 import {
   orphanService,
@@ -30,10 +34,10 @@ export class DriverService {
       paylaod
     );
   }
-  getOrphanServices() {
+  getOrphanServices(payload: FilterOrphan) {
     return this.http.post<BodyResponse<orphanService[]>>(
       `${environment.API_PUBLIC}${EndPointRoute.ORPHAN_SERVICES}`,
-      null
+      payload
     );
   }
   confirmedServiceOrphan(payload: startOrEnd) {

@@ -38,7 +38,6 @@ export class FiltersComponent implements OnInit {
     yesterday.setDate(today.getDate() - 1);
     this.tommorow = tommorow.toISOString().split('T')[0];
     this.yesterday = yesterday.toISOString().split('T')[0];
-    console.log(this.yesterday);
     this.getCity();
     this.getStatus();
   }
@@ -74,7 +73,6 @@ export class FiltersComponent implements OnInit {
       }
     }
 
-    console.log(date, this.role());
     const payloadInform: Filter = {
       service_date: date,
       id_servicio: payload.id_servicio,
