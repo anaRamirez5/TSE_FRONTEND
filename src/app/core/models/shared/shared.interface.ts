@@ -13,6 +13,9 @@ export interface Filter {
   page?: number;
   page_size?: number;
 }
+export interface FilterOrphan {
+  service_date: string | null;
+}
 export interface City {
   municipality_id: number;
   municipality_name: string;

@@ -1,15 +1,9 @@
-import {
-  HttpErrorResponse,
-  HttpInterceptorFn,
-  HttpEvent,
-  HttpResponse,
-} from '@angular/common/http';
-
-import { catchError, throwError, map } from 'rxjs';
-import * as CryptoJS from 'crypto-js';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 import { SessionStorageItems } from '../../enums/session-storage';
 
 export const TSEInterceptor: HttpInterceptorFn = (req, next) => {
+  // Obtén el token de sesión
   const authToken = sessionStorage.getItem(SessionStorageItems.SESSION);
   const authReq = req.clone({
     setHeaders: {
