@@ -35,7 +35,11 @@ export class ServicesAdditionalComponent {
   }
   getAssignedServices() {
     this.finalResponse = true;
-    this.driverService.getOrphanServices().subscribe({
+    const payload = {
+      service_date: new Date().toISOString().split('T')[0],
+    };
+    console.log(payload);
+    this.driverService.getOrphanServices(payload).subscribe({
       next: (response: BodyResponse<orphanService[]>) => {
         if (response.code === 200) {
           this.assignedServices = response.data;
