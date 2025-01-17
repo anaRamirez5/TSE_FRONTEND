@@ -6,6 +6,9 @@ import {
   tap,
   debounceTime,
   interval,
+  switchMap,
+  timer,
+  BehaviorSubject,
 } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 
@@ -19,16 +22,21 @@ export class UserActivityServiceService implements OnDestroy {
     fromEvent(window, 'click')
   );
   private subscription: Subscription | null = null;
-  private refreshInterval = 5 * 60 * 1000; // Intervalo de verificación de actividad (1 minuto)
-
+  private refreshInterval = 3 * 60 * 1000; // Intervalo de verificación de actividad (1 minuto)
+  private hasActivity: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  ); //
   constructor(private authService: AuthService) {}
 
   startMonitoring() {
-    this.subscription = this.activityEvents$
-      .pipe(
-        tap(() => this.handleActivity()),
-        debounceTime(100)
-      )
+    // Monitorizamos actividad y reiniciamos la señal de actividad cada vez que haya interacción
+    this.activityEvents$.subscribe(() => {
+      this.hasActivity.next(true); // Marca que hubo actividad
+    });
+
+    // Cada 5 minutos revisamos si hubo actividad en ese tiempo
+    this.subscription = timer(0, this.refreshInterval) // Inicia inmediatamente y luego cada 5 minutos
+      .pipe(tap(() => this.handleActivity()))
       .subscribe();
 
     // Verificación periódica para determinar si el token sigue válido
