@@ -78,6 +78,7 @@ export class FiltersComponent implements OnInit {
       id_servicio: payload.id_servicio,
       license_plate_number: payload.license_plate_number,
       city: payload.city,
+      status: payload.status,
     };
     this.sharedService.getInform(payloadInform).subscribe({
       next: (response: BodyResponse<Inform>) => {
