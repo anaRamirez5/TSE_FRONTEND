@@ -8,8 +8,24 @@
 }
 .bg-layout {
   background: transparent
-    linear-gradient(138deg, var(--COLOR-WHITE) 0%, var(--COLOR-BLUE) 200%) 0% 0%
-    no-repeat padding-box;
+    linear-gradient(138deg, var(--COLOR-WHITE) 30%, var(--COLOR-BLUE) 200%) 0%
+    0% no-repeat padding-box;
   opacity: 1;
   mix-blend-mode: normal;
+}
+.bg-blue {
+  &[data-enable="false"] {
+    background-color: var(--COLOR-BLUE);
+  }
+  &[data-enable="true"] {
+    background-color: var(--COLOR-RED);
+  }
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.all {
+  --bs-gutter-x: 0 !important;
+  max-height: 100vh;
+  overflow-y: scroll;
 }

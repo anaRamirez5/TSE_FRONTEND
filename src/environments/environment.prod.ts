@@ -1,10 +1,11 @@
 const packageJson = require('../../package.json');
 
-const HOST = 'https://zbfra3ts88.execute-api.us-east-1.amazonaws.com/develop/';
+const HOST = 'https://app.tseprogramacion.com';
 export const environment = {
   API_PUBLIC: HOST + '/',
   production: true,
   context: 'prod',
   version: packageJson.version,
-  minutesInactive: 15,
+  minutesInactive: 20,
+  minutesToRefresh: 10,
 };

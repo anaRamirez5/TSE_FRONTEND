@@ -1,0 +1,22 @@
+<div class="modal">
+  <div class="modal-content" style="height: 300px">
+    <div
+      class="bg-white h-50 d-flex header-modals"
+      [attr.data-enable]="response() !== 200"
+    >
+      <p class="m-auto">{{ response() !== 200 ? "Error" : "Correcto" }}</p>
+    </div>
+    <div class="container-logo" [attr.data-enable]="response() !== 200">
+      <img class="logo-modal" [src]="url" />
+    </div>
+
+    <div
+      class="bg-blue h-50 mh-100 d-flex content-modal"
+      [attr.data-enable]="response() !== 200"
+    >
+      <p class="m-auto">
+        {{ content() }}
+      </p>
+    </div>
+  </div>
+</div>

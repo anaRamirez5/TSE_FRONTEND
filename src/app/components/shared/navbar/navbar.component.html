@@ -1,0 +1,52 @@
+<ul
+  class="nav nav-underline m-3"
+  [ngClass]="{ 'justify-content-around': component() === 'driver' }"
+>
+  <li class="nav-item">
+    <a
+      class="nav-link nav-color"
+      (click)="isActive('assignments')"
+      [ngClass]="{ active: assignmentsActive }"
+    >
+      <img
+        src="../../../../assets/images/assign.svg"
+        style="width: 20px"
+        class="mx-2"
+        [ngClass]="{ 'd-none': component() === 'driver' }"
+        alt=""
+      />
+      Asignaciones</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link nav-color"
+      (click)="isActive('history')"
+      [ngClass]="{ active: historyActive }"
+    >
+      <img
+        src="../../../../assets/images/history.svg"
+        style="width: 20px"
+        class="mx-2"
+        class="mx-2"
+        [ngClass]="{ 'd-none': component() === 'driver' }"
+        alt=""
+      />Historial</a
+    >
+  </li>
+  <li class="nav-item" [ngClass]="{ 'd-none': component() === 'coordinator' }">
+    <a
+      class="nav-link nav-color"
+      (click)="isActive('services_add')"
+      [ngClass]="{ active: servicesAddActive }"
+    >
+      <img
+        src="../../../../assets/images/history.svg"
+        style="width: 20px"
+        class="mx-2"
+        [ngClass]="{ 'd-none': component() === 'driver' }"
+        alt=""
+      />Servicios Adicionales</a
+    >
+  </li>
+</ul>

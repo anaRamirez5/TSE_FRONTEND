@@ -1,0 +1,10 @@
+@import "../constants/colors.css";
+
+.custom-tooltip {
+  background-color: var(--COLOR-BLUE-DARK);
+  color: var(--bs-white);
+  border-radius: 10px;
+  padding: 5px;
+  --bs-tooltip-bg: var(--COLOR-BLUE-DARK);
+  --bs-tooltip-color: var(--bs-white);
+}

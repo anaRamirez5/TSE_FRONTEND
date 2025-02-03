@@ -2,8 +2,7 @@
   class="bg-image container-fluid h-100 d-flex flex-column justify-content-around align-items-center pt-4"
 >
   <img
-    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo"
-    style="background-color: transparent"
+    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 logo bg-transparent"
     src="./../../../../assets/images/logo.png"
     alt="logo_tse"
   />
@@ -11,22 +10,42 @@
     [formGroup]="loginForm"
     class="mx-auto d-flex flex-column justify-content-center col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4"
   >
-    <mat-form-field>
-      <mat-label>Usuario</mat-label>
-      <input matInput type="text" /> </mat-form-field
-    ><mat-form-field>
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        formControlName="username"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+      />
+      <label for="floatingInput">Usuario</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
   </form>
   <button
-    mat-flat-button
-    class="col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2"
+    type="button"
+    class="btn btn-info col-8 col-sm-4 col-md-4 col-lg-4 col-xl-2 rounded-pill"
     [disabled]="loginForm.invalid"
+    (click)="login(loginForm.value)"
   >
     Ingresar
   </button>
   <a target="_blank" href="https://www.tsetransporte.com/TSE2022/inicio.php">
-    <button class="redirect" mat-button>Gestión de transporte</button>
+    <button class="redirect btn">Gestión de transporte</button>
   </a>
 </div>
+
+<app-modal-informative
+  *ngIf="openDialog"
+  [response]="response"
+  [content]="content"
+></app-modal-informative>

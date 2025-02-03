@@ -1,38 +1,43 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/public/login/login.component';
-import { RoutesApp } from '../enums/routes.enum';
-import { AdminComponent } from './components/private/layout/admin/admin.component';
-import { LayoutComponent } from './components/private/layout/layout.component';
-import { CoordinatorComponent } from './components/private/layout/coordinator/coordinator.component';
-import { DriverComponent } from './components/private/driver/driver.component';
+import { RoutesApp } from './core/enums/routes.enum';
+import { CommonModule } from '@angular/common';
+import { authGuard } from './core/guards/auth-guard.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LoginComponent,
-    children: [
-      //Login
-      { path: RoutesApp.LOGIN, component: LoginComponent },
-    ],
+    path: RoutesApp.LOGIN,
+    loadChildren: () =>
+      import('./components/public/login/login.module').then(
+        (m) => m.LoginModule
+      ),
   },
   {
     path: RoutesApp.LAYOUT,
-    component: LayoutComponent,
-    children: [
-      //Admin
-      { path: RoutesApp.ADMIN, component: AdminComponent },
-      //Coordinator
-      { path: RoutesApp.COORDINATOR, component: CoordinatorComponent },
-    ],
+    loadChildren: () =>
+      import('./components/private/layout/layout.module').then(
+        (m) => m.LayoutModule
+      ),
+    canActivate: [authGuard],
   },
+
   {
     path: RoutesApp.DRIVER,
-    component: DriverComponent,
+    loadChildren: () =>
+      import('./components/private/driver/driver.module').then(
+        (m) => m.DriverModule
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: '',
+    redirectTo: RoutesApp.LOGIN,
+    pathMatch: 'full',
   },
 ];
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

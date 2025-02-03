@@ -1,0 +1,158 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2
+      class="accordion-header"
+      [attr.data-enabled]="data().fin_viaje !== null"
+      [attr.data-enabled-inservice]="
+        data().inicio_viaje !== null && data().fin_viaje == null
+      "
+      style="border-radius: 10px"
+    >
+      <button
+        class="accordion-button"
+        [attr.data-enabled]="data().fin_viaje !== null"
+        [attr.data-enabled-inservice]="
+          data().inicio_viaje !== null && data().fin_viaje == null
+        "
+        type="button"
+        [ngClass]="{ collapsed: !isCollapsed }"
+        data-bs-target="#collapseOne"
+        [attr.aria-expanded]="isCollapsed"
+        (click)="toggleCollapse()"
+        aria-controls="collapseOne"
+      >
+        Asignación N°: {{ data().id_servicio }}
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse"
+      [ngClass]="{ show: isCollapsed }"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <span class="subtitle_assign">Datos del servicio</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Fecha</p>
+            <p>{{ data().f_inicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirección de Origen</p>
+            <p>{{ data().origen_servicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora de inicio</p>
+            <p>
+              {{ sharedService.convertTo12HourFormat(data().t_inicio) || "--" }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirreción de destino</p>
+            <p>{{ data().destino_servicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora estimada de finalización</p>
+            <p>
+              {{ sharedService.convertTo12HourFormat(data().t_final) || "--" }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().ciudad || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">¿Pertence a una ruta?</p>
+            <p>
+              {{ data().ruta }}
+            </p>
+          </li>
+        </ul>
+
+        <span class="subtitle_assign">Datos del protegido</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Nombre</p>
+            <p>{{ data().nom_funcionario || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Tipo de documento</p>
+            <p>{{ data().tipdocu_funcionario || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Requerimientos</p>
+            <p>{{ data().requerimiento || "No aplica" }}</p>
+          </li>
+        </ul>
+        <span class="subtitle_assign">Datos del producto</span>
+        <ul class="row list-unstyled ms-2">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Nombre</p>
+            <p>{{ data().nom_producto || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Codigo</p>
+            <p>{{ data().cod_producto.replaceAll(",", " ") || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().ciudad || "No aplica" }}</p>
+          </li>
+        </ul>
+        @if(!handleButtons){
+        <div class="d-flex flew-row justify-content-around align-items-center">
+          <button
+            class="btn btn-success rounded-5 mx-2 button_service"
+            (click)="
+              tab() === 'add' ? acceptServiceOrpah(true) : acceptService(true)
+            "
+          >
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/check-driver.svg"
+              alt="success"
+            />
+            Aceptar
+          </button>
+          <button
+            class="btn btn-danger button_service rounded-5 mx-2"
+            (click)="acceptService(false)"
+            [ngClass]="{ 'd-none': tab() === 'add' }"
+          >
+            <img
+              style="width: 15px"
+              src="../../../../../../assets/images/cancel.svg"
+              alt="reject"
+            />
+            Rechazar
+          </button>
+        </div>
+        }@else{
+        <div class="d-flex flew-row justify-content-around align-items-center">
+          <button
+            class="btn btn-info button_service rounded-5 mx-2"
+            (click)="startJourney()"
+            [disabled]="data().isButtonEnabled"
+            [tooltip]="
+              data().isButtonEnabled
+                ? ''
+                : 'Hasta no terminar el servicio o ruta iniciado no se podra iniciar otro'
+            "
+            placement="right"
+            containerClass="custom-tooltip"
+          >
+            Iniciar Viaje
+          </button>
+          <button
+            class="btn button_service download_historic rounded-5 mx-2 text-light"
+            [disabled]="handleEndJourney || data().fin_viaje"
+            (click)="endJourney()"
+          >
+            Finalizar Viaje
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

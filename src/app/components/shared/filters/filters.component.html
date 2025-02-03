@@ -1,0 +1,144 @@
+<form
+  class="d-flex flex-row justify-content-evenly align-items-center bg-white my-2 w-100 rounded-3"
+  style="box-shadow: 0px 3px 6px #00000029"
+  [formGroup]="filterGroup"
+>
+  <div
+    class="form-floating my-3"
+    [ngStyle]="{ 'width: 12.333%': !role().includes('driver') }"
+    [ngClass]="{
+      'col-6 col-sm-6 col-md-6': role().includes('driver')
+    }"
+  >
+    <input
+      type="text"
+      placeholder="Datepicker"
+      formControlName="date"
+      class="form-control input_filter"
+      placement="bottom"
+      [bsConfig]="bsConfig"
+      bsDatepicker
+      #dp="bsDatepicker"
+    />
+    <label for="floatingInput">Fecha</label>
+  </div>
+  <div
+    class="form-floating my-3"
+    style="width: 12.333%"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
+  >
+    <input
+      type="text"
+      formControlName="id_servicio"
+      class="form-control input_filter"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Id del servicio</label>
+  </div>
+  <div
+    class="form-floating my-3"
+    style="width: 12.333%"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
+  >
+    <input
+      type="text"
+      formControlName="license_plate_number"
+      class="form-control input_filter"
+      id="floatingInput"
+      placeholder="name@example.com"
+    />
+    <label for="floatingInput">Número de placa</label>
+  </div>
+  <div
+    style="width: 14.333%"
+    class="form-floating my-3"
+    [ngClass]="{ 'd-none': role().includes('driver') }"
+  >
+    <select
+      class="form-select input_filter"
+      id="floatingSelectCity"
+      formControlName="city"
+    >
+      @for(municipality of citys;track municipality){
+      <option
+        [value]="municipality.municipality_name"
+        style="text-transform: capitalize"
+      >
+        {{ municipality.municipality_name }}
+      </option>
+      }
+    </select>
+    <label for="floatingSelectCity">Ciudad</label>
+  </div>
+  <div
+    style="width: 12.333%"
+    class="form-floating my-3"
+    [ngClass]="{ 'd-none': role().includes('driver') || role() === 'admin' }"
+  >
+    <select
+      class="form-select input_filter"
+      id="floatingSelectCity"
+      formControlName="status"
+    >
+      @for(statu of status;track statu){
+      <option [value]="statu.status_id" style="text-transform: capitalize">
+        {{ statu.status_name }}
+      </option>
+      }
+    </select>
+    <label for="floatingSelectCity">Estados</label>
+  </div>
+
+  <div
+    class="my-3 col-md-2 col-lg-2 col-xl-2 d-flex flew-row justify-content-evenly"
+  >
+    <button
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role().includes('driver') }"
+      class="btn btn-info rounded-3 mx-2 col-md-3 col-lg-2"
+      tooltip="Buscar"
+      placement="top"
+      containerClass="custom-tooltip"
+      (click)="submitFilter()"
+    >
+      <img
+        src="../../../../../assets/images/search.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+    <button
+      [ngClass]="{ 'col-6 col-sm-6 col-md-6': role().includes('driver') }"
+      class="btn btn-danger rounded-3 mx-2 col-md-3 col-lg-2"
+      tooltip="Limpiar Filtro"
+      placement="top"
+      containerClass="custom-tooltip"
+      (click)="cleanFilter()"
+    >
+      <img
+        src="../../../../../assets/images/trash.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+    <button
+      class="btn btn-info mx-2 col-md-3 col-lg-2 rounded-3 download_historic"
+      [ngClass]="{
+        'd-none': role().includes('driver')
+      }"
+      tooltip="Descargar servicios
+      "
+      (click)="getInform(filterGroup.value)"
+      placement="top"
+      containerClass="custom-tooltip"
+      [disabled]="wait"
+    >
+      <img
+        src="../../../../../assets/images/download.svg"
+        style="width: 25px; height: 25px"
+        alt=""
+      />
+    </button>
+  </div>
+</form>
+<app-toast *ngIf="handleToast" [result]="false" [wait]="wait"></app-toast>

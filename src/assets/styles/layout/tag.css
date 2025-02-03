@@ -1,0 +1,52 @@
+@import "../constants/colors.css";
+
+.tag {
+  color: var(--COLOR-WHITE);
+  border-radius: 4px;
+  margin: auto 3px;
+  height: 26px;
+  text-transform: capitalize;
+  align-content: center;
+  &.confirm {
+    background-color: var(--COLOR-GREEN-TAG);
+  }
+  &.cancel {
+    background-color: var(--COLOR-RED-TAG);
+  }
+  &.active {
+    background-color: var(--COLOR-ACTIVE-TAG);
+  }
+  &.assigned {
+    background-color: var(--COLOR-ASSIGNED-TAG);
+  }
+  &.reject {
+    background-color: var(--COLOR-REJECT-TAG);
+  }
+  &.unassigned {
+    background-color: var(--COLOR-BLUE-DARK);
+  }
+  &.start {
+    background-color: var(--COLOR-JOURNEY_START);
+  }
+  &.end {
+    background-color: var(--COLOR-JOURNEY_END);
+  }
+}
+.indicator {
+  color: var(--COLOR-WHITE);
+  &.blue-dark {
+    background-color: var(--COLOR-BLUE-DARK);
+  }
+  &.blue {
+    background-color: var(--COLOR-BLUE);
+    color: var(--COLOR-BLUE-DARK);
+  }
+}
+.error {
+  background-color: var(--COLOR-RED-TAG);
+  color: var(--COLOR-WHITE);
+  margin: 12px;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+}

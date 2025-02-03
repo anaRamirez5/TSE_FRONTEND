@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
+import { LayoutComponent } from '../../private/layout/layout.component';
+import { LayoutModule } from '../../private/layout/layout.module';
+import { LoginRoutingModule } from './login-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    BrowserModule,
-    MatButtonModule,
+    LoginRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
+    LayoutModule,
   ],
+  exports: [LoginComponent],
 })
 export class LoginModule {}

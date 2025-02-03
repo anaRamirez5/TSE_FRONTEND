@@ -1,27 +1,71 @@
-@import '../constants/colors.css';
+@import "../constants/colors.css";
 
-
-button{
-    --mdc-filled-button-container-color: var(--COLOR-BLUE)!important;
-    --mdc-filled-button-label-text-color:var(--COLOR-BLUE-DARK )!important;
-    --mdc-filled-button-disabled-container-color:var(--COLOR-BLUE-DISABLED)!important;
-    --mdc-filled-button-label-text-size:18px
+.btn-info {
+  --bs-btn-color: var(--COLOR-BLUE-DARK) !important;
+  --bs-btn-bg: var(--COLOR-BLUE) !important;
+  --bs-btn-border-color: var(--COLOR-BLUE) !important;
+  --bs-btn-hover-color: var(--COLOR-BLUE-DARK) !important;
+  --bs-btn-hover-bg: var(--COLOR-BLUE-DARK) !important;
+  --bs-btn-hover-border-color: var(--COLOR-BLUE-DARK) !important;
+  --bs-btn-disabled-color: var(--COLOR-BLUE-DARK) !important;
+  --bs-btn-disabled-bg: var(--COLOR-BLUE-DISABLED) !important;
+  --bs-btn-disabled-border-color: var(--COLOR-BLUE-DISABLED) !important;
+  &:hover {
+    color: var(--COLOR-WHITE);
+  }
 }
-
-a{
-    --bs-link-hover-color-rgb:var(--$COLOR-BLUE-DISABLED)!important
+.btn-success {
+  --bs-btn-bg: var(--COLOR-GREEN-TAG) !important;
+  --bs-btn-border-color: var(--COLOR-GREEN-TAG) !important;
+  --bs-btn-hover-bg: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-hover-border-color: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-disabled-bg: var(--COLOR-GREEN-HOVER) !important;
+  --bs-btn-disabled-border-color: var(--COLOR-GREEN-HOVER) !important;
+}
+.btn {
+  --bs-btn-padding-x: 0px;
+}
+a {
+  --bs-link-hover-color-rgb: var(--$COLOR-BLUE-DISABLED) !important;
 }
 
 button:hover {
-    background: var(--COLOR-BLUE-DISABLED);
+  background: var(--COLOR-BLUE-DISABLED);
 }
-
 
 .mat-mdc-button-base {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 
-.redirect{
-    color:#ffff !important;
+.redirect {
+  color: var(--COLOR-WHITE) !important;
+  text-decoration: underline;
+}
+.edit_assign {
+  background-color: var(--COLOR-BLUE-DARK);
+  border: none;
+  width: 27px;
+  height: 27px;
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+.download_historic {
+  background-color: var(--COLOR-BLUE-DARK) !important;
+  border-color: var(--COLOR-BLUE-DARK) !important;
+  &:disabled {
+    opacity: 0.3;
+  }
+}
 
+.button_service {
+  font-size: 12px;
+  padding: 5px 12px;
+}
+.exit_modal {
+  width: 26px;
+  top: 21px;
+  position: absolute;
+  left: 504px;
+  cursor: pointer;
 }

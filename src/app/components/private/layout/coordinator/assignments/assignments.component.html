@@ -1,0 +1,181 @@
+<div class="d-flex flex-column container-fluid">
+  <app-filters
+    role="programmer_assign"
+    (clean)="handleClean($event)"
+    (filterForm)="extractFilterData($event)"
+  ></app-filters>
+  @if(!handle){
+  <div class="mx-auto my-2">
+    <p class="subtitle_data text-center">
+      De manera predeterminada, se mostrarán los servicios asignados del dia
+      {{ tommorow }}
+    </p>
+  </div>
+  } @if(datalist.length===0){
+  <div class="mx-auto">
+    <p class="subtitle_data">
+      No se encontraron resultados para los criterios seleccionados.
+    </p>
+  </div>
+  }@else {
+  <table
+    class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
+  >
+    <thead class="rounded-3">
+      <tr>
+        <th scope="col " style="width: 5%">ID</th>
+        <th scope="col" style="width: 5%">Fecha</th>
+        <th scope="col">Hora origen</th>
+        <th scope="col">Hora final</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Dirreción de origen</th>
+        <th scope="col">Dirreción de destino</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col"></th>
+        <th scope="col">Estado</th>
+        <th scope="col-1">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for( row of datalist;track row){
+      <tr>
+        <td style="width: 5%">{{ row.id_servicio }}</td>
+        <td style="width: 5%">{{ row.f_inicio }}</td>
+        <td>{{ sharedService.convertTo12HourFormat(row.t_inicio) }}</td>
+        <td>{{ sharedService.convertTo12HourFormat(row.t_final) }}</td>
+        <td>{{ row.placa_movil }}</td>
+        <td
+          [tooltip]="row.nom_producto"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.nom_producto }}
+        </td>
+        <td
+          [tooltip]="row.origen_servicio.length > 25 ? row.origen_servicio : ''"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.origen_servicio }}
+        </td>
+        <td
+          [tooltip]="
+            row.destino_servicio.length > 25 ? row.destino_servicio : ''
+          "
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.destino_servicio }}
+        </td>
+        <td>{{ row.ciudad }}</td>
+        <td>
+          <img
+            tooltip="Tiene requerimiento"
+            placement="left"
+            container="body"
+            containerClass="custom-tooltip"
+            [ngClass]="{ 'd-none': row.requerimiento === '' }"
+            src="../../../../../../assets/images/danger.svg"
+            style="width: 16px"
+            alt="danger"
+          />
+          <img
+            tooltip="Si puede ir en ruta"
+            placement="top"
+            container="body"
+            containerClass="custom-tooltip"
+            [ngClass]="{ 'd-none': row.ruta === null }"
+            src="../../../../../../assets/images/route.svg"
+            style="width: 16px"
+            alt="danger"
+          />
+        </td>
+        <td>
+          <div
+            class="tag m-auto"
+            [ngClass]="{
+              cancel: row.estado_servicio === 'cancelado',
+              confirm: row.estado_servicio === 'confirmado',
+              active: row.estado_servicio === 'activo',
+              assigned: row.estado_servicio === 'asignado',
+              unassigned: row.estado_servicio === 'sin asignacion',
+              reject: row.estado_servicio === 'rechazado',
+              start: row.estado_servicio === 'viaje iniciado',
+              end: row.estado_servicio === 'viaje finalizado',
+            }"
+          >
+            {{ row.estado_servicio }}
+          </div>
+        </td>
+
+        <td
+          class="d-flex flex-row justify-content-evenly align-items-center w-auto"
+        >
+          <button
+            class="rounded-circle edit_assign"
+            tooltip="Detalles del servicio"
+            placement="bottom left"
+            container="body"
+            (click)="openDialogDetail(row)"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/eye.svg"
+              alt="visualizar"
+              style="width: 16px"
+            />
+          </button>
+          <button
+            class="rounded-circle edit_assign"
+            (click)="editDriverAssign(row.id_servicio)"
+            tooltip="Editar asignación"
+            container="body"
+            placement="top"
+            containerClass="custom-tooltip"
+            [disabled]="row.estado_servicio === 'cancelado'"
+          >
+            <img
+              src="../../../../../../assets/images/edit.svg"
+              alt="editar"
+              style="width: 13px"
+            />
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div
+    class="bg-white rounded-bottom-3 d-flex flex-row justify-content-end align-items-center"
+  >
+    <div class="d-flex flex-column mx-2 align-items-end">
+      <p class="subtitle_data mb-0">Total de servicios:</p>
+      <p class="text-sub">{{ totalItems }}</p>
+    </div>
+    <app-paginator
+      [itemsPerPage]="pageSize"
+      [totalItems]="totalItems"
+      [currentPage]="pageIndex"
+      (pageChange)="handlePageEvent($event)"
+    ></app-paginator>
+  </div>
+  }
+</div>
+
+<app-edit-assigned
+  *ngIf="handleModalEdit"
+  (handleToastEdit)="editToastHandle($event)"
+  (closeModal)="closeModalEdit($event)"
+  [id]="id"
+></app-edit-assigned>
+<app-detail-services
+  [data]="dataDetail"
+  [handleCancel]="true"
+  *ngIf="handleModalDetail"
+  (closeModal)="closeModalCancel($event)"
+></app-detail-services>
+<app-toast *ngIf="handleToast" [result]="true"></app-toast>

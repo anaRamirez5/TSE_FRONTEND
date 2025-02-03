@@ -1,0 +1,39 @@
+<div class="d-flex flex-column container-fluid">
+  <app-filters
+    role="driver-assign"
+    (filterForm)="extractFilterData($event)"
+    (clean)="handleClean($event)"
+  ></app-filters>
+  @if(!handle){
+  <div class="mx-auto my-2">
+    <p class="subtitle_data text-center">
+      De manera predeterminada, se mostrarán los servicios asignados del dia
+      {{ tommorrowDate() }}
+    </p>
+  </div>
+  } @if(finalResponse){
+  <div class="spinner-overlay">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  } @else { @if(assignedServices.length===0){
+  <div class="mx-auto my-4">
+    <p class="subtitle_data text-center">No tiene servicios asignados.</p>
+  </div>
+  }@else{ @for (row of assignedServices; let i=$index;track row ) {
+  <app-accordion-asign-driver
+    [handleButtons]="handleRoute"
+    [data]="row"
+    (handle)="refresh($event)"
+    tab="asign"
+  ></app-accordion-asign-driver>
+  } } }
+  <button
+    (click)="acceptRoute(true)"
+    class="rounded-5 btn btn-success px-2 mx-auto mb-4 w-50"
+    [ngClass]="{ 'd-none': handleRoute }"
+  >
+    Aceptar ruta
+  </button>
+</div>

@@ -1,0 +1,27 @@
+export enum RoutesApp {
+  LOGIN = 'login',
+  LAYOUT = 'layout',
+  ADMIN = 'admin',
+  COORDINATOR = 'coordinator',
+  ASSIGMENTS = 'assignments',
+  HISTORY = 'history',
+  DRIVER = 'driver',
+  ADDITIONAL_DRIVER = 'services_add',
+}
+export enum EndPointRoute {
+  LOGIN = 'login',
+  REFRESH_TOKEN = 'refresh/token',
+  HISORY_TABLE_ADMIN = 'admin/historic',
+  HISORY_TABLE_DRIVER = 'driver/historic',
+  ASSIGN_SERVICES_PROGRAMMER = 'assigned/services',
+  UPDATE_ASIGN_SERVICES = 'driver/update/service/driver',
+  CONFIRM_SERVICES = 'driver/update-service-status',
+  ASSIGN_SERVICES_DRIVER = 'driver/services',
+  START_JOURNEY = 'driver/inicio-viaje',
+  END_JOURNEY = 'driver/fin-viaje',
+  CATALOGS = 'catalogs',
+  ORPHAN_SERVICES = 'orphan/services',
+  CONFIRM_SERVICES_ORPHAN = 'driver/confirm/service/orphan',
+  STADISTIC = 'statistics',
+  EXPORT_DATA = 'get/inform',
+}

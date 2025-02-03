@@ -1,1 +1,123 @@
-<p>admin works!</p>
+<div class="d-flex flex-column container-fluid">
+  <app-filters
+    role="admin"
+    (filterForm)="extractFilterData($event)"
+    (clean)="handleClean($event)"
+  ></app-filters>
+  @if(!handle){
+  <div class="mx-auto my-2">
+    <p class="subtitle_data text-center">
+      De manera predeterminada se cargan los servicios realizados del dia
+      {{ yesterday }}
+    </p>
+  </div>
+  } @if(finalResponse){
+  <div class="spinner-overlay">
+    <div class="spinner-border text-info" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+  } @else{ @if(historyTable.length===0){
+  <div class="mx-auto">
+    <p class="subtitle_data">
+      No se encontraron resultados para los criterios seleccionados.
+    </p>
+  </div>
+  }@else {
+  <table
+    class="table-responsive-md table-responsive-lg table-responsive-xl bg-white table-responsive-xxl rounded-top-3"
+  >
+    <thead class="rounded-3">
+      <tr>
+        <th scope="col " style="width: 5%">ID</th>
+        <th scope="col" style="width: 5%">Fecha</th>
+        <th scope="col">Hora inicio</th>
+        <th scope="col">Hora fin</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Datos de origen</th>
+        <th scope="col">Datos de destino</th>
+        <th scope="col" style="width: 10%">Ciudad</th>
+        <th scope="col" style="width: 5%">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of historyTable">
+        <td style="width: 5%">{{ row.id_servicio || "--" }}</td>
+        <td style="width: 5%">{{ row.f_inicio || "--" }}</td>
+        <td>
+          {{ sharedService.convertTo12HourFormat(row.t_inicio) || "--" }}
+        </td>
+        <td>
+          {{ sharedService.convertTo12HourFormat(row.t_final) || "--" }}
+        </td>
+        <td
+          [tooltip]="row.nom_producto"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.nom_producto }}
+        </td>
+        <td>{{ row.placa_movil || "--" }}</td>
+        <td
+          [tooltip]="row.origen_servicio.length > 25 ? row.origen_servicio : ''"
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.origen_servicio }}
+        </td>
+        <td
+          [tooltip]="
+            row.destino_servicio.length > 25 ? row.destino_servicio : ''
+          "
+          placement="top"
+          container="body"
+          containerClass="custom-tooltip"
+        >
+          {{ row.destino_servicio }}
+        </td>
+        <td style="width: 10%">{{ row.ciudad || "--" }}</td>
+        <td style="width: 5%">
+          <button
+            class="rounded-circle edit_assign"
+            tooltip="Detalles del servicio"
+            placement="top"
+            container="body"
+            (click)="openDialogDetail(row)"
+            containerClass="custom-tooltip"
+          >
+            <img
+              src="../../../../../../assets/images/eye.svg"
+              alt="visualizar"
+              style="width: 13px"
+            />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="bg-white rounded-bottom-3 d-flex flex-row justify-content-end align-items-center"
+  >
+    <div class="d-flex flex-column mx-2 align-items-end">
+      <p class="subtitle_data" style="margin-bottom: 0">Total de servicios:</p>
+      <p class="text-sub" style="margin-bottom: 0">{{ totalItems }}</p>
+    </div>
+    <app-paginator
+      [itemsPerPage]="pageSize"
+      [totalItems]="totalItems"
+      [currentPage]="pageIndex"
+      (pageChange)="handlePageEvent($event)"
+    ></app-paginator>
+  </div>
+
+  } }
+</div>
+<app-detail-services
+  (closeModal)="closeDialogDetail($event)"
+  [data]="service"
+  *ngIf="handleDetail"
+  [handleCancel]="false"
+></app-detail-services>

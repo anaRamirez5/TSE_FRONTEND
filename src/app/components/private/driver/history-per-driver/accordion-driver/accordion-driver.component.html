@@ -1,0 +1,98 @@
+<div
+  class="accordion"
+  id="accordionExample"
+  style="margin: 10px auto; border-radius: 10px"
+>
+  <div class="accordion-item">
+    <h2 class="accordion-header" style="border-radius: 10px">
+      <button
+        class="accordion-button"
+        type="button"
+        [ngClass]="{ collapsed: !isCollapsed }"
+        data-bs-target="#collapseOne"
+        [attr.aria-expanded]="isCollapsed"
+        (click)="toggleCollapse()"
+        aria-controls="collapseOne"
+      >
+        Id del servicio: {{ data().id_servicio }}
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse"
+      [ngClass]="{ show: isCollapsed }"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        <ul class="row" style="list-style-type: none">
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Id del servicio</p>
+            <p>{{ data().id_servicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Fecha del Servicio</p>
+            <p>{{ data().f_inicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora de inicio</p>
+            <p>
+              {{ sharedService.convertTo12HourFormat(data().t_inicio) || "--" }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Hora fin</p>
+            <p>
+              {{ sharedService.convertTo12HourFormat(data().t_final) || "--" }}
+            </p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirección de Origen</p>
+            <p>{{ data().origen_servicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Dirreción de destino</p>
+            <p>{{ data().destino_servicio || "--" }}</p>
+          </li>
+
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Ciudad</p>
+            <p>{{ data().ciudad || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Nombre del solicitante</p>
+            <p>{{ data().nom_funcionario || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Tipo de documento</p>
+            <p>{{ data().tipdocu_funcionario || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Requerimientos</p>
+            <p>{{ data().requerimiento || "No aplica" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Nombre del producto</p>
+            <p>{{ data().nom_producto || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">Codigo de producto</p>
+            <p>{{ data().cod_producto.replaceAll(",", " ") || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data mb-0">¿Pertence a una ruta?</p>
+            <p>
+              {{
+                data().ruta
+                  ? "Si " +
+                    (data().sector_ruta
+                      ? data().sector_ruta
+                      : ",pero no ha sido asignado")
+                  : "No"
+              }}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

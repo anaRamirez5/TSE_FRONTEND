@@ -1,0 +1,92 @@
+<div class="modal">
+  <div
+    class="modal-content d-flex justify-content-between align-items-center"
+    style="height: 450px; width: 100%; max-width: 550px"
+  >
+    <div class="header_modal"></div>
+    <img
+      src="./../../../../assets/images/exit-popup.svg"
+      alt="exit"
+      class="exit_modal"
+      (click)="closeModalFn()"
+    />
+    <img
+      class="col-3 col-sm-3 logo bg-transparent"
+      src="./../../../../assets/images/logo.png"
+      alt="logo_tse"
+    />
+    <h3 class="subtitle_data mb-0 text-center mx-4 mt-3">
+      Información Detallada del Servicio N° {{ data()?.id_servicio || "--" }}
+    </h3>
+    <div
+      class="d-flex flex-row justify-content-evenly align-items-center w-100"
+    >
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        style="width: 160px"
+      >
+        <h2 class="subtitle_data">Datos del conductor</h2>
+        @if(data()?.placa_movil){
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del conductor</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{
+            (data()?.name_conductor || "") + " " + (data()?.ape_conductor || "")
+          }}
+        </p>
+        <h4 class="ms-2 mb-0 subtitle_details">Tipo de movil</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.tipov_funcionario || "--" }}
+        </p>
+        }@else {
+        <p class="text-modal ms-2 mb-0">
+          Este servicio no ha sido asignado a un conductor
+        </p>
+        }
+      </div>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        style="width: 160px"
+      >
+        <h2 class="subtitle_data">Datos del solicitante</h2>
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del solicitante</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.nom_funcionario || "" }}
+        </p>
+        <h4 class="subtitle_details ms-2 mb-0">Tipo de documento</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.tipdocu_funcionario || "--" }}
+        </p>
+      </div>
+    </div>
+    <div class="d-flex flex-row justify-content-evenly align-items-start w-100">
+      <div
+        class="d-flex flex-column justify-content-start align-items-start mb-4"
+        style="width: 160px"
+      >
+        <h2 class="subtitle_data">Datos de producto</h2>
+        <h4 class="ms-2 mb-0 subtitle_details">Nombre del producto</h4>
+        <p class="text-modal ms-2 mb-0 text-wrap">
+          {{ data()?.nom_producto || "--" }}
+        </p>
+        <h4 class="ms-2 mb-0 subtitle_details">Codigo del producto</h4>
+        <p class="text-modal ms-2 mb-0 text-wrap">
+          {{ data()?.cod_producto?.replaceAll(",", " ") || "--" }}
+        </p>
+        <h4 class="subtitle_details ms-2 mb-0">Ciudad</h4>
+        <p class="text-modal ms-2 mb-0 text-wrap">
+          {{ data()?.ciudad || "--" }}
+        </p>
+      </div>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start"
+        style="width: 160px"
+      >
+        <h2 class="subtitle_data">Requerimiento</h2>
+        <h4 class="subtitle_details ms-2 mb-0">Descripción</h4>
+        <p class="text-modal ms-2 mb-0">
+          {{ data()?.requerimiento || "No aplica" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

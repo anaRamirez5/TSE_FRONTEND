@@ -1,21 +1,25 @@
-<div
-  class="container-fluid h-100 bg-layout d-flex flex-column"
-  style="--bs-gutter-x: 0 !important"
->
+<div class="container-fluid h-100 bg-layout d-flex flex-column all">
   <div
-    class="px-4 bg-white header d-flex flex-row align-items-center justify-content-between"
+    class="p-4 bg-white header d-flex flex-row align-items-center justify-content-between"
   >
     <img
-      class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 logo"
-      style="background-color: transparent"
+      class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-1 logo bg-transparent"
       src="./../../../../assets/images/logo.png"
       alt="logo_tse"
     />
     <div class="d-flex flew-row">
       <div class="d-flex flex-row me-4">
         <div class="d-flex flex-column me-2">
-          <p class="m-0 text-table">Manuel Suarez</p>
-          <p class="m-0 text-sub">Coordinador</p>
+          <p class="m-0 text-table">{{ user_name }}</p>
+          <p class="m-0 text-sub">
+            {{
+              role_name == "1"
+                ? "Administrador"
+                : role_name == "2"
+                ? "Programador"
+                : ""
+            }}
+          </p>
         </div>
         <img
           class="perfil"
@@ -37,4 +41,5 @@
       </div>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </div>

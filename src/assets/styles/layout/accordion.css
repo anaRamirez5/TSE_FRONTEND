@@ -1,0 +1,27 @@
+@import "../constants/colors.css";
+
+.accordion-button,
+.accordion-header {
+  font-weight: 500 !important;
+  color: var(--COLOR-BLUE-DARK) !important;
+  background-color: var(--COLOR-BLUE) !important;
+  &[data-enabled="true"] {
+    font-weight: 500 !important;
+    color: var(--COLOR-WHITE) !important;
+    background-color: var(--COLOR-GREEN-TAG) !important;
+  }
+  &[data-enabled-inservice="true"] {
+    font-weight: 500 !important;
+    color: var(--COLOR-WHITE) !important;
+    background-color: var(--COLOR-BLUE-DARK) !important;
+  }
+}
+
+.accordion-body {
+  max-height: 300px;
+  overflow: auto;
+}
+.accordion {
+  margin: 10px auto;
+  border-radius: 10px;
+}
