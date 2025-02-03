@@ -131,6 +131,7 @@
       (click)="getInform(filterGroup.value)"
       placement="top"
       containerClass="custom-tooltip"
+      [disabled]="wait"
     >
       <img
         src="../../../../../assets/images/download.svg"
@@ -140,4 +141,4 @@
     </button>
   </div>
 </form>
-<app-toast *ngIf="handleToast" [result]="false"></app-toast>
+<app-toast *ngIf="handleToast" [result]="false" [wait]="wait"></app-toast>

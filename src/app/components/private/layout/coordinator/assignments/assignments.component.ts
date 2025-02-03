@@ -88,8 +88,8 @@ export class AssignmentsComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const formattedDate = this.sharedService.formatDate(this.filter.date || '');
-    this.filter.date = this.filter.date ? formattedDate : '';
+    // const formattedDate = this.sharedService.formatDate(this.filter.date || '');
+    // this.filter.date = this.filter.date ? formattedDate : '';
     this.handle = true;
     this.pageIndex = 1;
     this.getAssignedService(this.pageIndex, this.pageSize);
