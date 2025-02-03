@@ -17,6 +17,11 @@
     background-color: var(--COLOR-GREEN-TAG);
     color: var(--COLOR-WHITE);
   }
+  &.wait {
+    background-color: var(--COLOR-WAIT);
+    text-align: start;
+    color: var(--COLOR-WHITE);
+  }
 }
 .toast:not(.show) {
   display: block;

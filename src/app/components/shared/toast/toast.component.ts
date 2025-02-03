@@ -7,4 +7,5 @@ import { Component, input } from '@angular/core';
 })
 export class ToastComponent {
   result = input.required<boolean>();
+  wait = input.required<boolean>();
 }

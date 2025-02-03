@@ -33,6 +33,14 @@ export class AdminComponent implements OnInit {
     const yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
     this.yesterday = yesterday.toISOString().split('T')[0];
+    this.filterPayload = {
+      date: this.yesterday,
+      license_plate_number: null,
+      id_servicio: null,
+      city: null,
+      page: 1,
+      page_size: 10,
+    };
     this.getHistoryTable(1, 10);
   }
 
@@ -42,25 +50,19 @@ export class AdminComponent implements OnInit {
     this.getHistoryTable(this.pageIndex, this.pageSize);
   }
   getHistoryTable(page: number, page_size: number) {
+    console.log(this.filter);
     if (this.filter && this.handle) {
+      console.log('hay un filtro');
       this.filterPayload = {
-        date: this.filter.date || null,
-        license_plate_number: this.filter.license_plate_number || null,
-        id_servicio: this.filter.id_servicio || null,
-        city: this.filter.city || null,
-        page: page,
-        page_size: page_size,
-      };
-    } else {
-      this.filterPayload = {
-        date: this.yesterday,
-        license_plate_number: null,
-        id_servicio: null,
-        city: null,
+        date: this.filter.date,
+        license_plate_number: this.filter.license_plate_number,
+        id_servicio: this.filter.id_servicio,
+        city: this.filter.city,
         page: page,
         page_size: page_size,
       };
     }
+
     this.finalResponse = true;
     this.adminService.getHistoryTable(this.filterPayload).subscribe({
       next: (response: BodyResponse<HistoryTable[]>) => {
@@ -89,9 +91,11 @@ export class AdminComponent implements OnInit {
   extractFilterData(event?: FormGroup) {
     if (event) {
       this.filter = event.value;
+      console.log(event.value);
     }
-    const formattedDate = this.sharedService.formatDate(this.filter.date || '');
-    this.filter.date = this.filter.date ? formattedDate : null;
+    // const formattedDate = this.sharedService.formatDate(this.filter.date || '');
+    // this.filter.date = this.filter.date ? formattedDate : null;
+    // console.log(this.filter.date);
     this.handle = true;
     this.pageIndex = 1;
     this.getHistoryTable(this.pageIndex, this.pageSize);
