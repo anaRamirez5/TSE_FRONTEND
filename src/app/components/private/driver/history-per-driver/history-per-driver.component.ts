@@ -85,8 +85,8 @@ export class HistoryPerDriverComponent implements OnInit {
     if (event) {
       this.filter = event.value;
     }
-    const formattedDate = this.sharedService.formatDate(this.filter.date || '');
-    this.filter.date = this.filter.date ? formattedDate : null;
+    // const formattedDate = this.sharedService.formatDate(this.filter.date || '');
+    // this.filter.date = this.filter.date ? formattedDate : null;
     this.handle = true;
     this.pageIndex = 1;
 

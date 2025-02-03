@@ -25,6 +25,7 @@ export class FiltersComponent implements OnInit {
   tommorow: string = '';
   handleToast: boolean = false;
   yesterday: string = '';
+  wait: boolean = false;
   bsConfig = {
     containerClass: 'theme-blue', // Tema predefinido
     dateInputFormat: 'YYYY-MM-DD',
@@ -51,6 +52,18 @@ export class FiltersComponent implements OnInit {
     });
   }
   submitFilter() {
+    console.log(this.filterGroup.value);
+    if (this.filterGroup.get('date')?.value == null) {
+      if (
+        this.role() === 'programmer_assign' ||
+        this.role() === 'driver-assign'
+      ) {
+        this.filterGroup.get('date')?.setValue(this.tommorow);
+      } else if (this.role() === 'admin' || this.role() === 'driver-history') {
+        this.filterGroup.get('date')?.setValue(this.yesterday);
+      }
+    }
+
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {
@@ -58,7 +71,8 @@ export class FiltersComponent implements OnInit {
     this.clean.emit(true);
   }
   getInform(payload: Filter) {
-    this.handleToast = false;
+    this.handleToast = true;
+    this.wait = true;
     let date = '';
     if (this.filterGroup.get('date')?.value !== null) {
       date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
@@ -102,7 +116,10 @@ export class FiltersComponent implements OnInit {
         }
       },
       error: () => {},
-      complete: () => {},
+      complete: () => {
+        this.wait = false;
+        this.handleToast = false;
+      },
     });
   }
   getCity() {

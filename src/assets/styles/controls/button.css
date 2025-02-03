@@ -44,8 +44,8 @@ button:hover {
 .edit_assign {
   background-color: var(--COLOR-BLUE-DARK);
   border: none;
-  width: 24px;
-  height: 24px;
+  width: 27px;
+  height: 27px;
   &:disabled {
     opacity: 0.5;
   }
@@ -53,6 +53,9 @@ button:hover {
 .download_historic {
   background-color: var(--COLOR-BLUE-DARK) !important;
   border-color: var(--COLOR-BLUE-DARK) !important;
+  &:disabled {
+    opacity: 0.3;
+  }
 }
 
 .button_service {
