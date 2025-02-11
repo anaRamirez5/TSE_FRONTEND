@@ -65,6 +65,7 @@ export class AssignmentsComponent implements OnInit {
       };
     }
     this.finalResponse = true;
+
     this.programmerService.getAssignTable(this.filterPayload).subscribe({
       next: (response: BodyResponse<assignService[]>) => {
         if (response.code === 200) {
