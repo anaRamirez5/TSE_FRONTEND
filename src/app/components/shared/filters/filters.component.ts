@@ -53,17 +53,35 @@ export class FiltersComponent implements OnInit {
   }
   submitFilter() {
     console.log(this.filterGroup.value);
-    // if (this.filterGroup.get('date')?.value == null) {
-    //   if (
-    //     this.role() === 'programmer_assign' ||
-    //     this.role() === 'driver-assign'
-    //   ) {
-    //     this.filterGroup.get('date')?.setValue(this.tommorow);
-    //   } else if (this.role() === 'admin' || this.role() === 'driver-history') {
-    //     this.filterGroup.get('date')?.setValue(this.yesterday);
-    //   }
-    // }
-
+    let date = '';
+    if (this.filterGroup.get('date')?.value !== null) {
+      date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
+    } else {
+      if (
+        this.filterGroup.get('license_plate_number')?.value !== null ||
+        this.filterGroup.get('id_servicio')?.value !== null ||
+        this.filterGroup.get('city')?.value !== null ||
+        this.filterGroup.get('status')?.value !== null
+      ) {
+        date = '';
+      } else {
+        console.log('nulo');
+        if (
+          this.role() === 'programmer_assign' ||
+          this.role() === 'driver-assign'
+        ) {
+          date = this.tommorow;
+          console.log(date);
+        } else if (
+          this.role() === 'admin' ||
+          this.role() === 'driver-history'
+        ) {
+          date = this.yesterday;
+        }
+      }
+      this.filterGroup.get('date')?.setValue(date);
+    }
+    console.log(this.filterGroup.value);
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {
@@ -74,18 +92,31 @@ export class FiltersComponent implements OnInit {
     this.handleToast = true;
     this.wait = true;
     let date = '';
-    // if (this.filterGroup.get('date')?.value !== null) {
-    //   date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
-    // } else {
-    //   if (
-    //     this.role() === 'programmer_assign' ||
-    //     this.role() === 'driver-assign'
-    //   ) {
-    //     date = this.tommorow;
-    //   } else if (this.role() === 'admin' || this.role() === 'driver-history') {
-    //     date = this.yesterday;
-    //   }
-    // }
+    if (this.filterGroup.get('date')?.value !== null) {
+      date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
+    } else {
+      if (
+        this.filterGroup.get('license_plate_number')?.value !== null ||
+        this.filterGroup.get('id_servicio')?.value !== null ||
+        this.filterGroup.get('city')?.value !== null ||
+        this.filterGroup.get('status')?.value !== null
+      ) {
+        date = '';
+      } else {
+        console.log('nulo');
+        if (
+          this.role() === 'programmer_assign' ||
+          this.role() === 'driver-assign'
+        ) {
+          date = this.tommorow;
+        } else if (
+          this.role() === 'admin' ||
+          this.role() === 'driver-history'
+        ) {
+          date = this.yesterday;
+        }
+      }
+    }
 
     const payloadInform: Filter = {
       service_date: date,
