@@ -53,9 +53,9 @@ export class FiltersComponent implements OnInit {
   }
   submitFilter() {
     console.log(this.filterGroup.value);
-    let date = '';
+    let date;
     if (this.filterGroup.get('date')?.value !== null) {
-      date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
+      date = this.filterGroup.get('date')?.value;
     } else {
       if (
         this.filterGroup.get('license_plate_number')?.value !== null ||
@@ -63,7 +63,7 @@ export class FiltersComponent implements OnInit {
         this.filterGroup.get('city')?.value !== null ||
         this.filterGroup.get('status')?.value !== null
       ) {
-        date = '';
+        date = null;
       } else {
         console.log('nulo');
         if (
@@ -91,9 +91,9 @@ export class FiltersComponent implements OnInit {
   getInform(payload: Filter) {
     this.handleToast = true;
     this.wait = true;
-    let date = '';
+    let date;
     if (this.filterGroup.get('date')?.value !== null) {
-      date = this.filterGroup.get('date')?.value.toISOString().split('T')[0];
+      date = this.filterGroup.get('date')?.value;
     } else {
       if (
         this.filterGroup.get('license_plate_number')?.value !== null ||
@@ -101,7 +101,7 @@ export class FiltersComponent implements OnInit {
         this.filterGroup.get('city')?.value !== null ||
         this.filterGroup.get('status')?.value !== null
       ) {
-        date = '';
+        date = null;
       } else {
         console.log('nulo');
         if (
