@@ -48,36 +48,50 @@ export class AssignPerDayComponent implements OnInit {
   }
 
   updateActiveRoutes() {
-    const activeTrip = this.assignedServices.find(
-      (service) => service.inicio_viaje && !service.fin_viaje
+    const viajeIniciado = this.assignedServices.find(
+      (service) => service.inicio_viaje != null && service.fin_viaje === null
     );
-    if (activeTrip) {
-      const activeRoute = activeTrip.ruta || '';
+    if (viajeIniciado) {
+      const rutaActiva = viajeIniciado.ruta_detalle;
       this.assignedServices.forEach((service) => {
-        service.isButtonEnabled = this.shouldEnableButton(service, activeRoute);
+        if (service.ruta_detalle === null) {
+          service.isButtonEnabled = true;
+        } else if (service.ruta_detalle === rutaActiva) {
+          if (service.inicio_viaje !== null) {
+            service.isButtonEnabled = true;
+          } else {
+            service.isButtonEnabled = false;
+          }
+        } else {
+          service.isButtonEnabled = true;
+        }
       });
     } else {
       this.assignedServices.forEach((service) => {
         service.isButtonEnabled = false;
+        if (service.inicio_viaje !== null && service.fin_viaje !== null) {
+          service.isButtonEnabled = true;
+          return;
+        }
       });
     }
   }
-  shouldEnableButton(
-    service: assignService,
-    activeSector: string | null
-  ): boolean {
-    if (service.ruta === 'no') {
-      return true;
-    } else if (service.ruta === activeSector) {
-      if (service.inicio_viaje !== null) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return true;
-    }
-  }
+  // shouldEnableButton(
+  //   service: assignService,
+  //   activeSector: string | null
+  // ): boolean {
+  //   if (service.ruta === 'no') {
+  //     return true;
+  //   } else if (service.ruta === activeSector) {
+  //     if (service.inicio_viaje !== null) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   } else {
+  //     return true;
+  //   }
+  // }
 
   tommorrowDate(): string {
     const today = new Date();

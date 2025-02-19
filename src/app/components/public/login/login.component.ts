@@ -23,7 +23,7 @@ export class LoginComponent {
   content: string = '';
   openDialog: boolean = false;
   roleRoutes: roleRoute = {
-    1: `/${RoutesApp.LAYOUT}/${RoutesApp.ADMIN}`,
+    1: `/${RoutesApp.LAYOUT}/${RoutesApp.COORDINATOR}`,
     2: `/${RoutesApp.LAYOUT}/${RoutesApp.COORDINATOR}`,
     3: `/${RoutesApp.DRIVER}`,
   };
