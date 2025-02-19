@@ -18,7 +18,7 @@ export interface assignService {
   nom_funcionario: string;
   tipdocu_funcionario: string;
   ruta?: string;
-  sector_ruta: string;
+  ruta_detalle: string;
   inicio_viaje?: string;
   fin_viaje?: string;
   total_records: number;

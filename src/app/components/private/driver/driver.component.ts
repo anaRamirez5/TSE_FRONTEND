@@ -11,6 +11,7 @@ import { SessionStorageItems } from '../../../core/enums/session-storage';
 export class DriverComponent implements OnInit {
   user_name: string = '';
   role_name: string = '';
+  car_id: string = '';
   handlePerfil: boolean = false;
   isOverlayVisible = false;
 
@@ -19,6 +20,7 @@ export class DriverComponent implements OnInit {
     this.user_name =
       sessionStorage.getItem(SessionStorageItems.USER_NAME) || '';
     this.role_name = sessionStorage.getItem(SessionStorageItems.ROL) || '';
+    this.car_id = sessionStorage.getItem(SessionStorageItems.CAR_ID) || '';
   }
 
   openPerfil() {
