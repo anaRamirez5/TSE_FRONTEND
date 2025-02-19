@@ -15,7 +15,7 @@ export interface assignService {
   nom_funcionario: string;
   tipdocu_funcionario: string;
   ruta?: string;
-  sector_ruta: string;
+  ruta_detalle: string;
   incio_viaje?: string;
   fin_viaje?: string;
   isButtonEnabled?: boolean;
@@ -52,7 +52,7 @@ export interface orphanService {
   tipov_funcionario: string;
   tipdocu_funcionario: string;
   ruta?: string;
-  sector_ruta: string;
+  ruta_detalle: string;
   incio_viaje?: string;
   fin_viaje?: string;
   isButtonEnabled?: boolean;
