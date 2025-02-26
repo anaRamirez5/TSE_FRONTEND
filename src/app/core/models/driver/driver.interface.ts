@@ -14,6 +14,8 @@ export interface assignService {
   requerimiento: string;
   nom_funcionario: string;
   tipdocu_funcionario: string;
+  docu_funcionario?: string;
+  telefono_funcionario?: string;
   ruta?: string;
   ruta_detalle: string;
   incio_viaje?: string;
@@ -49,6 +51,8 @@ export interface orphanService {
   nom_funcionario: string;
   name_conductor: string;
   ape_conductor: string;
+  docu_funcionario?: string;
+  telefono_funcionario?: string;
   tipov_funcionario: string;
   tipdocu_funcionario: string;
   ruta?: string;
