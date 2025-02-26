@@ -61,7 +61,10 @@
             <p class="subtitle_data">Ciudad</p>
             <p>{{ data().ciudad || "--" }}</p>
           </li>
-          <li class="col-12 col-md-6">
+          <li
+            class="col-12 col-md-6"
+            [ngStyle]="{ display: tab() === 'add' ? 'none' : 'block' }"
+          >
             <p class="subtitle_data">¿Pertenece a una ruta?</p>
             <p>
               {{
