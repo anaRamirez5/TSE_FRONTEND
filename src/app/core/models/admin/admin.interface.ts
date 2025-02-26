@@ -15,6 +15,8 @@ export interface HistoryTable {
   nom_funcionario: string;
   tipdocu_funcionario: string;
   ape_conductor: string;
+  docu_funcionario?: string;
+  telefono_funcionario?: string;
   type_car: string;
   name_applicant: string;
   type_document: string;

@@ -17,6 +17,8 @@ export interface assignService {
   tipov_funcionario: string;
   nom_funcionario: string;
   tipdocu_funcionario: string;
+  docu_funcionario?: string;
+  telefono_funcionario?: string;
   ruta?: string;
   ruta_detalle: string;
   inicio_viaje?: string;

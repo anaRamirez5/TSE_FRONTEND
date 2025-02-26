@@ -33,7 +33,10 @@
       <button
         class="btn btn-info rounded-3 mx-2 col-5 col-md-5 col-sm-5 px-2"
         (click)="editDriver()"
-        [disabled]="updateForm.invalid"
+        tooltip="Al confirmar la edición de la placa, si no se ingresa ningún número de placa, el estado del servicio se actualizará automáticamente a Activo sin placa asignada."
+        container="body"
+        containerClass="custom-tooltip"
+        placement="top"
       >
         Confirmar
       </button>
