@@ -50,9 +50,7 @@ export class AdminComponent implements OnInit {
     this.getHistoryTable(this.pageIndex, this.pageSize);
   }
   getHistoryTable(page: number, page_size: number) {
-    console.log(this.filter);
     if (this.filter && this.handle) {
-      console.log('hay un filtro');
       this.filterPayload = {
         date: this.filter.date,
         license_plate_number: this.filter.license_plate_number,
@@ -91,11 +89,8 @@ export class AdminComponent implements OnInit {
   extractFilterData(event?: FormGroup) {
     if (event) {
       this.filter = event.value;
-      console.log(event.value);
     }
-    // const formattedDate = this.sharedService.formatDate(this.filter.date || '');
-    // this.filter.date = this.filter.date ? formattedDate : null;
-    // console.log(this.filter.date);
+
     this.handle = true;
     this.pageIndex = 1;
     this.getHistoryTable(this.pageIndex, this.pageSize);

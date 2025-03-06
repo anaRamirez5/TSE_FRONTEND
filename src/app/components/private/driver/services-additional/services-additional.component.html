@@ -21,4 +21,10 @@
     (handle)="refresh($event)"
   ></app-accordion-asign-driver>
   } }}
+  <app-paginator
+    [itemsPerPage]="pageSize"
+    [totalItems]="totalItems"
+    [currentPage]="pageIndex"
+    (pageChange)="handlePageEvent($event)"
+  ></app-paginator>
 </div>

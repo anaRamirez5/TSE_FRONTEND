@@ -9,6 +9,7 @@ export interface ISession {
   user_mail: string;
   doc_id: string;
   car_id: string;
+  city: string;
 }
 export interface roleRoute {
   1: string;
