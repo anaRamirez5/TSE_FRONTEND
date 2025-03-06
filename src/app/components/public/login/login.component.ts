@@ -72,6 +72,7 @@ export class LoginComponent {
 
   decodedToken(data: string) {
     const decodedToken: ISession = jwtDecode(data);
+    console.log(decodedToken);
     this.rol = decodedToken.role_id;
     const sessionData = {
       [SessionStorageItems.USER_ID]: decodedToken.user_id,
@@ -79,6 +80,7 @@ export class LoginComponent {
       [SessionStorageItems.USER_NAME]: decodedToken.user_name,
       [SessionStorageItems.USER_MAIL]: decodedToken.user_mail,
       [SessionStorageItems.CAR_ID]: decodedToken.car_id,
+      [SessionStorageItems.CITY]: decodedToken.city,
       [SessionStorageItems.DOC_ID]: decodedToken.doc_id,
     };
 

@@ -4,6 +4,7 @@ import { BodyResponse } from '../../../../core/models/shared/body-response.inter
 import { SessionStorageItems } from '../../../../core/enums/session-storage';
 import { DriverService } from '../../../../core/services/driver/driver.service';
 import { SharedService } from '../../../../core/services/shared/shared.service';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
   selector: 'app-services-additional',
@@ -14,7 +15,11 @@ export class ServicesAdditionalComponent {
   assignedServices: orphanService[] = [];
   finalResponse: boolean = true;
   idsServices: number[] = [];
+  city: string = '';
   handle = false;
+  totalItems: number = 0;
+  pageSize: number = 10;
+  pageIndex: number = 1;
   license_plate_number: string = '';
 
   constructor(
@@ -23,9 +28,10 @@ export class ServicesAdditionalComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getAssignedServices();
+    this.getAssignedServices(1, 10);
     this.license_plate_number =
       sessionStorage.getItem(SessionStorageItems.CAR_ID) ?? '';
+    this.city = sessionStorage.getItem(SessionStorageItems.CITY) ?? '';
   }
   tommorrowDate(): string {
     const today = new Date();
@@ -33,16 +39,25 @@ export class ServicesAdditionalComponent {
     tomorrow.setDate(today.getDate() + 1);
     return tomorrow.toISOString().split('T')[0];
   }
-  getAssignedServices() {
+  handlePageEvent(e: PageChangedEvent) {
+    this.pageSize = e.itemsPerPage;
+    this.pageIndex = e.page;
+    this.getAssignedServices(this.pageIndex, this.pageSize);
+  }
+
+  getAssignedServices(page: number, page_size: number) {
     this.finalResponse = true;
     const payload = {
       service_date: new Date().toISOString().split('T')[0],
+      // city: this.city,
+      page: page,
+      page_size: page_size,
     };
-    console.log(payload);
     this.driverService.getOrphanServices(payload).subscribe({
       next: (response: BodyResponse<orphanService[]>) => {
         if (response.code === 200) {
           this.assignedServices = response.data;
+          this.totalItems = response.data[0].total_records;
           this.assignedServices.forEach((service) => {
             if (service.estado_servicio === 'asignado') {
               this.idsServices.push(service.id_servicio);
@@ -64,7 +79,7 @@ export class ServicesAdditionalComponent {
   }
   refresh(handle: boolean) {
     if (handle) {
-      this.getAssignedServices();
+      this.getAssignedServices(1, 10);
     }
   }
 }

@@ -27,7 +27,6 @@ export class AccordionAsignDriverComponent implements OnInit {
     private driverService: DriverService
   ) {}
   ngOnInit() {
-    console.log(this.tab());
     this.license_plate_number =
       sessionStorage.getItem(SessionStorageItems.CAR_ID) ?? '';
     this.handleButtons = this.data().estado_servicio === 'confirmado';

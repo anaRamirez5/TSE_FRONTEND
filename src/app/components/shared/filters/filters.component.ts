@@ -52,7 +52,6 @@ export class FiltersComponent implements OnInit {
     });
   }
   submitFilter() {
-    console.log(this.filterGroup.value);
     let date;
     if (this.filterGroup.get('date')?.value !== null) {
       date = this.filterGroup.get('date')?.value;
@@ -65,13 +64,11 @@ export class FiltersComponent implements OnInit {
       ) {
         date = null;
       } else {
-        console.log('nulo');
         if (
           this.role() === 'programmer_assign' ||
           this.role() === 'driver-assign'
         ) {
           date = this.tommorow;
-          console.log(date);
         } else if (
           this.role() === 'admin' ||
           this.role() === 'driver-history'
@@ -81,7 +78,7 @@ export class FiltersComponent implements OnInit {
       }
       this.filterGroup.get('date')?.setValue(date);
     }
-    console.log(this.filterGroup.value);
+
     this.filterForm.emit(this.filterGroup);
   }
   cleanFilter() {
@@ -103,7 +100,6 @@ export class FiltersComponent implements OnInit {
       ) {
         date = null;
       } else {
-        console.log('nulo');
         if (
           this.role() === 'programmer_assign' ||
           this.role() === 'driver-assign'
