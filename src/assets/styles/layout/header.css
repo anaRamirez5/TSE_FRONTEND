@@ -9,3 +9,7 @@
   width: 100%;
   background-color: var(--COLOR-BLUE);
 }
+.text-danger {
+  color: var(--COLOR-REJECT-TAG);
+  font-size: 10px;
+}

@@ -21,11 +21,17 @@
           class="form-control input_filter"
           id="floatingInput"
           formControlName="placa_movil"
-          placeholder="name@example.com"
+          placeholder="XXX000"
         />
         <label for="floatingInput">Numero de placa</label>
       </div>
     </form>
+    @if(updateForm.get('placa_movil')?.hasError('pattern')){
+    <span class="mx-2 text-center text-danger">
+      Recuerde que debe ser unicamente 6 caracteres, no debe de contener
+      espacios, ni caracteres especiales</span
+    >
+    }
     <div
       class="d-flex flex-row justify-content-center align-items-center"
       [ngClass]="{ 'mb-4': !error }"
@@ -35,6 +41,7 @@
         (click)="editDriver()"
         tooltip="Al confirmar la edición de la placa, si no se ingresa ningún número de placa, el estado del servicio se actualizará automáticamente a Activo sin placa asignada."
         container="body"
+        [disabled]="updateForm.invalid"
         containerClass="custom-tooltip"
         placement="top"
       >
