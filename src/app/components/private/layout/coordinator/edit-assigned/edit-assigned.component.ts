@@ -21,7 +21,7 @@ export class EditAsignComponent {
     private programmerService: CoordinatorService
   ) {
     this.updateForm = this.fb.group({
-      placa_movil: [null, Validators.required],
+      placa_movil: [null, [Validators.pattern(/^[A-Za-z]{3}\d{3}$/)]],
     });
   }
 
