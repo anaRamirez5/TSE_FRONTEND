@@ -15,6 +15,8 @@ export interface assignService {
   estado_servicio: string;
   requerimiento: string;
   tipov_funcionario: string;
+  coord_origen?: number[];
+  coord_destino?: number[];
   nom_funcionario: string;
   tipdocu_funcionario: string;
   docu_funcionario?: string;

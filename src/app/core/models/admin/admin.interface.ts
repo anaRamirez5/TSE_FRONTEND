@@ -12,6 +12,8 @@ export interface HistoryTable {
   ciudad: string;
   name_conductor: string;
   tipov_funcionario: string;
+  coord_origen?: number[];
+  coord_destino?: number[];
   nom_funcionario: string;
   tipdocu_funcionario: string;
   ape_conductor: string;

@@ -42,6 +42,8 @@ export interface orphanService {
   t_final: string;
   cod_producto: string;
   nom_producto: string;
+  coord_origen?: number[];
+  coord_destino?: number[];
   origen_servicio: string;
   destino_servicio: string;
   placa_movil: string;
