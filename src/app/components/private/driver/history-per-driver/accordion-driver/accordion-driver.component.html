@@ -39,19 +39,21 @@
               {{ sharedService.convertTo12HourFormat(data().t_inicio) || "--" }}
             </p>
           </li>
-          <!-- <li class="col-12 col-md-6">
-            <p class="subtitle_data">Hora fin</p>
-            <p>
-              {{ sharedService.convertTo12HourFormat(data().t_final) || "--" }}
-            </p>
-          </li> -->
           <li class="col-12 col-md-6">
             <p class="subtitle_data">Dirección de Origen</p>
             <p>{{ data().origen_servicio || "--" }}</p>
           </li>
           <li class="col-12 col-md-6">
+            <p class="subtitle_data">Coordenadas de Origen</p>
+            <p>{{ data().coord_origen || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
             <p class="subtitle_data">Dirreción de destino</p>
             <p>{{ data().destino_servicio || "--" }}</p>
+          </li>
+          <li class="col-12 col-md-6">
+            <p class="subtitle_data">Coordenadas de destino</p>
+            <p>{{ data().coord_destino || "--" }}</p>
           </li>
 
           <li class="col-12 col-md-6">
