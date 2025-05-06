@@ -78,17 +78,26 @@
             placement="left"
             container="body"
             containerClass="custom-tooltip"
-            [ngClass]="{ 'd-none': row.requerimiento === '' }"
+            [ngClass]="{
+              'd-none': row.requerimiento === ''
+            }"
             src="../../../../../../assets/images/danger.svg"
             style="width: 16px"
             alt="danger"
           />
           <img
-            tooltip="Si puede ir en ruta"
+            [tooltip]="
+              row.ruta_detalle ? 'La ruta asignada es ' + row.ruta_detalle : ''
+            "
             placement="top"
             container="body"
             containerClass="custom-tooltip"
-            [ngClass]="{ 'd-none': row.ruta === null }"
+            [ngClass]="{
+              'd-none':
+                row.ruta === 'NO' ||
+                row.ruta_detalle === null ||
+                row.ruta_detalle === ''
+            }"
             src="../../../../../../assets/images/route.svg"
             style="width: 16px"
             alt="danger"
